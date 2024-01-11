@@ -1,4 +1,6 @@
 ---
+import "../styles/style.css"
+
 interface Props {
 	title: string;
 }
@@ -23,16 +25,16 @@ const { title } = Astro.props;
 
 <style is:global>
 	body {
-		font-family: "Arial", sans-serif;
 		text-align: center;
 		margin: 50px;
+		background-color: var(--surface);
 	}
 
 	h1 {
-		color: #333;
+		color: var(--on-surface)
 	}
 
 	p {
-		color: #555;
+		color: var(--on-surface)
 	}
 </style>
