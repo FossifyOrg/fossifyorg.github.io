@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section>
+    <div class="text">
+        <h1>We are Fossify org</h1>
+        <p>Creators of the Fossify suite of apps</p>
+        <button><Icon name="github" /> Donate</button>
+    </div>
+    <img
+        src="https://source.unsplash.com/3tYZjGSBwbk"
+        alt="photo from unsplash"
+        width="500px"
+        height="500px"
+    />
+</section>
+
+<style>
+    section {
+        display: grid;
+        grid-template-areas: "text photo";
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .text {
+        grid-area: text;
+        padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
+        padding-block-start: 6rem;
+        padding-block-end: 3rem;
+        display: grid;
+        gap: 1rem;
+    }
+
+    @media (max-width: 50em) {
+        section {
+            grid-template-areas: "photo" "text";
+            grid-template-columns: 1fr;
+        }
+
+        .text {
+            justify-content: center;
+            padding-block-start: 2rem;
+            padding-block-end: 2rem;
+        }
+    }
+
+    .text > h1 {
+        font-size: clamp(var(--fs-md), var(--fs-lg) + 1vw, var(--fs-xl));
+        color: var(--primary);
+        max-width: 10ch;
+    }
+
+    .text > p {
+        font-size: clamp(var(--fs-sm), var(--fs-md) + 1vw, var(--fs-lg));
+        max-width: 20ch;
+    }
+
+    button {
+        width: max-content;
+        height: 3rem;
+        padding-inline: 1rem;
+        padding-block: 0.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-size: var(--fs-md);
+        font-weight: 600;
+        background-color: var(--tertiary);
+        color: var(--on-tertiary);
+        border: 1px solid var(--outline-variant);
+        border-radius: 0.5rem;
+    }
+
+    img {
+        grid-area: photo;
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    @media (max-width: 50em) {
+        img {
+            height: 200px;
+        }
+    }
+</style>
