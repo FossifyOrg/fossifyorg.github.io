@@ -1,5 +1,9 @@
 ---
-import "../styles/style.css"
+import { ViewTransitions } from 'astro:transitions';
+import "../styles/style.css";
+
+import Header from '../components/Header.astro';
+
 
 interface Props {
 	title: string;
@@ -17,24 +21,12 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
-		<slot />
+		<main>
+			<Header />
+			<slot />
+		</main>
 	</body>
 </html>
-
-<style is:global>
-	body {
-		text-align: center;
-		margin: 50px;
-		background-color: var(--surface);
-	}
-
-	h1 {
-		color: var(--on-surface)
-	}
-
-	p {
-		color: var(--on-surface)
-	}
-</style>

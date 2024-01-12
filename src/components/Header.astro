@@ -1,0 +1,87 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<header>
+    <div class="logo-container">
+        <img src="/Logo.png" alt="fossify logo" width="52" height="52">
+        <h1>fossify</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="">apps</a></li>
+            <li><a href="">blog</a></li>
+            <li><a href="">team</a></li>
+            <li><a href="">about us</a></li>
+        </ul>
+    </nav>
+    <div class="icons">
+        <Icon name="github" size={32} />        
+    </div>
+</header>
+
+<style>
+    header {
+        background-color: var(--surface-container);
+        color: var(--on-surface);
+        padding-inline: 2rem;
+        padding-block: 1rem;
+
+        display: grid;
+        grid-template-areas: "a b c";
+        grid-template-columns: 3fr 2fr 0.5fr;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo-container > img {
+        border-radius: 0.5rem;
+    }
+
+    .logo-container > h1 {
+        font-size: var(--fs-lg);
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+
+    nav {
+        background-color: var(--primary-container);
+        border-radius: 0.5rem;
+    }
+
+    nav > ul {
+        list-style: none;
+        
+
+        color: var(--on-primary-container);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    nav > ul a {
+        font-size: var(--fs-md);
+        font-weight: 600;
+        text-decoration: none;
+        text-transform: capitalize;
+        color: var(--on-primary-container);
+        line-height: 1.2;
+    }
+
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    [data-icon] {
+        color: var(--on-surface);
+    }
+</style>

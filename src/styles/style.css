@@ -1,4 +1,5 @@
 html {
+    /* material colors */
     --md-source: #388E3C;
     /* primary */
     --primary0: #000000;
@@ -182,6 +183,14 @@ html {
     --surface-container-lowest-dark: #0C0F0C;
     --surface-bright-dark: #383A36;
     --surface-dim-dark: #121411;
+
+    /* Typography */
+
+    --fs-xs: 0.75rem;
+    --fs-sm: 1rem;
+    --fs-md: 1.5rem;
+    --fs-lg: 3rem;
+    --fs-xl: 4.5rem;
 }
 
 
@@ -371,7 +380,9 @@ body {
     min-height: 100svh;
 
     font-family: system-ui, sans-serif;
-    font-weight: normal
+    font-weight: normal;
+    background-color: var(--surface);
+    color: var(--on-surface);
 }
 
 /* responsive images/videos */
