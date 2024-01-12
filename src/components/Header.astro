@@ -1,10 +1,15 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 ---
 
 <header>
-    <div class="logo-container">
-        <img src="/fossifyorg.github.io/Logo.png" alt="fossify logo" width="52" height="52">
+    <div class="logo">
+        <img
+            src="/fossifyorg.github.io/Logo.png"
+            alt="fossify logo"
+            width="52"
+            height="52"
+        />
         <h1>fossify</h1>
     </div>
     <nav>
@@ -16,7 +21,7 @@ import { Icon } from 'astro-icon/components'
         </ul>
     </nav>
     <div class="icons">
-        <Icon name="github" size={32} />        
+        <Icon name="github" size={32} />
     </div>
 </header>
 
@@ -24,50 +29,76 @@ import { Icon } from 'astro-icon/components'
     header {
         background-color: var(--surface-container);
         color: var(--on-surface);
-        padding-inline: 2rem;
+        padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
         padding-block: 1rem;
+        align-items: center;
 
         display: grid;
-        grid-template-areas: "a b c";
-        grid-template-columns: 3fr 2fr 0.5fr;
+        grid-template-areas: "logo nav icons";
+        grid-template-columns: 3fr 3fr 0.5fr;
     }
 
-    .logo-container {
+    @media (max-width: 50em) {
+        header {
+            gap: 1rem;
+            grid-template-columns: 2fr 3fr 0.5fr;
+        }
+    }
+
+    @media (max-width: 40em) {
+        header {
+            gap: 1rem;
+            grid-template-areas: "logo icons" "nav nav";
+            grid-template-columns: 3fr 1fr;
+        }
+    }
+
+    .logo {
+        grid-area: logo;
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    .logo-container > img {
+    .logo > img {
         border-radius: 0.5rem;
     }
 
-    .logo-container > h1 {
-        font-size: var(--fs-lg);
+    .logo > h1 {
+        font-size: clamp(var(--fs-md), var(--fs-md) + 1rem, var(--fs-lg));
         font-weight: 900;
 
         text-transform: uppercase;
     }
 
-
     nav {
+        grid-area: nav;
+        place-self: end;
         background-color: var(--primary-container);
         border-radius: 0.5rem;
+        height: 3rem;
+        max-width: max-content;
+        padding-inline: 1rem;
+    }
+
+    @media (max-width: 40em) {
+        nav {
+            min-width: 100%;
+        }
     }
 
     nav > ul {
         list-style: none;
-        
-
         color: var(--on-primary-container);
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-around;
+        gap: 1rem;
     }
 
     nav > ul a {
-        font-size: var(--fs-md);
+        font-size: clamp(var(--fs-sm), var(--fs-sm) + 0.2rem, var(--fs-md));
         font-weight: 600;
         text-decoration: none;
         text-transform: capitalize;
@@ -76,9 +107,10 @@ import { Icon } from 'astro-icon/components'
     }
 
     .icons {
+        grid-area: icons;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: end;
     }
 
     [data-icon] {

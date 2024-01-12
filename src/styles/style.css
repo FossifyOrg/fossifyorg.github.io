@@ -191,6 +191,11 @@ html {
     --fs-md: 1.5rem;
     --fs-lg: 3rem;
     --fs-xl: 4.5rem;
+
+    /* --breakpoint-sm: 40em;
+    --breakpoint-md: 48em;
+    --breakpoint-lg: 64em;
+    --breakpoint-xl: 80em; */
 }
 
 
