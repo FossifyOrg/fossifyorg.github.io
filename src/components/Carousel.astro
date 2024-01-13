@@ -20,22 +20,13 @@
     scroll-padding-inline: 2rem;
   }
 
-  @media (max-width: 40em) {
-    .carousel {
-      gap: 6rem;
-      scroll-padding-inline: 2rem;
-    }
+  .carousel:first-child {
+    padding-inline-start: 4rem;
   }
 
-  .carousel > * {
-    scroll-snap-align: center;
-  }
-
-  .carousel::before,
-  .carousel::after {
-    content: "";
-    flex: 0 0 50%;
-  }
+  .carousel {
+    padding-inline-end: 4rem;
+  } 
 
   .carousel::-webkit-scrollbar {
     width: 10px;
