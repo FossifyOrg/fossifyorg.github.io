@@ -1,6 +1,7 @@
 ---
 import Carousel from "./Carousel.astro";
 import AppCard from "./App-card.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section>
@@ -13,24 +14,36 @@ import AppCard from "./App-card.astro";
     </p>
     <div class="apps-carousel">
         <Carousel>
-            <AppCard name="1" id="1" />
-            <AppCard name="2" id="2" />
-            <AppCard name="3" id="3" />
-            <AppCard name="4" id="4" />
-            <AppCard name="5" id="5" />
-            <AppCard name="6" id="6" />
-            <AppCard name="7" id="7" />
-            <AppCard name="8" id="8" />
+            <AppCard name="calendar" id="1" />
+            <AppCard name="contacts" id="2" />
+            <AppCard name="draw" id="3" />
+            <AppCard name="file manager" id="4" />
+            <AppCard name="gallery" id="5" />
+            <AppCard name="keyboard" id="6" />
+            <AppCard name="messages" id="7" />
+            <AppCard name="music player" id="8" />
+            <AppCard name="notes" id="9" />
+            <AppCard name="pdf viewer" id="10" />
+            <AppCard name="phone" id="11" />
+            <AppCard name="thank you" id="12" />
+            <AppCard name="voice recorder" id="13" />
         </Carousel>
+    </div>
+    <div class="app-icons">
         <ul>
-            <a href="#1">1</a>
-            <a href="#2">2</a>
-            <a href="#3">3</a>
-            <a href="#4">4</a>
-            <a href="#5">5</a>
-            <a href="#6">6</a>
-            <a href="#7">7</a>
-            <a href="#8">8</a>
+            <a href="#1"><Icon size={46} name="apps/calendar" /></a>
+            <a href="#2"><Icon size={46} name="apps/contacts" /></a>
+            <a href="#3"><Icon size={46} name="apps/draw" /></a>
+            <a href="#4"><Icon size={46} name="apps/filemanager" /></a>
+            <a href="#5"><Icon size={46} name="apps/gallery" /></a>
+            <a href="#6"><Icon size={46} name="apps/keyboard" /></a>
+            <a href="#7"><Icon size={46} name="apps/messages" /></a>
+            <a href="#8"><Icon size={46} name="apps/musicplayer" /></a>
+            <a href="#9"><Icon size={46} name="apps/notes" /></a>
+            <a href="#10"><Icon size={46} name="apps/pdfviewer" /></a>
+            <a href="#11"><Icon size={46} name="apps/phone" /></a>
+            <a href="#12"><Icon size={46} name="apps/thankyou" /></a>
+            <a href="#13"><Icon size={46} name="apps/voicerecorder" /></a>
         </ul>
     </div>
 </section>
@@ -42,6 +55,7 @@ import AppCard from "./App-card.astro";
 
         display: grid;
         place-content: center;
+        place-items: center;
         gap: 2rem;
     }
     section h1 {
@@ -67,5 +81,21 @@ import AppCard from "./App-card.astro";
         display: grid;
         gap: 1rem;
         place-content: center;
+    }
+
+    .app-icons {
+        padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
+    }
+
+    .app-icons > ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        gap: 0.5rem;
+    }
+
+    /* the app icons */
+    a > svg {
+        border-radius: 0.5rem;
     }
 </style>

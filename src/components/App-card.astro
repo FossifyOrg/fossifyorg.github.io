@@ -18,7 +18,7 @@ const { name, id } = Astro.props;
     />
     <div class="details">
         <div class="general">
-            <h2>Fossify {name}</h2>
+            <h2>{name}</h2>
             <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
                 voluptates alias deleniti odio nesciunt
@@ -102,6 +102,7 @@ const { name, id } = Astro.props;
         font-size: var(--fs-md);
         font-weight: 600;
         text-align: start;
+        text-transform: capitalize;
     }
 
     .general > p {
