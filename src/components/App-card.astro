@@ -1,0 +1,137 @@
+---
+interface Props {
+    name: string;
+    id: string;
+}
+
+import { Icon } from "astro-icon/components";
+
+const { name, id } = Astro.props;
+---
+
+<div class="app-card" id={id}>
+    <img
+        src="https://source.unsplash.com/3tYZjGSBwbk"
+        alt="photo from unsplash"
+        width="220px"
+        height="400px"
+    />
+    <div class="details">
+        <div class="general">
+            <h2>Fossify {name}</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
+                voluptates alias deleniti odio nesciunt
+            </p>
+        </div>
+
+        <div class="features">
+            <h3>Top Features</h3>
+            <ul>
+                <li>Feature one</li>
+                <li>Feature two</li>
+                <li>Feature three</li>
+                <li>Feature four</li>
+            </ul>
+        </div>
+        <div class="links">
+            <a href=""><Icon name="store_badge" width={98} height={42} /></a>
+            <a href=""><Icon name="fdroid_badge" width={98} height={42} /></a>
+        </div>
+        <div class="source">
+            <p>Source code at:</p>
+            <a href=""><Icon name="github" size={32} /></a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .app-card {
+        display: grid;
+        grid-template-areas: "screen details";
+        grid-template-columns: 14em 16em;
+        max-width: 30rem;
+        gap: 2rem;
+    }
+
+    .app-card > img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 9/16;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    @media (max-width: 40em) {
+        .app-card {
+            grid-template-areas: "details";
+            grid-template-columns: 18em;
+            max-width: 18em;
+            justify-items: center;
+        }
+
+        .app-card > img {
+            display: none;
+        }
+    }
+
+    .details {
+        display: grid;
+        justify-items: start;
+        align-content: center;
+        gap: 1rem;
+    }
+
+    .general,
+    .features {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .general > h2 {
+        font-size: var(--fs-md);
+        font-weight: 600;
+        text-align: start;
+    }
+
+    .general > p {
+        max-width: 20ch;
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+
+    .features > h3 {
+        font-size: var(--fs-sm);
+        font-weight: 600;
+        text-align: start;
+    }
+
+    .features > ul {
+        display: grid;
+        justify-items: start;
+        padding-inline-start: 2rem;
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .source {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    [data-icon="github"] {
+        color: var(--on-surface);
+    }
+
+    [data-icon="fdroid_badge"] {
+        color: black;
+    }
+</style>

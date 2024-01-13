@@ -1,0 +1,38 @@
+---
+
+---
+
+<div class="carousel">
+  <slot />
+</div>
+
+<style>
+  .carousel {
+    display: flex;
+    gap: 6rem;
+
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 2rem;
+  }
+
+  .carousel > * {
+  scroll-snap-align: start;
+  }
+
+  .carousel::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .carousel::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
+  .carousel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+</style>

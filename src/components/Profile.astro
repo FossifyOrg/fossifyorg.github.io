@@ -21,7 +21,7 @@ const profile = await getEntry("profile", "en/profile");
 <style>
     section {
         padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
-        padding-block: clamp(2rem, 3rem + 5vw, 10rem);
+        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
         display: grid;
         gap: 2rem;
         place-content: center;
@@ -53,6 +53,9 @@ const profile = await getEntry("profile", "en/profile");
     .profile p {
         max-width: 45ch;
         text-align: justify;
-        text-justify: distribute;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
     }
 </style>

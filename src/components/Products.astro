@@ -1,0 +1,71 @@
+---
+import Carousel from "./Carousel.astro";
+import AppCard from "./App-card.astro";
+---
+
+<section>
+    <h1>Our Products</h1>
+    <p>
+        Fossify apps are a community-backed, open-source, and ad-free suite of
+        mobile apps. A fork of the @SimpleMobileTools, which is no longer
+        maintained, and we're here to continue the legacy, bringing simple and
+        private tech to everyone.
+    </p>
+    <div class="apps-carousel">
+        <Carousel>
+            <AppCard name="1" id="1" />
+            <AppCard name="2" id="2" />
+            <AppCard name="3" id="3" />
+            <AppCard name="4" id="4" />
+            <AppCard name="5" id="5" />
+            <AppCard name="6" id="6" />
+            <AppCard name="7" id="7" />
+            <AppCard name="8" id="8" />
+        </Carousel>
+        <ul>
+            <a href="#1">1</a>
+            <a href="#2">2</a>
+            <a href="#3">3</a>
+            <a href="#4">4</a>
+            <a href="#5">5</a>
+            <a href="#6">6</a>
+            <a href="#7">7</a>
+            <a href="#8">8</a>
+        </ul>
+    </div>
+</section>
+
+<style>
+    section {
+        padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
+        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
+
+        display: grid;
+        place-content: center;
+        gap: 2rem;
+    }
+    section h1 {
+        text-align: center;
+        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    section > p {
+        max-width: 45ch;
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+
+    .apps-carousel {
+        overflow: hidden;
+        max-width: 32rem;
+        text-align: center;
+        display: grid;
+        gap: 1rem;
+        place-content: center;
+    }
+</style>
