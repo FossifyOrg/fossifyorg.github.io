@@ -34,12 +34,13 @@ const { name, id } = Astro.props;
                 <li>Feature four</li>
             </ul>
         </div>
+    </div>
+    <div class="links-container">
         <div class="links">
             <a href=""><Icon name="store_badge" width={98} height={42} /></a>
             <a href=""><Icon name="fdroid_badge" width={98} height={42} /></a>
         </div>
         <div class="source">
-            <p>Source code at:</p>
             <a href=""><Icon name="github" size={32} /></a>
         </div>
     </div>
@@ -48,13 +49,14 @@ const { name, id } = Astro.props;
 <style>
     .app-card {
         display: grid;
-        grid-template-areas: "screen details";
+        grid-template-areas: "screen details" "screen links";
         grid-template-columns: 14em 16em;
         max-width: 30rem;
         gap: 2rem;
     }
 
     .app-card > img {
+        grid-area: screen;
         width: 100%;
         height: auto;
         aspect-ratio: 9/16;
@@ -62,16 +64,28 @@ const { name, id } = Astro.props;
         border-radius: 0.5rem;
     }
 
+
     @media (max-width: 40em) {
         .app-card {
-            grid-template-areas: "screen" "details";
-            grid-template-columns: 6em 12em;
-            max-width: 18em;
-            justify-items: center;
+            grid-template-columns: 10em 10em;
+            max-width: 20em;
+            gap: 0.5rem;
         }
     }
 
+    @media (max-width: 38em) {
+        .app-card {
+            grid-template-areas: "screen details"
+            "links details";
+            grid-template-columns: 6em 10em;
+            max-width: 16em;
+            gap: 0.5rem;
+        }
+
+    }
+
     .details {
+        grid-area: details;
         display: grid;
         justify-items: start;
         align-content: center;
@@ -111,6 +125,11 @@ const { name, id } = Astro.props;
         padding-inline-start: 2rem;
     }
 
+    .links-container {
+        grid-area: links;
+        display: grid;
+    }
+
     .links {
         display: flex;
         align-items: center;
@@ -121,6 +140,13 @@ const { name, id } = Astro.props;
         display: flex;
         gap: 1rem;
         align-items: center;
+    }
+
+    @media (max-width: 40em) {
+        .links {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
     }
 
     [data-icon="github"] {
