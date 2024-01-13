@@ -11,8 +11,8 @@ const { name, id } = Astro.props;
 
 <div class="app-card" id={id}>
     <img
-        src="https://source.unsplash.com/3tYZjGSBwbk"
-        alt="photo from unsplash"
+        src="/fossifyorg.github.io/screen-shot.jpg"
+        alt="screenshot"
         width="220px"
         height="400px"
     />
@@ -58,20 +58,16 @@ const { name, id } = Astro.props;
         width: 100%;
         height: auto;
         aspect-ratio: 9/16;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 0.5rem;
     }
 
     @media (max-width: 40em) {
         .app-card {
-            grid-template-areas: "details";
-            grid-template-columns: 18em;
+            grid-template-areas: "screen" "details";
+            grid-template-columns: 6em 12em;
             max-width: 18em;
             justify-items: center;
-        }
-
-        .app-card > img {
-            display: none;
         }
     }
 
