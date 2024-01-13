@@ -1,0 +1,58 @@
+---
+import { getEntry } from "astro:content";
+
+const profile = await getEntry("profile", "en/profile");
+---
+
+<section>
+    <h1>What we stand for</h1>
+    <div class="profile">
+        <div>
+            <h2>Our vision</h2>
+            <p>{profile?.data.vision}</p>
+        </div>
+        <div>
+            <h2>Our mission</h2>
+            <p>{profile?.data.mission}</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
+        padding-block: clamp(2rem, 3rem + 5vw, 10rem);
+        display: grid;
+        gap: 2rem;
+        place-content: center;
+    }
+    h1 {
+        text-align: center;
+        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
+        font-weight: 600;
+        color: var(--primary);
+    }
+    .profile {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 2rem;
+    }
+
+    @media (max-width: 40em) {
+        .profile {
+            grid-auto-flow: row;
+        }
+    }
+
+    .profile h2 {
+        padding-bottom: 2rem;
+        font-size: var(--fs-md);
+        text-align: center;
+    }
+
+    .profile p {
+        max-width: 45ch;
+        text-align: justify;
+        text-justify: distribute;
+    }
+</style>
