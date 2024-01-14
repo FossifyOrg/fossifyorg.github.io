@@ -21,11 +21,13 @@ import { Icon } from "astro-icon/components";
         display: grid;
         grid-template-areas: "text photo";
         grid-template-columns: 1fr 1fr;
+
+        padding-block-end: clamp(2rem, 2rem + 2vw, 4rem);
     }
 
     .text {
         grid-area: text;
-        padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
+        padding-inline: clamp(1rem, 2rem + 3vw, 8rem);
         padding-block-start: 6rem;
         padding-block-end: 3rem;
         display: grid;
