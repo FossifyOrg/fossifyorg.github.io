@@ -1,0 +1,133 @@
+---
+const contributors = [
+    {
+        name: "Aga-C",
+        profile: "https://github.com/Aga-C",
+        avatar: "https://avatars.githubusercontent.com/u/85929121?v=4",
+    },
+    {
+        name: "AlbertoPellitteri",
+        profile: "https://github.com/AlbertoPellitteri",
+        avatar: "https://avatars.githubusercontent.com/u/66901396?v=4",
+    },
+    {
+        name: "Alfavio",
+        profile: "https://github.com/Alfavio",
+        avatar: "https://avatars.githubusercontent.com/u/5478075?v=4",
+    },
+    {
+        name: "connyduck",
+        profile: "https://github.com/connyduck",
+        avatar: "https://avatars.githubusercontent.com/u/10157047?v=4",
+    },
+    {
+        name: "correia55",
+        profile: "https://github.com/correia55",
+        avatar: "https://avatars.githubusercontent.com/u/9482824?v=4",
+    },
+    {
+        name: "dagkalis",
+        profile: "https://github.com/dogkalis",
+        avatar: "https://avatars.githubusercontent.com/u/56542304?v=4",
+    },
+    {
+        name: "DaPa",
+        profile: "https://github.com/DaPa",
+        avatar: "https://avatars.githubusercontent.com/u/4947697?v=4",
+    },
+    {
+        name: "ForgottenUmbrella",
+        profile: "https://github.com/ForgottenUmbrella",
+        avatar: "https://avatars.githubusercontent.com/u/14356244?v=4",
+    },
+    {
+        name: "KryptKode",
+        profile: "https://github.com/KryptKode",
+        avatar: "https://avatars.githubusercontent.com/u/25648077?v=4",
+    },
+    {
+        name: "naveensingh",
+        profile: "https://github.com/naveensingh",
+        avatar: "https://avatars.githubusercontent.com/u/36371707?v=4",
+    },
+    {
+        name: "qwertyfinger",
+        profile: "https://github.com/qwertyfinger",
+        avatar: "https://avatars.githubusercontent.com/u/7561414?v=4",
+    },
+];
+---
+
+<section>
+    <h1>Top Contriburors</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!
+    </p>
+    <div class="avatars">
+        {
+            contributors.map((contributor) => (
+                <a href={contributor.profile}>
+                    <img
+                        src={contributor.avatar}
+                        alt={contributor.name + "avatar"}
+                        width="64"
+                        height="64"
+                    />
+                    <h2>{contributor.name}</h2>
+                </a>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    section {
+        padding-inline: clamp(1rem, 1rem + 1vw, 4rem);
+        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
+
+        display: grid;
+        place-content: center;
+        place-items: center;
+        gap: 2rem;
+    }
+    section h1 {
+        text-align: center;
+        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    section > p {
+        max-width: 65ch;
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+
+    .avatars {
+         padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
+         padding-block: clamp(1rem, 2rem + 1vw, 6rem);
+        max-width: max-content;       
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .avatars > a {
+        font-size: var(--fs-xs);
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--on-surface);
+
+        display: grid;
+        place-items: center;
+        gap: 0.5rem;
+    }
+    
+    .avatars > a > img {
+        border-radius: 50%;
+    }
+</style>
