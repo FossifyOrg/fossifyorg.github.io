@@ -378,6 +378,7 @@ html {
 html {
     color-scheme: dark light;
     hanging-punctuation: first last;
+    scroll-padding-top: 6rem;
 }
 
 /* min body height */
