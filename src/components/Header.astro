@@ -1,5 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
+import ToggleDark from "./ToggleDark.astro"
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
 <header>
@@ -14,14 +20,15 @@ import { Icon } from "astro-icon/components";
     </div>
     <nav>
         <ul>
-            <li><a href="">apps</a></li>
-            <li><a href="">blog</a></li>
-            <li><a href="">team</a></li>
-            <li><a href="">about us</a></li>
+            <li><a href="">{strings?.data.header.apps}</a></li>
+            <li><a href="">{strings?.data.header.blog}</a></li>
+            <li><a href="">{strings?.data.header.team}</a></li>
+            <li><a href="">{strings?.data.header.about}</a></li>
         </ul>
     </nav>
     <div class="icons">
         <Icon name="github" size={32} />
+        <ToggleDark />
     </div>
 </header>
 
@@ -111,6 +118,7 @@ import { Icon } from "astro-icon/components";
         display: flex;
         align-items: center;
         justify-content: end;
+        gap: 1rem;
     }
 
     [data-icon] {

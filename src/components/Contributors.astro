@@ -56,13 +56,16 @@ const contributors = [
         avatar: "https://avatars.githubusercontent.com/u/7561414?v=4",
     },
 ];
+
+const {lang} = Astro.props
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`)
 ---
 
 <section>
-    <h1>Top Contriburors</h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!
-    </p>
+    <h1>{strings?.data.contributors.title}</h1>
+    <p>{strings?.data.contributors.description}</p>
     <div class="avatars">
         {
             contributors.map((contributor) => (

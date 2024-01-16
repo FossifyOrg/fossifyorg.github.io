@@ -2,51 +2,64 @@
 import Carousel from "./Carousel.astro";
 import AppCard from "./App-card.astro";
 import { Icon } from "astro-icon/components";
+
+const {lang} = Astro.props
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`)
 ---
 
 <section>
-    <h1>Our Products</h1>
-    <p>
-        Fossify apps are a community-backed, open-source, and ad-free suite of
-        mobile apps. A fork of the @SimpleMobileTools, which is no longer
-        maintained, and we're here to continue the legacy, bringing simple and
-        private tech to everyone.
-    </p>
+    <h1>{strings?.data.products.title}</h1>
+    <p>{strings?.data.products.description}</p>
     <div class="apps-carousel">
         <Carousel>
-            <AppCard name="calendar" id="1" />
-            <AppCard name="contacts" id="2" />
-            <AppCard name="draw" id="3" />
-            <AppCard name="file manager" id="4" />
-            <AppCard name="gallery" id="5" />
-            <AppCard name="keyboard" id="6" />
-            <AppCard name="messages" id="7" />
-            <AppCard name="music player" id="8" />
-            <AppCard name="notes" id="9" />
-            <AppCard name="pdf viewer" id="10" />
-            <AppCard name="phone" id="11" />
-            <AppCard name="thank you" id="12" />
-            <AppCard name="voice recorder" id="13" />
+            <AppCard name="calendar" id="app-1" />
+            <AppCard name="contacts" id="app-2" />
+            <AppCard name="draw" id="app-3" />
+            <AppCard name="file manager" id="app-4" />
+            <AppCard name="gallery" id="app-5" />
+            <AppCard name="keyboard" id="app-6" />
+            <AppCard name="messages" id="app-7" />
+            <AppCard name="music player" id="app-8" />
+            <AppCard name="notes" id="app-9" />
+            <AppCard name="phone" id="app-11" />
+            <AppCard name="thank you" id="app-12" />
+            <AppCard name="voice recorder" id="app-13" />
         </Carousel>
     </div>
     <div class="app-icons">
         <ul>
-            <a href="#1"><Icon size={46} name="apps/calendar" /></a>
-            <a href="#2"><Icon size={46} name="apps/contacts" /></a>
-            <a href="#3"><Icon size={46} name="apps/draw" /></a>
-            <a href="#4"><Icon size={46} name="apps/filemanager" /></a>
-            <a href="#5"><Icon size={46} name="apps/gallery" /></a>
-            <a href="#6"><Icon size={46} name="apps/keyboard" /></a>
-            <a href="#7"><Icon size={46} name="apps/messages" /></a>
-            <a href="#8"><Icon size={46} name="apps/musicplayer" /></a>
-            <a href="#9"><Icon size={46} name="apps/notes" /></a>
-            <a href="#10"><Icon size={46} name="apps/pdfviewer" /></a>
-            <a href="#11"><Icon size={46} name="apps/phone" /></a>
-            <a href="#12"><Icon size={46} name="apps/thankyou" /></a>
-            <a href="#13"><Icon size={46} name="apps/voicerecorder" /></a>
+            <a id="1"><Icon size={46} name="apps/calendar" /></a>
+            <a id="2"><Icon size={46} name="apps/contacts" /></a>
+            <a id="3"><Icon size={46} name="apps/draw" /></a>
+            <a id="4"><Icon size={46} name="apps/filemanager" /></a>
+            <a id="5"><Icon size={46} name="apps/gallery" /></a>
+            <a id="6"><Icon size={46} name="apps/keyboard" /></a>
+            <a id="7"><Icon size={46} name="apps/messages" /></a>
+            <a id="8"><Icon size={46} name="apps/musicplayer" /></a>
+            <a id="9"><Icon size={46} name="apps/notes" /></a>
+            <a id="11"><Icon size={46} name="apps/phone" /></a>
+            <a id="12"><Icon size={46} name="apps/thankyou" /></a>
+            <a id="13"><Icon size={46} name="apps/voicerecorder" /></a>
         </ul>
     </div>
 </section>
+
+<script>
+    function scrollSmoothTo(elementId) {
+        var element = document.getElementById(elementId);
+        element?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+
+    const atags = Array.from(document.getElementsByTagName("a"))
+
+    atags.forEach((tag) => {
+        tag.addEventListener("click", () => {
+            scrollSmoothTo(`app-${tag.id}`);
+        });
+    });
+</script>
 
 <style>
     section {

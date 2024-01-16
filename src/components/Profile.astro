@@ -1,19 +1,21 @@
 ---
+const { lang } = Astro.props;
+
 import { getEntry } from "astro:content";
 
-const profile = await getEntry("profile", "en/profile");
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
 <section>
-    <h1>What we stand for</h1>
+    <h1>{strings?.data.profile.title}</h1>
     <div class="profile">
         <div>
-            <h2>Our vision</h2>
-            <p>{profile?.data.vision}</p>
+            <h2>{strings?.data.profile.vision.title}</h2>
+            <p>{strings?.data.profile.vision.text}</p>
         </div>
         <div>
-            <h2>Our mission</h2>
-            <p>{profile?.data.mission}</p>
+            <h2>{strings?.data.profile.mission.title}</h2>
+            <p>{strings?.data.profile.mission.text}</p>
         </div>
     </div>
 </section>

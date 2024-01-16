@@ -1,12 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
 <section>
     <div class="text">
-        <h1>We are Fossify org</h1>
-        <p>Creators of the Fossify suite of apps</p>
-        <button><Icon name="github" /> Donate</button>
+        <h1>{strings?.data.hero.title}</h1>
+        <p>{strings?.data.hero.subtitle}</p>
+        <button><Icon name="github" /> {strings?.data.hero.donate}</button>
     </div>
     <img
         src="https://source.unsplash.com/3tYZjGSBwbk"
@@ -69,6 +74,7 @@ import { Icon } from "astro-icon/components";
         gap: 1rem;
         font-size: var(--fs-md);
         font-weight: 600;
+        text-transform: capitalize;
         background-color: var(--tertiary-container);
         color: var(--on-tertiary-container);
         border: 1px solid var(--outline-variant);

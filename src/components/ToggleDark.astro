@@ -1,0 +1,87 @@
+---
+
+---
+
+<input
+  aria-hidden="true"
+  type="checkbox"
+  id="toggleButton"
+  class="toggle"
+  tabindex="-1"
+/>
+<label hidden for="toggle">toggle dark mode</label>
+
+<script lang="js">
+  const toggleButton = document.getElementById("toggleButton");
+  const storageKey = "theme-preference";
+
+  const getColorPreference = () => {
+    let preference = localStorage.getItem(storageKey);
+
+    if (!preference) {
+      preference = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    return preference;
+  };
+
+  const setPreference = (themeName) => {
+    localStorage.setItem(storageKey, themeName);
+
+    document.firstElementChild.setAttribute("color-scheme", themeName);
+  };
+
+  const togglePreference = () => {
+    setPreference(getColorPreference() === "dark" ? "light" : "dark");
+  };
+
+  toggleButton.addEventListener("change", () => togglePreference());
+
+  document.firstElementChild.setAttribute("color-scheme", getColorPreference());
+</script>
+
+<style scoped>
+  .toggle {
+    --size: 32px;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    border: 1px solid var(--on-surface);
+    border-radius: var(--size);
+
+    transition: all 500ms;
+  }
+  .toggle:hover {
+    color: var(--tretiary);
+  }
+  .toggle:checked {
+    --ray-size: calc(var(--size) * -0.4);
+    --offset-orthogonal: calc(var(--size) * 0.65);
+    --offset-diagonal: calc(var(--size) * 0.45);
+
+    transform: scale(0.75);
+    color: var(--on-surface);
+    box-shadow:
+      inset 0 0 0 var(--size),
+      calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+      var(--offset-orthogonal) 0 0 var(--ray-size),
+      0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+      0 var(--offset-orthogonal) 0 var(--ray-size),
+      calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0
+        var(--ray-size),
+      var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+      calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+      var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+  }
+  .toggle:hover:checked {
+    color: var(--on-surface);
+  }
+</style>
