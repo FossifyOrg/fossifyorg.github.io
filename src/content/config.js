@@ -31,6 +31,7 @@ const strings = defineCollection({
     products: z.object({
       title: z.string(),
       description: z.string(),
+      hint: z.string()
     }),
     contributors: z.object({
       title: z.string(),

@@ -28,6 +28,7 @@ const strings = await getEntry("strings", `${lang}/strings`)
             <AppCard name="voice recorder" id="app-13" />
         </Carousel>
     </div>
+    <p class="hint">{strings?.data.products.hint}</p>
     <div class="app-icons">
         <ul>
             <a id="1"><Icon size={46} name="apps/calendar" /></a>
@@ -96,10 +97,28 @@ const strings = await getEntry("strings", `${lang}/strings`)
         place-content: center;
     }
 
+    .hint {
+        display: none;
+    }
+
+    @media (max-width: 50em) {
+        .hint {
+            display: block;
+            font-size: var(--fs-xs);
+            font-weight: 600;
+        }
+    }
+
     .app-icons {
         padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
         max-width: max-content;
     }
+
+    @media (max-width: 50em) {
+        .app-icons {
+            display: none;
+        }
+    } 
 
     .app-icons > ul {
         display: flex;
