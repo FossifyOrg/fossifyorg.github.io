@@ -38,7 +38,7 @@ const { name, id } = Astro.props;
     <div class="links">
         <a href=""><Icon name="store_badge" width={120} height={35} /></a>
         <a href=""><Icon name="fdroid_badge" width={120} height={35} /></a>
-        <a href=""><Icon name="github_logo" width={120} height={35} /></a>
+        <a href=""><Icon name="github_badge" width={120} height={35} /></a>
     </div>
 </div>
 
@@ -62,9 +62,8 @@ const { name, id } = Astro.props;
 
     .app-card > img {
         grid-area: screen;
-        width: 100%;
+        min-width: 100%;
         height: auto;
-        aspect-ratio: 9/16;
         object-fit: contain;
         border-radius: 0.5rem;
     }
@@ -80,7 +79,7 @@ const { name, id } = Astro.props;
     @media (max-width: 40em) {
         .app-card {
             grid-template-areas: "title" "screen" "links";
-            grid-template-columns: 22em;
+            grid-template-columns: 20em;
             max-width: 20em;
             gap: 0.5rem;
         }
@@ -96,7 +95,7 @@ const { name, id } = Astro.props;
     }
 
     .general > p {
-        max-width: 20ch;
+        max-width: 25ch;
         text-align: justify;
         -webkit-hyphens: auto;
         -moz-hyphens: auto;
@@ -129,16 +128,11 @@ const { name, id } = Astro.props;
         }
     }
 
-    [data-icon="github_logo"] {
-        color: white;
-        background-color: black;
-        border-radius: 0.2rem;
-        border: 1px solid var(--outline);
-        padding-inline: 0.5rem;
-        padding-block: 0.2rem;
+    [data-icon="fdroid_badge"] {
+        color: black;
     }
 
-    [data-icon="fdroid_badge"] {
+    [data-icon="github_badge"] {
         color: black;
     }
 </style>
