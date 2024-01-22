@@ -1,4 +1,5 @@
 // 1. Import utilities from `astro:content`
+import { date } from 'astro/zod';
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define a `type` and `schema` for each collection
@@ -36,11 +37,15 @@ const strings = defineCollection({
     contributors: z.object({
       title: z.string(),
       description: z.string(),
+    }),
+    donors: z.object({
+      title: z.string(),
+      description: z.string(),
     })
   }),
 });
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  'strings': strings,
+  'strings': strings
 };

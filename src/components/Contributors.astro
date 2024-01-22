@@ -57,10 +57,10 @@ const contributors = [
     },
 ];
 
-const {lang} = Astro.props
+const { lang } = Astro.props;
 
 import { getEntry } from "astro:content";
-const strings = await getEntry("strings", `${lang}/strings`)
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
 <section>
@@ -110,12 +110,13 @@ const strings = await getEntry("strings", `${lang}/strings`)
     }
 
     .avatars {
-         padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
-         padding-block: clamp(1rem, 2rem + 1vw, 6rem);
-        max-width: max-content;       
+        padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
+        padding-block: clamp(1rem, 2rem + 1vw, 6rem);
+        max-width: max-content;
 
         display: flex;
         flex-wrap: wrap;
+        place-content: center;
         gap: 1rem;
     }
 
@@ -129,7 +130,7 @@ const strings = await getEntry("strings", `${lang}/strings`)
         place-items: center;
         gap: 0.5rem;
     }
-    
+
     .avatars > a > img {
         border-radius: 50%;
     }

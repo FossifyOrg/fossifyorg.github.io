@@ -1,9 +1,9 @@
 {
     "header": {
-      "apps": "apps",
-      "blog": "blog",
-      "team": "team",
-      "about": "about"
+        "apps": "apps",
+        "blog": "blog",
+        "team": "team",
+        "about": "about"
     },
     "hero": {
         "title": "We are Fossify org",
@@ -29,6 +29,10 @@
     },
     "contributors": {
         "title": "Top contributors",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "donors": {
+        "title": "Our donors",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
     }
 }

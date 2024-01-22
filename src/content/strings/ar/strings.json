@@ -30,5 +30,9 @@
     "contributors": {
         "title": "أفضل المساهمين",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "donors": {
+        "title": "متبرعينا",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
     }
 }
