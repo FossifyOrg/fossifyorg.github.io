@@ -8,7 +8,7 @@ import Footer from "../components/Footer.astro";
 interface Props {
 	title: string;
 	lang: string;
-	dir: string
+	dir: string;
 }
 
 const { title, lang, dir } = Astro.props;
@@ -23,15 +23,16 @@ const { title, lang, dir } = Astro.props;
 		<link
 			rel="icon"
 			type="image/svg+xml"
-			href="/fossifyorg.github.io/favicon.ico" />
+			href="/fossifyorg.github.io/favicon.ico"
+		/>
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
 	<body>
+		<Header lang={lang} />
 		<main>
-			<Header lang={lang}/>
 			<slot />
-			<Footer lang={lang}/>
 		</main>
+		<Footer lang={lang} />
 	</body>
 </html>

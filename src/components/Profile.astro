@@ -8,6 +8,12 @@ const strings = await getEntry("strings", `${lang}/strings`);
 
 <section>
     <h1>{strings?.data.profile.title}</h1>
+    <p>
+        {strings?.data.profile.about.description}
+    </p>
+    <h2>
+        {strings?.data.profile.subtitle}
+    </h2>
     <div class="profile">
         <div>
             <h2>{strings?.data.profile.vision.title}</h2>
@@ -27,13 +33,24 @@ const strings = await getEntry("strings", `${lang}/strings`);
         display: grid;
         gap: 2rem;
         place-content: center;
+        place-items: center;
     }
-    h1 {
+
+    section > h2,
+    section > h1 {
         text-align: center;
-        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
         font-weight: 600;
         color: var(--primary);
     }
+
+    section > h1 {
+        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
+    }
+
+    section > h2 {
+        font-size: var(--fs-md);
+    }
+
     .profile {
         display: grid;
         grid-auto-flow: column;
@@ -46,6 +63,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
         }
     }
 
+    .about h2,
     .profile h2 {
         padding-bottom: 2rem;
         font-size: var(--fs-md);
@@ -54,6 +72,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
 
     .profile p {
         max-width: 45ch;
+        font-size: var(--fs-sm);
         text-align: justify;
         -webkit-hyphens: auto;
         -moz-hyphens: auto;

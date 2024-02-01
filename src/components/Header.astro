@@ -1,34 +1,39 @@
 ---
 import { Icon } from "astro-icon/components";
-import ToggleDark from "./ToggleDark.astro"
 
 const { lang } = Astro.props;
 
 import { getEntry } from "astro:content";
 const strings = await getEntry("strings", `${lang}/strings`);
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const homeURL = getRelativeLocaleUrl(lang, "");
+const aboutURL = getRelativeLocaleUrl(lang, "about");
 ---
 
 <header>
     <div class="logo">
-        <img
-            src="/fossifyorg.github.io/Logo.png"
-            alt="fossify logo"
-            width="52"
-            height="52"
-        />
-        <h1>fossify</h1>
+        <a href={homeURL}>
+            <img
+                src="/fossifyorg.github.io/Logo.png"
+                alt="fossify logo"
+                width="52"
+                height="52"
+            />
+            <h1>fossify</h1>
+        </a>
     </div>
     <nav>
         <ul>
             <li><a href="">{strings?.data.header.apps}</a></li>
             <li><a href="">{strings?.data.header.blog}</a></li>
             <li><a href="">{strings?.data.header.team}</a></li>
-            <li><a href="">{strings?.data.header.about}</a></li>
+            <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
         </ul>
     </nav>
     <div class="icons">
         <Icon name="github" size={30} />
-        <ToggleDark />
     </div>
 </header>
 
@@ -37,12 +42,13 @@ const strings = await getEntry("strings", `${lang}/strings`);
         background-color: var(--surface-container);
         color: var(--on-surface);
         padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
-        padding-block: 1rem;
-        align-items: center;
+        padding-block: 1.5rem;
+        align-content: center;
 
         display: grid;
         grid-template-areas: "logo nav icons";
         grid-template-columns: 3fr 3fr 0.5fr;
+        min-height: 5rem;
     }
 
     @media (max-width: 50em) {
@@ -60,20 +66,22 @@ const strings = await getEntry("strings", `${lang}/strings`);
         }
     }
 
-    .logo {
+    .logo > a {
+        text-decoration: none;
         grid-area: logo;
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    .logo > img {
+    .logo > a > img {
         border-radius: 0.5rem;
     }
 
-    .logo > h1 {
+    .logo > a > h1 {
         font-size: clamp(var(--fs-md), var(--fs-md) + 1rem, var(--fs-lg));
         font-weight: 900;
+        color: var(--on-surface);
 
         text-transform: uppercase;
     }

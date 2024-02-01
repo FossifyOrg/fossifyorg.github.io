@@ -11,8 +11,11 @@
         "donate": "donate"
     },
     "profile": {
-        "title": "What we stand for",
-        "aboutUs": "",
+        "title": "About us",
+        "subtitle": "What we stand for",
+        "about": {
+            "description": "A group of simple, open source apps without ads and unnecessary permissions, with customizable colors. A fork of @SimpleMobileTools."
+        },
         "vision": {
             "title": "Our vision",
             "text": "Imagine a world where mobile apps enhance our lives without invading our privacy. That's what Fossify strives for. We envision a thriving community of people working together to create free, open-source apps that benefit everyone. Join us and build a more secure, user-friendly digital future, one app at a time."

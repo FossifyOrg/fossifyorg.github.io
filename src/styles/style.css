@@ -383,7 +383,11 @@ html {
 
 /* min body height */
 body {
+    min-height: 100vh;
     min-height: 100svh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 
     font-family: system-ui, sans-serif;
     font-weight: normal;
