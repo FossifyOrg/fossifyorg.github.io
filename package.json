@@ -12,5 +12,10 @@
   "dependencies": {
     "astro": "^4.1.1",
     "astro-icon": "^1.0.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.3.3"
   }
 }

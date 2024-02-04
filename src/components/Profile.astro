@@ -6,77 +6,66 @@ import { getEntry } from "astro:content";
 const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
-<section>
-    <h1>{strings?.data.profile.title}</h1>
-    <p>
-        {strings?.data.profile.about.description}
-    </p>
-    <h2>
-        {strings?.data.profile.subtitle}
-    </h2>
-    <div class="profile">
-        <div>
-            <h2>{strings?.data.profile.vision.title}</h2>
-            <p>{strings?.data.profile.vision.text}</p>
-        </div>
-        <div>
-            <h2>{strings?.data.profile.mission.title}</h2>
-            <p>{strings?.data.profile.mission.text}</p>
-        </div>
+<section class="wrapper">
+  <h1>{strings?.data.profile.title}</h1>
+  <p>
+    {strings?.data.profile.about.description}
+  </p>
+  <h2>
+    {strings?.data.profile.subtitle}
+  </h2>
+  <div class="profile">
+    <div>
+      <h3>{strings?.data.profile.vision.title}</h3>
+      <p>{strings?.data.profile.vision.text}</p>
     </div>
+    <div>
+      <h3>{strings?.data.profile.mission.title}</h3>
+      <p>{strings?.data.profile.mission.text}</p>
+    </div>
+  </div>
 </section>
 
 <style>
-    section {
-        padding-inline: clamp(1rem, 2rem + 1vw, 4rem);
-        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
-        display: grid;
-        gap: 2rem;
-        place-content: center;
-        place-items: center;
-    }
+  section > h2,
+  section > h1 {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary);
+  }
 
-    section > h2,
-    section > h1 {
-        text-align: center;
-        font-weight: 600;
-        color: var(--primary);
-    }
+  section > h1 {
+    font-size: var(--fs-lg);
+  }
 
-    section > h1 {
-        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
-    }
+  section > h2 {
+    font-size: var(--fs-md);
+  }
 
-    section > h2 {
-        font-size: var(--fs-md);
-    }
+  .profile {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2rem;
+  }
 
+  @media (width < 40em) {
     .profile {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 2rem;
+      grid-auto-flow: row;
     }
+  }
 
-    @media (max-width: 40em) {
-        .profile {
-            grid-auto-flow: row;
-        }
-    }
+  .about h3,
+  .profile h3 {
+    padding-bottom: 2rem;
+    font-size: var(--fs-sm);
+    text-align: center;
+  }
 
-    .about h2,
-    .profile h2 {
-        padding-bottom: 2rem;
-        font-size: var(--fs-md);
-        text-align: center;
-    }
-
-    .profile p {
-        max-width: 45ch;
-        font-size: var(--fs-sm);
-        text-align: justify;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-    }
+  .profile p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
 </style>

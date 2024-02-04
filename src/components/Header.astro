@@ -13,123 +13,123 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
 ---
 
 <header>
-    <div class="logo">
-        <a href={homeURL}>
-            <img
-                src="/fossifyorg.github.io/Logo.png"
-                alt="fossify logo"
-                width="52"
-                height="52"
-            />
-            <h1>fossify</h1>
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="">{strings?.data.header.apps}</a></li>
-            <li><a href="">{strings?.data.header.blog}</a></li>
-            <li><a href="">{strings?.data.header.team}</a></li>
-            <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
-        </ul>
-    </nav>
-    <div class="icons">
-        <Icon name="github" size={30} />
-    </div>
+  <div class="logo">
+    <a href={homeURL}>
+      <img
+        src="/fossifyorg.github.io/Logo.png"
+        alt="fossify logo"
+        width="52"
+        height="52"
+      />
+      <h1>fossify</h1>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="">{strings?.data.header.apps}</a></li>
+      <li><a href="">{strings?.data.header.blog}</a></li>
+      <li><a href="">{strings?.data.header.team}</a></li>
+      <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
+    </ul>
+  </nav>
+  <div class="icons">
+    <Icon name="github" size={30} />
+  </div>
 </header>
 
 <style>
+  header {
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
+    padding-block: 1.5rem;
+    align-content: center;
+
+    display: grid;
+    grid-template-areas: "logo nav icons";
+    grid-template-columns: 3fr 3fr 0.5fr;
+    min-height: 5rem;
+  }
+
+  @media (width < 50em) {
     header {
-        background-color: var(--surface-container);
-        color: var(--on-surface);
-        padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
-        padding-block: 1.5rem;
-        align-content: center;
-
-        display: grid;
-        grid-template-areas: "logo nav icons";
-        grid-template-columns: 3fr 3fr 0.5fr;
-        min-height: 5rem;
+      gap: 1rem;
+      grid-template-columns: 2fr 3fr 0.5fr;
     }
+  }
 
-    @media (max-width: 50em) {
-        header {
-            gap: 1rem;
-            grid-template-columns: 2fr 3fr 0.5fr;
-        }
+  @media (width < 40em) {
+    header {
+      gap: 1rem;
+      grid-template-areas: "logo icons" "nav nav";
+      grid-template-columns: 3fr 1fr;
     }
+  }
 
-    @media (max-width: 40em) {
-        header {
-            gap: 1rem;
-            grid-template-areas: "logo icons" "nav nav";
-            grid-template-columns: 3fr 1fr;
-        }
-    }
+  .logo > a {
+    text-decoration: none;
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    .logo > a {
-        text-decoration: none;
-        grid-area: logo;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+  .logo > a > img {
+    border-radius: 0.5rem;
+  }
 
-    .logo > a > img {
-        border-radius: 0.5rem;
-    }
+  .logo > a > h1 {
+    font-size: clamp(var(--fs-md), var(--fs-md) + 1rem, var(--fs-lg));
+    font-weight: 900;
+    color: var(--on-surface);
 
-    .logo > a > h1 {
-        font-size: clamp(var(--fs-md), var(--fs-md) + 1rem, var(--fs-lg));
-        font-weight: 900;
-        color: var(--on-surface);
+    text-transform: uppercase;
+  }
 
-        text-transform: uppercase;
-    }
+  nav {
+    grid-area: nav;
+    place-self: end;
+    background-color: var(--primary-container);
+    border-radius: 0.5rem;
+    height: 3rem;
+    max-width: max-content;
+    padding-inline: 1rem;
+  }
 
+  @media (width < 40em) {
     nav {
-        grid-area: nav;
-        place-self: end;
-        background-color: var(--primary-container);
-        border-radius: 0.5rem;
-        height: 3rem;
-        max-width: max-content;
-        padding-inline: 1rem;
+      min-width: 100%;
     }
+  }
 
-    @media (max-width: 40em) {
-        nav {
-            min-width: 100%;
-        }
-    }
+  nav > ul {
+    list-style: none;
+    color: var(--on-primary-container);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+  }
 
-    nav > ul {
-        list-style: none;
-        color: var(--on-primary-container);
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        gap: 1rem;
-    }
+  nav > ul a {
+    font-size: clamp(var(--fs-sm), var(--fs-sm) + 0.2rem, var(--fs-md));
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--on-primary-container);
+    line-height: 1.2;
+  }
 
-    nav > ul a {
-        font-size: clamp(var(--fs-sm), var(--fs-sm) + 0.2rem, var(--fs-md));
-        font-weight: 600;
-        text-decoration: none;
-        text-transform: capitalize;
-        color: var(--on-primary-container);
-        line-height: 1.2;
-    }
+  .icons {
+    grid-area: icons;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+  }
 
-    .icons {
-        grid-area: icons;
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        gap: 1rem;
-    }
-
-    [data-icon] {
-        color: var(--on-surface);
-    }
+  [data-icon] {
+    color: var(--on-surface);
+  }
 </style>

@@ -187,15 +187,11 @@ html {
     /* Typography */
 
     --fs-xs: 0.75rem;
-    --fs-sm: 1rem;
-    --fs-md: 1.5rem;
-    --fs-lg: 3rem;
+    --fs-sm: clamp(1rem, 2vw + 1rem, 1.5rem);
+    --fs-md: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    --fs-lg: clamp(2.5rem, 4vw + 1rem, 4rem);
     --fs-xl: 4.5rem;
 
-    /* --breakpoint-sm: 40em;
-    --breakpoint-md: 48em;
-    --breakpoint-lg: 64em;
-    --breakpoint-xl: 80em; */
 }
 
 
@@ -420,4 +416,13 @@ p,
 li {
     max-width: var(--p-max-width, 65ch);
     text-wrap: pretty;
+}
+
+.wrapper {
+    padding-inline: clamp(1rem, 4vw + 1rem, 10rem);
+    padding-block: clamp(2rem, 4vw + 1rem, 12rem);
+    display: grid;
+    gap: 2rem;
+    place-content: center;
+    place-items: center;
 }

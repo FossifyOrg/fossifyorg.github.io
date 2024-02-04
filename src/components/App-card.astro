@@ -1,7 +1,7 @@
 ---
 interface Props {
-    name: string;
-    id: string;
+  name: string;
+  id: string;
 }
 
 import { Icon } from "astro-icon/components";
@@ -10,129 +10,128 @@ const { name, id } = Astro.props;
 ---
 
 <div class="app-card" id={id}>
-    <h2>{name}</h2>
-    <img
-        src="/fossifyorg.github.io/screen-shot.jpg"
-        alt="screenshot"
-        width="220px"
-        height="400px"
-    />
-    <div class="details">
-        <div class="general">
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-                voluptates alias deleniti odio nesciunt
-            </p>
-        </div>
+  <h2>{name}</h2>
+  <img
+    src="/fossifyorg.github.io/screen-shot.jpg"
+    alt="screenshot"
+    width="220px"
+    height="400px"
+  />
+  <div class="details">
+    <div class="general">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
+        voluptates alias deleniti odio nesciunt
+      </p>
+    </div>
 
-        <div class="features">
-            <h3>Top Features</h3>
-            <ul>
-                <li>Feature one</li>
-                <li>Feature two</li>
-                <li>Feature three</li>
-                <li>Feature four</li>
-            </ul>
-        </div>
+    <div class="features">
+      <h3>Top Features</h3>
+      <ul>
+        <li>Feature one</li>
+        <li>Feature two</li>
+        <li>Feature three</li>
+        <li>Feature four</li>
+      </ul>
     </div>
-    <div class="links">
-        <a href=""><Icon name="store_badge" width={120} height={35} /></a>
-        <a href=""><Icon name="fdroid_badge" width={120} height={35} /></a>
-        <a href=""><Icon name="github_badge" width={120} height={35} /></a>
-    </div>
+  </div>
+  <div class="links">
+    <a href=""><Icon name="store_badge" width={120} height={35} /></a>
+    <a href=""><Icon name="fdroid_badge" width={120} height={35} /></a>
+    <a href=""><Icon name="github_badge" width={120} height={35} /></a>
+  </div>
 </div>
 
 <style>
+  .app-card {
+    scroll-snap-align: center;
+    display: grid;
+    grid-template-areas: "title title" "screen details" "screen links";
+    grid-template-columns: 14em 16em;
+    max-width: 30rem;
+    gap: 1rem;
+  }
+
+  .app-card > h2 {
+    grid-area: title;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .app-card > img {
+    grid-area: screen;
+    min-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .details {
+    grid-area: details;
+    display: grid;
+    justify-items: start;
+    align-content: end;
+    gap: 1rem;
+  }
+
+  @media (width < 40em) {
     .app-card {
-        scroll-snap-align: center;
-        display: grid;
-        grid-template-areas: "title title" "screen details" "screen links";
-        grid-template-columns: 14em 16em;
-        max-width: 30rem;
-        gap: 1rem;
+      grid-template-areas: "title" "screen" "links";
+      grid-template-columns: 20em;
+      max-width: 20em;
+      gap: 0.5rem;
     }
-
-    .app-card > h2 {
-        grid-area: title;
-        font-size: var(--fs-md);
-        font-weight: 600;
-        text-align: center;
-        text-transform: capitalize;
-    }
-
-    .app-card > img {
-        grid-area: screen;
-        min-width: 100%;
-        height: auto;
-        object-fit: contain;
-        border-radius: 0.5rem;
-    }
-
     .details {
-        grid-area: details;
-        display: grid;
-        justify-items: start;
-        align-content: end;
-        gap: 1rem;
+      display: none;
     }
+  }
 
-    @media (max-width: 40em) {
-        .app-card {
-            grid-template-areas: "title" "screen" "links";
-            grid-template-columns: 20em;
-            max-width: 20em;
-            gap: 0.5rem;
-        }
-        .details {
-            display: none;
-        }
-    }
+  .general,
+  .features {
+    display: grid;
+    gap: 1rem;
+  }
 
-    .general,
-    .features {
-        display: grid;
-        gap: 1rem;
-    }
+  .general > p {
+    max-width: 25ch;
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
 
-    .general > p {
-        max-width: 25ch;
-        text-align: justify;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-    }
+  .features > h3 {
+    font-weight: 600;
+    text-align: start;
+  }
 
-    .features > h3 {
-        font-size: var(--fs-sm);
-        font-weight: 600;
-        text-align: start;
-    }
+  .features > ul {
+    display: grid;
+    justify-items: start;
+    padding-inline-start: 2rem;
+  }
 
-    .features > ul {
-        display: grid;
-        justify-items: start;
-        padding-inline-start: 2rem;
-    }
+  .links {
+    grid-area: links;
+    display: grid;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
+  @media (width < 40em) {
     .links {
-        grid-area: links;
-        display: grid;
-        align-items: center;
-        gap: 0.5rem;
+      grid-auto-flow: column;
     }
+  }
 
-    @media (max-width: 40em) {
-        .links {
-            grid-auto-flow: column;
-        }
-    }
+  [data-icon="fdroid_badge"] {
+    color: black;
+  }
 
-    [data-icon="fdroid_badge"] {
-        color: black;
-    }
-
-    [data-icon="github_badge"] {
-        color: black;
-    }
+  [data-icon="github_badge"] {
+    color: black;
+  }
 </style>

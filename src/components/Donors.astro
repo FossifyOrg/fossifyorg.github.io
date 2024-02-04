@@ -1,95 +1,95 @@
 ---
 const donors = [
-    {
-        name: "Jonas Platte",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Manuel Volk",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Johannes Smit",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Paypal Inc",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Yuval Nehemia",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Gerrit Vollmer",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Bastian Wilhelm",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Jan Philipp Schrewe",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Philipp Bielefeldt",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Christian Becker",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Fabien Maury",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Jody Phillips",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Hubert Winkler",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Eugenio Restani",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
-    {
-        name: "Rob",
-        github: "",
-        profile: "",
-        avatar: "",
-    },
+  {
+    name: "Jonas Platte",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Manuel Volk",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Johannes Smit",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Paypal Inc",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Yuval Nehemia",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Gerrit Vollmer",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Bastian Wilhelm",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Jan Philipp Schrewe",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Philipp Bielefeldt",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Christian Becker",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Fabien Maury",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Jody Phillips",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Hubert Winkler",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Eugenio Restani",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
+  {
+    name: "Rob",
+    github: "",
+    profile: "",
+    avatar: "",
+  },
 ];
 
 const { lang } = Astro.props;
@@ -99,93 +99,86 @@ import { getEntry } from "astro:content";
 const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
-<section>
-    <h1>{strings?.data.donors.title}</h1>
-    <p>{strings?.data.donors.description}</p>
-    <div class="avatars">
-        {
-            donors.map((donor) => (
-                <a href={donor.profile}>
-                    {donor.avatar ? (
-                        <img
-                            src={donor.avatar}
-                            alt={donor.name + "avatar"}
-                            width="64"
-                            height="64"
-                        />
-                    ) : (
-                        <p class="default-avatar">
-                            {donor.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join(".")}
-                        </p>
-                    )}
-                    <h2>{donor.name}</h2>
-                </a>
-            ))
-        }
-    </div>
+<section class="wrapper">
+  <h1>{strings?.data.donors.title}</h1>
+  <p>{strings?.data.donors.description}</p>
+  <div class="avatars">
+    {
+      donors.map((donor) => (
+        <a href={donor.profile}>
+          {donor.avatar ? (
+            <img
+              src={donor.avatar}
+              alt={donor.name + "avatar"}
+              width="64"
+              height="64"
+            />
+          ) : (
+            <p class="default-avatar">
+              {donor.name
+                .split(" ")
+                .map((n) => n[0])
+                .join(".")}
+            </p>
+          )}
+          <h2>{donor.name}</h2>
+        </a>
+      ))
+    }
+  </div>
 </section>
 
 <style>
-    section {
-        padding-inline: clamp(1rem, 1rem + 1vw, 4rem);
-        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
+  section h1 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--primary);
+  }
 
-        display: grid;
-        place-content: center;
-        place-items: center;
-        gap: 2rem;
-    }
-    section h1 {
-        text-align: center;
-        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
-        font-weight: 600;
-        color: var(--primary);
-    }
+  section > p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
 
-    section > p {
-        max-width: 65ch;
-        text-align: justify;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-    }
+  .avatars {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    place-content: center;
+    gap: 1rem;
+  }
 
+  @media (width < 40em) {
     .avatars {
-        padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
-        padding-block: clamp(1rem, 2rem + 1vw, 6rem);
-        max-width: max-content;
-
-        display: flex;
-        flex-wrap: wrap;
-        place-content: center;
-        gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    .avatars > a {
-        font-size: var(--fs-xs);
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--on-surface);
+  .avatars > a {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    color: var(--on-surface);
 
-        display: grid;
-        place-items: center;
-        gap: 0.5rem;
-    }
+    display: grid;
+    place-items: center;
+    gap: 0.5rem;
+  }
 
-    .avatars > a > img {
-        border-radius: 50%;
-    }
+  .avatars > a > img {
+    border-radius: 50%;
+  }
 
-    .default-avatar {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background-color: var(--surface-container-highest);
-        display: grid;
-        place-content: center;
-    }
+  .default-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--surface-container-highest);
+    display: grid;
+    place-content: center;
+  }
 </style>

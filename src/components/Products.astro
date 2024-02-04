@@ -3,132 +3,122 @@ import Carousel from "./Carousel.astro";
 import AppCard from "./App-card.astro";
 import { Icon } from "astro-icon/components";
 
-const {lang} = Astro.props
+const { lang } = Astro.props;
 
 import { getEntry } from "astro:content";
-const strings = await getEntry("strings", `${lang}/strings`)
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
-<section>
-    <h1>{strings?.data.products.title}</h1>
-    <p>{strings?.data.products.description}</p>
-    <div class="apps-carousel">
-        <Carousel>
-            <AppCard name="calendar" id="app-1" />
-            <AppCard name="contacts" id="app-2" />
-            <AppCard name="draw" id="app-3" />
-            <AppCard name="file manager" id="app-4" />
-            <AppCard name="gallery" id="app-5" />
-            <AppCard name="keyboard" id="app-6" />
-            <AppCard name="messages" id="app-7" />
-            <AppCard name="music player" id="app-8" />
-            <AppCard name="notes" id="app-9" />
-            <AppCard name="phone" id="app-11" />
-            <AppCard name="thank you" id="app-12" />
-            <AppCard name="voice recorder" id="app-13" />
-        </Carousel>
-    </div>
-    <p class="hint">{strings?.data.products.hint}</p>
-    <div class="app-icons">
-        <ul>
-            <a id="1"><Icon size={46} name="apps/calendar" /></a>
-            <a id="2"><Icon size={46} name="apps/contacts" /></a>
-            <a id="3"><Icon size={46} name="apps/draw" /></a>
-            <a id="4"><Icon size={46} name="apps/filemanager" /></a>
-            <a id="5"><Icon size={46} name="apps/gallery" /></a>
-            <a id="6"><Icon size={46} name="apps/keyboard" /></a>
-            <a id="7"><Icon size={46} name="apps/messages" /></a>
-            <a id="8"><Icon size={46} name="apps/musicplayer" /></a>
-            <a id="9"><Icon size={46} name="apps/notes" /></a>
-            <a id="11"><Icon size={46} name="apps/phone" /></a>
-            <a id="12"><Icon size={46} name="apps/thankyou" /></a>
-            <a id="13"><Icon size={46} name="apps/voicerecorder" /></a>
-        </ul>
-    </div>
+<section class="wrapper">
+  <h1>{strings?.data.products.title}</h1>
+  <p>{strings?.data.products.description}</p>
+  <div class="apps-carousel">
+    <Carousel>
+      <AppCard name="calendar" id="app-1" />
+      <AppCard name="contacts" id="app-2" />
+      <AppCard name="draw" id="app-3" />
+      <AppCard name="file manager" id="app-4" />
+      <AppCard name="gallery" id="app-5" />
+      <AppCard name="keyboard" id="app-6" />
+      <AppCard name="messages" id="app-7" />
+      <AppCard name="music player" id="app-8" />
+      <AppCard name="notes" id="app-9" />
+      <AppCard name="phone" id="app-11" />
+      <AppCard name="thank you" id="app-12" />
+      <AppCard name="voice recorder" id="app-13" />
+    </Carousel>
+  </div>
+  <p class="hint">{strings?.data.products.hint}</p>
+  <div class="app-icons">
+    <ul>
+      <a id="1"><Icon size={46} name="apps/calendar" /></a>
+      <a id="2"><Icon size={46} name="apps/contacts" /></a>
+      <a id="3"><Icon size={46} name="apps/draw" /></a>
+      <a id="4"><Icon size={46} name="apps/filemanager" /></a>
+      <a id="5"><Icon size={46} name="apps/gallery" /></a>
+      <a id="6"><Icon size={46} name="apps/keyboard" /></a>
+      <a id="7"><Icon size={46} name="apps/messages" /></a>
+      <a id="8"><Icon size={46} name="apps/musicplayer" /></a>
+      <a id="9"><Icon size={46} name="apps/notes" /></a>
+      <a id="11"><Icon size={46} name="apps/phone" /></a>
+      <a id="12"><Icon size={46} name="apps/thankyou" /></a>
+      <a id="13"><Icon size={46} name="apps/voicerecorder" /></a>
+    </ul>
+  </div>
 </section>
 
 <script>
-    function scrollSmoothTo(elementId) {
-        var element = document.getElementById(elementId);
-        element?.scrollIntoView({ block: "start", behavior: "smooth" });
-    }
+  function scrollSmoothTo(elementId) {
+    var element = document.getElementById(elementId);
+    element?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
 
-    const atags = Array.from(document.getElementsByTagName("a"))
+  const atags = Array.from(document.getElementsByTagName("a"));
 
-    atags.forEach((tag) => {
-        tag.addEventListener("click", () => {
-            scrollSmoothTo(`app-${tag.id}`);
-        });
+  atags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      scrollSmoothTo(`app-${tag.id}`);
     });
+  });
 </script>
 
 <style>
-    section {
-        padding-inline: clamp(1rem, 1rem + 1vw, 4rem);
-        padding-block: clamp(2rem, 2rem + 2vw, 4rem);
+  section h1 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--primary);
+  }
 
-        display: grid;
-        place-content: center;
-        place-items: center;
-        gap: 2rem;
-    }
-    section h1 {
-        text-align: center;
-        font-size: clamp(var(--fs-md), var(--fs-md) + 2vw, var(--fs-lg));
-        font-weight: 600;
-        color: var(--primary);
-    }
+  section > p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
 
-    section > p {
-        max-width: 65ch;
-        text-align: justify;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-    }
+  .apps-carousel {
+    overflow: hidden;
+    max-width: 32em;
+    text-align: center;
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+  }
 
-    .apps-carousel {
-        overflow: hidden;
-        max-width: 32em;
-        text-align: center;
-        display: grid;
-        gap: 1rem;
-        place-content: center;
-    }
+  .hint {
+    display: none;
+  }
 
+  @media (width < 50em) {
     .hint {
-        display: none;
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 600;
     }
+  }
 
-    @media (max-width: 50em) {
-        .hint {
-            display: block;
-            font-size: var(--fs-xs);
-            font-weight: 600;
-        }
-    }
+  .app-icons {
+    padding-inline: clamp(1rem, 2vw + 1rem, 6rem);
+    max-width: max-content;
+  }
 
+  @media (width < 50em) {
     .app-icons {
-        padding-inline: clamp(1rem, 2rem + 1vw, 6rem);
-        max-width: max-content;
+      display: none;
     }
+  }
 
-    @media (max-width: 50em) {
-        .app-icons {
-            display: none;
-        }
-    } 
+  .app-icons > ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 0.5rem;
+  }
 
-    .app-icons > ul {
-        display: flex;
-        flex-wrap: wrap;
-        flex-grow: 1;
-        gap: 0.5rem;
-    }
-
-    /* the app icons */
-    a > svg {
-        border-radius: 0.5rem;
-    }
+  /* the app icons */
+  a > svg {
+    border-radius: 0.5rem;
+  }
 </style>
