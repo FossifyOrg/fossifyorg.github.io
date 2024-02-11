@@ -11,7 +11,12 @@ const strings = await getEntry("strings", `${lang}/strings`);
   <div class="text">
     <h1>{strings?.data.hero.title}</h1>
     <p>{strings?.data.hero.subtitle}</p>
-    <button><Icon name="github" /> {strings?.data.hero.donate}</button>
+    <button
+      ><a
+        href="https://github.com/FossifyOrg#support-fossify-heart"
+        target="_blank"><Icon name="github" /> {strings?.data.hero.donate}</a
+      ></button
+    >
   </div>
   <img
     src="https://source.unsplash.com/3tYZjGSBwbk"
@@ -69,6 +74,12 @@ const strings = await getEntry("strings", `${lang}/strings`);
     height: 3rem;
     padding-inline: 1rem;
     padding-block: 0.1rem;
+    background-color: var(--tertiary-container);
+    border: 1px solid var(--outline-variant);
+    border-radius: 0.5rem;
+  }
+
+  button > a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,10 +87,8 @@ const strings = await getEntry("strings", `${lang}/strings`);
     font-size: var(--fs-sm);
     font-weight: 600;
     text-transform: capitalize;
-    background-color: var(--tertiary-container);
+    text-decoration: none;
     color: var(--on-tertiary-container);
-    border: 1px solid var(--outline-variant);
-    border-radius: 0.5rem;
   }
 
   img {

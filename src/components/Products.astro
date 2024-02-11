@@ -30,7 +30,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
   </div>
   <p class="hint">{strings?.data.products.hint}</p>
   <div class="app-icons">
-    <ul>
+    <ul id="app-icons-list">
       <a id="1"><Icon size={46} name="apps/calendar" /></a>
       <a id="2"><Icon size={46} name="apps/contacts" /></a>
       <a id="3"><Icon size={46} name="apps/draw" /></a>
@@ -53,10 +53,12 @@ const strings = await getEntry("strings", `${lang}/strings`);
     element?.scrollIntoView({ block: "start", behavior: "smooth" });
   }
 
-  const atags = Array.from(document.getElementsByTagName("a"));
+  const aTagsList = document.getElementById("app-icons-list");
+  const atags = Array.from(aTagsList!!.getElementsByTagName("a"));
 
   atags.forEach((tag) => {
     tag.addEventListener("click", () => {
+      console.log(`app-${tag.id}`);
       scrollSmoothTo(`app-${tag.id}`);
     });
   });

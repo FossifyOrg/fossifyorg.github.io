@@ -9,6 +9,20 @@ import { Icon } from "astro-icon/components";
 const { name, id } = Astro.props;
 ---
 
+<script>
+  const dialog = document.querySelector("dialog");
+  const openDialogBtn = document.getElementById("dialogOpen");
+  const closeDialogBtn = document.getElementById("dialogClose");
+
+  openDialogBtn?.addEventListener("click", () => {
+    dialog?.showModal();
+  });
+
+  closeDialogBtn?.addEventListener("click", () => {
+    dialog?.close();
+  });
+</script>
+
 <div class="app-card" id={id}>
   <h2>{name}</h2>
   <img
@@ -35,11 +49,36 @@ const { name, id } = Astro.props;
       </ul>
     </div>
   </div>
+  <div class="more">
+    <button id="dialogOpen">Read more</button>
+  </div>
   <div class="links">
     <a href=""><Icon name="store_badge" width={120} height={35} /></a>
     <a href=""><Icon name="fdroid_badge" width={120} height={35} /></a>
     <a href=""><Icon name="github_badge" width={120} height={35} /></a>
   </div>
+  <dialog id="dialog">
+    <div>
+      <div class="general">
+        <h2>{name}</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
+          voluptates alias deleniti odio nesciunt
+        </p>
+      </div>
+
+      <div class="features">
+        <h3>Top Features</h3>
+        <ul>
+          <li>Feature one</li>
+          <li>Feature two</li>
+          <li>Feature three</li>
+          <li>Feature four</li>
+        </ul>
+      </div>
+    </div>
+    <button id="dialogClose" autofocus>Close</button>
+  </dialog>
 </div>
 
 <style>
@@ -48,8 +87,39 @@ const { name, id } = Astro.props;
     display: grid;
     grid-template-areas: "title title" "screen details" "screen links";
     grid-template-columns: 14em 16em;
-    max-width: 30rem;
+    max-width: 28em;
     gap: 1rem;
+    position: relative;
+  }
+
+  dialog {
+    position: fixed;
+    width: max-content;
+    inset: 0;
+    margin: auto;
+    padding: 3rem;
+    border: solid 1px var(--outline);
+    background-color: var(--surface-container);
+    border-radius: 0.5rem;
+  }
+
+  dialog > div {
+    grid-area: details;
+    display: grid;
+    justify-items: start;
+    align-content: end;
+    gap: 1rem;
+  }
+
+  dialog > button {
+    margin-block-start: 1rem;
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    padding-inline: 1rem;
+    padding-block: 0.2rem;
+    border: solid 1px var(--outline-variant);
+    border-radius: 0.5rem;
+    cursor: pointer;
   }
 
   .app-card > h2 {
@@ -78,7 +148,7 @@ const { name, id } = Astro.props;
 
   @media (width < 40em) {
     .app-card {
-      grid-template-areas: "title" "screen" "links";
+      grid-template-areas: "title" "screen" "more" "links";
       grid-template-columns: 20em;
       max-width: 20em;
       gap: 0.5rem;
@@ -95,12 +165,19 @@ const { name, id } = Astro.props;
   }
 
   .general > p {
-    max-width: 25ch;
+    max-width: 20ch;
     text-align: justify;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
+  }
+
+  .general > h2 {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
   }
 
   .features > h3 {
@@ -112,6 +189,29 @@ const { name, id } = Astro.props;
     display: grid;
     justify-items: start;
     padding-inline-start: 2rem;
+  }
+
+  .more {
+    display: none;
+  }
+
+  @media (width < 40em) {
+    .more {
+      display: block;
+      grid-area: more;
+      place-self: center;
+      width: 100%;
+    }
+
+    .more > button {
+      background-color: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border: solid 1px var(--outline-variant);
+      border-radius: 0.5rem;
+      width: 100%;
+      padding-block: 0.5rem;
+      cursor: pointer;
+    }
   }
 
   .links {

@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AppCard from "../components/App-card.astro";
+---
+
+<Layout title="Our apps" lang="en" dir="ltr">
+  <div class="apps">
+    <AppCard name="calendar" id="app-1" />
+    <AppCard name="contacts" id="app-2" />
+    <AppCard name="draw" id="app-3" />
+    <AppCard name="file manager" id="app-4" />
+    <AppCard name="gallery" id="app-5" />
+    <AppCard name="keyboard" id="app-6" />
+    <AppCard name="messages" id="app-7" />
+    <AppCard name="music player" id="app-8" />
+    <AppCard name="notes" id="app-9" />
+    <AppCard name="phone" id="app-11" />
+    <AppCard name="thank you" id="app-12" />
+    <AppCard name="voice recorder" id="app-13" />
+  </div>
+</Layout>
+
+<style>
+  .apps {
+    max-width: 100;
+    padding-inline: clamp(0.5rem, 1vw + 1rem, 4rem);
+    padding-block: 6rem;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    row-gap: 4rem;
+  }
+
+  @media (width > 50em) {
+    .apps {
+      grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+    }
+  }
+</style>

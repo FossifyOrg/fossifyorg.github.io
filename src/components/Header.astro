@@ -10,6 +10,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const homeURL = getRelativeLocaleUrl(lang, "");
 const aboutURL = getRelativeLocaleUrl(lang, "about");
+const appsURL = getRelativeLocaleUrl(lang, "apps");
 
 const enURL = getRelativeLocaleUrl("en");
 const arURL = getRelativeLocaleUrl("ar");
@@ -29,7 +30,7 @@ const arURL = getRelativeLocaleUrl("ar");
   </div>
   <nav>
     <ul>
-      <li><a href="">{strings?.data.header.apps}</a></li>
+      <li><a href={appsURL}>{strings?.data.header.apps}</a></li>
       <li><a href="">{strings?.data.header.blog}</a></li>
       <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
       <details id="langs">
@@ -50,7 +51,9 @@ const arURL = getRelativeLocaleUrl("ar");
     </ul>
   </nav>
   <div class="icons">
-    <Icon name="github" size={30} />
+    <a href="https://github.com/FossifyOrg" target="_blank"
+      ><Icon name="github" size={30} /></a
+    >
   </div>
 </header>
 
