@@ -53,13 +53,14 @@ const strings = await getEntry("strings", `${lang}/strings`);
   }
 
   .text > h1 {
-    font-size: clamp(var(--fs-md), var(--fs-lg) + 1vw, var(--fs-xl));
+    font-size: var(--fs-lg);
+    font-weight: 900;
     color: var(--primary);
     max-width: 10ch;
   }
 
   .text > p {
-    font-size: clamp(var(--fs-sm), var(--fs-md) + 1vw, var(--fs-lg));
+    font-size: var(--fs-md);
     max-width: 20ch;
   }
 
@@ -72,7 +73,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    font-size: var(--fs-md);
+    font-size: var(--fs-sm);
     font-weight: 600;
     text-transform: capitalize;
     background-color: var(--tertiary-container);

@@ -10,6 +10,9 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const homeURL = getRelativeLocaleUrl(lang, "");
 const aboutURL = getRelativeLocaleUrl(lang, "about");
+
+const enURL = getRelativeLocaleUrl("en");
+const arURL = getRelativeLocaleUrl("ar");
 ---
 
 <header>
@@ -28,8 +31,22 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
     <ul>
       <li><a href="">{strings?.data.header.apps}</a></li>
       <li><a href="">{strings?.data.header.blog}</a></li>
-      <li><a href="">{strings?.data.header.team}</a></li>
       <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
+      <details id="langs">
+        <summary>
+          {
+            lang === "en" ? "English" : lang === "ar" ? "العربية" : "lang"
+          }</summary
+        >
+        <ul>
+          <li>
+            <a href={enURL}>Engish</a>
+          </li>
+          <li>
+            <a href={arURL}>العربية</a>
+          </li>
+        </ul>
+      </details>
     </ul>
   </nav>
   <div class="icons">
@@ -44,6 +61,7 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
     padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
     padding-block: 1.5rem;
     align-content: center;
+    align-items: center;
 
     display: grid;
     grid-template-areas: "logo nav icons";
@@ -62,7 +80,7 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
     header {
       gap: 1rem;
       grid-template-areas: "logo icons" "nav nav";
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 3fr 0.5fr;
     }
   }
 
@@ -79,7 +97,7 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
   }
 
   .logo > a > h1 {
-    font-size: clamp(var(--fs-md), var(--fs-md) + 1rem, var(--fs-lg));
+    font-size: var(--fs-md);
     font-weight: 900;
     color: var(--on-surface);
 
@@ -113,12 +131,43 @@ const aboutURL = getRelativeLocaleUrl(lang, "about");
   }
 
   nav > ul a {
-    font-size: clamp(var(--fs-sm), var(--fs-sm) + 0.2rem, var(--fs-md));
     font-weight: 600;
     text-decoration: none;
     text-transform: capitalize;
     color: var(--on-primary-container);
     line-height: 1.2;
+  }
+
+  details {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+  }
+
+  details > summary {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  details > ul {
+    cursor: auto;
+    background: var(--surface-container-high);
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    width: min-content;
+    position: absolute;
+    left: 0;
+    top: 2em;
+    border-radius: 1rem;
+    right: 0;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+
+  details > ul a {
+    color: var(--on-surface);
   }
 
   .icons {
