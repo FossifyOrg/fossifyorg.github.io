@@ -1,0 +1,15 @@
+{
+    "isDraft": false,
+    "title": "Gallery",
+    "description": "Unleash memories, not personal data. Fossify Gallery is the ultimate photo and video app that's as powerful as it is private. No ads, no unnecessary permissions – just a seamless experience tailored for you.",
+    "featuresTitle": "Top Features",
+    "features": [
+        "Photo editing at your fingertips",
+        "Privacy first, always",
+        "Superior security",
+        "Recover with ease",
+        "Your gallery, your style",
+        "Universal format freedom"
+    ],
+    "img": "gallery.png"
+}

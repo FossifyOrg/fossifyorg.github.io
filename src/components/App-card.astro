@@ -2,43 +2,50 @@
 interface Props {
   name: string;
   id: string;
+  lang: string;
 }
 
 import { Icon } from "astro-icon/components";
 
-const { name, id } = Astro.props;
+const { name, id, lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const app = await getEntry("apps", `${lang}/${name}`);
+const links = await getEntry("links", name);
 ---
 
 <div class="app-card" id={id}>
-  <h2>{name}</h2>
+  <h2>{app?.data.title}</h2>
   <img
-    src="/fossifyorg.github.io/screen-shot.jpg"
-    alt="screenshot"
+    src=`/fossifyorg.github.io/app-screenshots/${app?.data.img}`
+    alt=`${app?.data.title} screenshot`
     width="220px"
     height="400px"
   />
   <div class="details">
     <div class="general">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-        voluptates alias deleniti odio nesciunt
+        {app?.data.description}
       </p>
     </div>
 
     <div class="features">
-      <h3>Top Features</h3>
+      <h3>{app?.data.featuresTitle}</h3>
       <ul>
-        <li>Feature one</li>
-        <li>Feature two</li>
-        <li>Feature three</li>
-        <li>Feature four</li>
+        {app?.data.features.map((feature) => <li>{feature}</li>)}
       </ul>
     </div>
   </div>
   <div class="links">
-    <a href=""><Icon name="store_badge" width={120} height={35} /></a>
-    <a href=""><Icon name="fdroid_badge" width={120} height={35} /></a>
-    <a href=""><Icon name="github_badge" width={120} height={35} /></a>
+    <a href={links?.data.play} target="_blank"
+      ><Icon name="store_badge" width={120} height={35} /></a
+    >
+    <a href={links?.data.fdroid} target="_blank"
+      ><Icon name="fdroid_badge" width={120} height={35} /></a
+    >
+    <a href={links?.data.github} target="_blank"
+      ><Icon name="github_badge" width={120} height={35} /></a
+    >
   </div>
   <div class="open-dialog-btn">
     <button id={`open-dialog-${id}`}>Read more</button>
@@ -100,6 +107,7 @@ const { name, id } = Astro.props;
     max-width: 28em;
     gap: 1rem;
     position: relative;
+    align-content: start;
   }
 
   .app-card > h2 {
@@ -122,7 +130,7 @@ const { name, id } = Astro.props;
     grid-area: details;
     display: grid;
     justify-items: start;
-    align-content: end;
+    align-content: start;
     gap: 1rem;
   }
 
@@ -167,7 +175,7 @@ const { name, id } = Astro.props;
 
   .features > ul {
     display: grid;
-    justify-items: start;
+    text-align: start;
     padding-inline-start: 2rem;
   }
 

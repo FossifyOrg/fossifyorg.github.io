@@ -14,18 +14,11 @@ const strings = await getEntry("strings", `${lang}/strings`);
   <p>{strings?.data.products.description}</p>
   <div class="apps-carousel">
     <Carousel>
-      <AppCard name="calendar" id="app-1" />
-      <AppCard name="contacts" id="app-2" />
-      <AppCard name="draw" id="app-3" />
-      <AppCard name="file manager" id="app-4" />
-      <AppCard name="gallery" id="app-5" />
-      <AppCard name="keyboard" id="app-6" />
-      <AppCard name="messages" id="app-7" />
-      <AppCard name="music player" id="app-8" />
-      <AppCard name="notes" id="app-9" />
-      <AppCard name="phone" id="app-11" />
-      <AppCard name="thank you" id="app-12" />
-      <AppCard name="voice recorder" id="app-13" />
+      <AppCard lang={lang} name="calendar" id="app-1" />
+      <AppCard lang={lang} name="contacts" id="app-2" />
+      <AppCard lang={lang} name="filemanager" id="app-3" />
+      <AppCard lang={lang} name="gallery" id="app-4" />
+      <AppCard lang={lang} name="messages" id="app-5" />
     </Carousel>
   </div>
   <p class="hint">{strings?.data.products.hint}</p>
@@ -33,16 +26,9 @@ const strings = await getEntry("strings", `${lang}/strings`);
     <ul id="app-icons-list">
       <a id="1"><Icon size={46} name="apps/calendar" /></a>
       <a id="2"><Icon size={46} name="apps/contacts" /></a>
-      <a id="3"><Icon size={46} name="apps/draw" /></a>
-      <a id="4"><Icon size={46} name="apps/filemanager" /></a>
-      <a id="5"><Icon size={46} name="apps/gallery" /></a>
-      <a id="6"><Icon size={46} name="apps/keyboard" /></a>
-      <a id="7"><Icon size={46} name="apps/messages" /></a>
-      <a id="8"><Icon size={46} name="apps/musicplayer" /></a>
-      <a id="9"><Icon size={46} name="apps/notes" /></a>
-      <a id="11"><Icon size={46} name="apps/phone" /></a>
-      <a id="12"><Icon size={46} name="apps/thankyou" /></a>
-      <a id="13"><Icon size={46} name="apps/voicerecorder" /></a>
+      <a id="3"><Icon size={46} name="apps/filemanager" /></a>
+      <a id="4"><Icon size={46} name="apps/gallery" /></a>
+      <a id="5"><Icon size={46} name="apps/messages" /></a>
     </ul>
   </div>
 </section>

@@ -47,6 +47,27 @@ const strings = defineCollection({
   }),
 });
 
+const apps = defineCollection({
+  type: "data",
+  schema: z.object({
+    isDraft: z.boolean(),
+    title: z.string(),
+    description: z.string(),
+    featuresTitle: z.string(),
+    features: z.array(z.string()),
+    img: z.string(),
+  })
+})
+
+const links = defineCollection({
+  type: "data",
+  schema: z.object({
+    github: z.string().url(),
+    play: z.string().url().optional(),
+    fdroid: z.string().url().optional()
+  })
+})
+
 const blog = defineCollection({
   type: "content",
   schema: z.object({
@@ -68,5 +89,5 @@ const blog = defineCollection({
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  strings, blog
+  strings, blog, apps, links
 };

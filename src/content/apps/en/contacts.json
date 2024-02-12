@@ -1,0 +1,14 @@
+{
+    "isDraft": false,
+    "title": "contacts",
+    "description": "The next evolution in contact management. Poised to redefine how you manage your contacts, our app combines simplicity with advanced features, tailored for both personal and professional use.",
+    "featuresTitle": "Top features",
+    "features": [
+        "Smart search & field customization",
+        "Group management & communication",
+        "Reliable backup & export options",
+        "Advanced synchronization",
+        "Privacy-first approach"
+    ],
+    "img": "contacts.png"
+}

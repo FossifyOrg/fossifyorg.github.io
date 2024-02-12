@@ -1,0 +1,14 @@
+{
+    "isDraft": false,
+    "title": "File Manager",
+    "description": "Tired of file managers that slow you down and invade your privacy? Unlock a lightning-fast, secure, and completely customizable experience with Fossify File Manager.",
+    "featuresTitle": "Top features",
+    "features": [
+        "Dominate your digital world with blazing-fast navigation",
+        "Fortify your data with unparalleled privacy and security",
+        "Master your storage like a pro",
+        "Optimize your workflow with handy tools",
+        "Make it your own with endless customization"
+    ],
+    "img": "filemanager.png"
+}
