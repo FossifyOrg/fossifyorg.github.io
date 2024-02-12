@@ -17,7 +17,7 @@ const links = await getEntry("links", name);
 <div class="app-card" id={id}>
   <h2>{app?.data.title}</h2>
   <img
-    src=`/fossifyorg.github.io/app-screenshots/${app?.data.img}`
+    src=`/app-screenshots/${app?.data.img}`
     alt=`${app?.data.title} screenshot`
     width="220px"
     height="400px"
@@ -53,20 +53,15 @@ const links = await getEntry("links", name);
   <dialog id={`dialog-${id}`}>
     <div>
       <div class="general">
-        <h2>{name}</h2>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-          voluptates alias deleniti odio nesciunt
+          {app?.data.description}
         </p>
       </div>
 
       <div class="features">
-        <h3>Top Features</h3>
+        <h3>{app?.data.featuresTitle}</h3>
         <ul>
-          <li>Feature one</li>
-          <li>Feature two</li>
-          <li>Feature three</li>
-          <li>Feature four</li>
+          {app?.data.features.map((feature) => <li>{feature}</li>)}
         </ul>
       </div>
       <button id={`close-dialog-${id}`} autofocus>Close</button>
@@ -84,8 +79,6 @@ const links = await getEntry("links", name);
         open: document.getElementById(`open-dialog-${id}`),
       };
     });
-
-    console.log(apps);
 
     apps.forEach((app) => {
       app.open?.addEventListener("click", () => {

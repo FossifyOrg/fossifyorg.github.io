@@ -4,8 +4,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ronniedroid.github.io',
-  base: 'fossifyorg.github.io',
+  site: 'https://www.fossify.org',
   i18n: {
     defaultLocale: "en",
     locales: ["en", 'ar'],
