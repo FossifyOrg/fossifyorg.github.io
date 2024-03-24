@@ -30,14 +30,19 @@ const { Content } = await post.render();
             <h2>{summary}</h2>
             <p><strong>Author: </strong>{author}</p>
             <p><strong>Date: </strong><DateFormat date={date} /></p>
-            <Image
-                src={image.src}
-                height="500"
-                alt={image.alt}
-                format="webp"
-                class="image"
-            />
-            )
+            {
+                image ? (
+                    <Image
+                        src={image.src}
+                        height={500}
+                        width={600}
+                        alt={image.alt}
+                        class="image"
+                    />
+                ) : (
+                    ""
+                )
+            }
         </div>
         <div class="content">
             <Content />
@@ -59,10 +64,11 @@ const { Content } = await post.render();
         max-width: 100%;
         height: auto;
         aspect-ratio: 4/3;
+        margin-bottom: 1rem;
     }
 
     h1 {
-        font-size: var(--fs-fl-md);
+        font-size: var(--fs-lg);
         margin-block-end: 1.1rem;
         font-weight: 600;
         color: var(--primary);
@@ -70,19 +76,17 @@ const { Content } = await post.render();
 
     h2 {
         margin-bottom: 1rem;
-        font-size: var(--fs-fl-sm);
+        font-size: var(--fs-md);
     }
 
     .meta > p {
         margin-bottom: 0.5rem;
-        font-size: var(--fs-sm);
         text-transform: capitalize;
     }
 
     .content {
         display: grid;
         gap: 1rem;
-        font-size: var(--fs-sm);
     }
 
     .content :global(blockquote) {

@@ -1,14 +1,14 @@
 ---
 isDraft: false
-title: This is a test blog post
-summary: A test blog post to showcase the blog post section of the website
+title: Title for the second blog post which is a realy realy long one for test purposes
+summary: Summary for the second blog post is here, have fun reading it all and enjoy the rest of your day
 tags:
     - Tags
     - are
     - an
     - array
 author: Ronnie Nissan
-date: 2024-03-23
+date: 2024-03-24
 image:
     { src: ./images/a-test-blog-post.webp,
       alt: "A photo of a laptop showing some code" }

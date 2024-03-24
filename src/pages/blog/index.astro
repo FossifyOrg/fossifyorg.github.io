@@ -1,16 +1,56 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
+
+const posts = blogPosts
+  .sort(function compare(a, b) {
+    const dateA = a.data.date;
+    const dateB = b.data.date;
+    if (dateA < dateB) {
+      return -1;
+    }
+    if (dateA > dateB) {
+      return 1;
+    }
+    return 0;
+  })
+  .reverse();
 ---
 
 <Layout title="Fossify org | Blog posts" lang="en" dir="ltr">
-  {
-    blogPosts.map((post) => (
-      <a href={post.slug}>
-        <p>{post.data.title}</p>
-      </a>
-    ))
-  }
+  <div class="blog">
+    <h1>Latest blog posts</h1>
+    {
+      posts.map((post) => (
+        <a href={post.slug}>
+          <BlogPostCard post={post} />
+        </a>
+      ))
+    }
+  </div>
 </Layout>
+
+<style>
+  h1 {
+    font-size: var(--fs-lg);
+    margin-bottom: 2rem;
+    color: var(--primary);
+    text-align: center;
+  }
+
+  .blog {
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--on-surface);
+  }
+</style>
