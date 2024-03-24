@@ -11,6 +11,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 const homeURL = getRelativeLocaleUrl(lang, "");
 const aboutURL = getRelativeLocaleUrl(lang, "about");
 const appsURL = getRelativeLocaleUrl(lang, "apps");
+const blogURL = getRelativeLocaleUrl(lang, "blog");
 
 const enURL = getRelativeLocaleUrl("en");
 const arURL = getRelativeLocaleUrl("ar");
@@ -26,7 +27,7 @@ const arURL = getRelativeLocaleUrl("ar");
   <nav>
     <ul>
       <li><a href={appsURL}>{strings?.data.header.apps}</a></li>
-      <li><a href="">{strings?.data.header.blog}</a></li>
+      <li><a href={blogURL}>{strings?.data.header.blog}</a></li>
       <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
       <details id="langs">
         <summary>

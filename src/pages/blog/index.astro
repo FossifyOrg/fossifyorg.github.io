@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog");
+---
+
+<Layout title="Fossify org | Blog posts" lang="en" dir="ltr">
+  {
+    blogPosts.map((post) => (
+      <a href={post.slug}>
+        <p>{post.data.title}</p>
+      </a>
+    ))
+  }
+</Layout>

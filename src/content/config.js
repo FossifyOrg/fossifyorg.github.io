@@ -70,24 +70,20 @@ const links = defineCollection({
 
 const blog = defineCollection({
   type: "content",
-  schema: z.object({
-    isDraft: z.boolean(),
-    title: z.string(),
-    summary: z.string(),
-    author: z.string().default("Anonymous"),
-    date: z.date(),
-    tags: z.array(z.string()).optional(),
-    related: z.array(reference('blog')).optional(),
-    image: z.object({
-      src: z.string(),
-      alt: z.string()
-    }).optional(),
-    language: z.string(),
-    authorContact: z.string().email().optional(),
-  })
-})
+  schema: ({ image }) =>
+    z.object({
+      isDraft: z.boolean(),
+      title: z.string(),
+      summary: z.string(),
+      tags: z.array(z.string()).optional(),
+      author: z.string().default("Anonymous"),
+      date: z.date(),
+      updatedAt: z.date().optional(),
+      image: z.object({ src: image(), alt: z.string() }).optional(),
+    }),
+});
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  strings, blog, apps, links
+  strings, apps, links, blog
 };
