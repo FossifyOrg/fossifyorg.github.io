@@ -49,13 +49,13 @@ const strings = defineCollection({
 
 const apps = defineCollection({
   type: "data",
-  schema: z.object({
+  schema: ({ image }) => z.object({
     isDraft: z.boolean(),
     title: z.string(),
     description: z.string(),
     featuresTitle: z.string(),
     features: z.array(z.string()),
-    img: z.string(),
+    img: image(),
   })
 })
 

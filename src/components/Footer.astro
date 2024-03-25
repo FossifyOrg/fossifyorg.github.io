@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import logo from "../assets/logos/Logo-horizontal.png";
 
 const { lang } = Astro.props;
 
@@ -9,11 +11,11 @@ const strings = await getEntry("strings", `${lang}/strings`);
 
 <footer>
   <div class="start">
-    <img
-      src="/Logo-horizontal.png"
+    <Image
+      src={logo}
       alt="horizontal Fossify logo with title"
-      height="75"
-      width="200"
+      width={200}
+      height={72}
     />
     <h2>Makers of the Fossify suite of apps</h2>
     <p></p>Copyright © 2023, All Rights Reserved
@@ -61,8 +63,8 @@ const strings = await getEntry("strings", `${lang}/strings`);
   }
 
   .start > img {
-    max-width: 100%;
-    height: auto;
+    max-width: 200px;
+    height: 72px;
 
     border: 1px solid var(--outline-variant);
     border-radius: 0.5rem;

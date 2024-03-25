@@ -44,7 +44,6 @@ const strings = await getEntry("strings", `${lang}/strings`);
 
   atags.forEach((tag) => {
     tag.addEventListener("click", () => {
-      console.log(`app-${tag.id}`);
       scrollSmoothTo(`app-${tag.id}`);
     });
   });

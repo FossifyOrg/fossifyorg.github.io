@@ -10,7 +10,7 @@ tags:
 author: Ronnie Nissan
 date: 2024-03-24
 image:
-    { src: ./images/a-test-blog-post.webp,
+    { src: /src/assets/blog/a-test-blog-post.webp,
       alt: "A photo of a laptop showing some code" }
 ---
 

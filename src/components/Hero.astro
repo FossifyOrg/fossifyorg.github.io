@@ -1,9 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
+import heroImage from "../assets/hero.webp";
 
 const { lang } = Astro.props;
 
 import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
 const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
@@ -18,11 +20,12 @@ const strings = await getEntry("strings", `${lang}/strings`);
       ></button
     >
   </div>
-  <img
-    src="https://source.unsplash.com/3tYZjGSBwbk"
-    alt="photo from unsplash"
-    width="500px"
-    height="500px"
+  <Image
+    src={heroImage}
+    alt="Hero photo showing a laptop with some code"
+    width={500}
+    height={500}
+    loading={"eager"}
   />
 </section>
 
