@@ -17,26 +17,7 @@ const links = await getEntry("links", name);
 
 <div class="app-card" id={id}>
   <h2>{app.data.title}</h2>
-  <Image
-    src={app.data.img}
-    alt=`${app.data.title} screenshot`
-    width={200}
-    height={300}
-  />
-  <div class="details">
-    <div class="general">
-      <p>
-        {app.data.description}
-      </p>
-    </div>
-
-    <div class="features">
-      <h3>{app.data.featuresTitle}</h3>
-      <ul>
-        {app.data.features.map((feature) => <li>{feature}</li>)}
-      </ul>
-    </div>
-  </div>
+  <Image src={app.data.img} alt=`${app.data.title} screenshot` />
   <div class="links">
     <a href={links?.data.play} target="_blank"
       ><Icon name="store_badge" width={120} height={35} /></a
@@ -94,16 +75,14 @@ const links = await getEntry("links", name);
   .app-card {
     scroll-snap-align: center;
     display: grid;
-    grid-template-areas: "title title" "screen details" "screen links";
-    grid-template-columns: 14em 16em;
-    max-width: 28em;
+    grid-template-columns: 20em;
     gap: 1rem;
     position: relative;
     align-content: start;
+    place-items: center;
   }
 
   .app-card > h2 {
-    grid-area: title;
     font-size: var(--fs-sm);
     font-weight: 600;
     text-align: center;
@@ -111,31 +90,74 @@ const links = await getEntry("links", name);
   }
 
   .app-card > img {
-    grid-area: screen;
-    min-width: 100%;
-    height: auto;
+    max-width: auto;
+    height: 500px;
     object-fit: contain;
     border-radius: 0.5rem;
   }
 
-  .details {
-    grid-area: details;
+  .links {
     display: grid;
-    justify-items: start;
-    align-content: start;
+    align-items: center;
+    gap: 0.5rem;
+    grid-auto-flow: column;
+  }
+
+  [data-icon="fdroid_badge"] {
+    color: black;
+  }
+
+  [data-icon="github_badge"] {
+    color: black;
+  }
+
+  .open-dialog-btn {
+    display: none;
+  }
+
+  .open-dialog-btn {
+    display: block;
+    place-self: center;
+    width: 100%;
+  }
+
+  .open-dialog-btn > button {
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+    border: solid 1px var(--outline-variant);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding-block: 0.5rem;
+    cursor: pointer;
+  }
+
+  dialog {
+    position: fixed;
+    width: max-content;
+    inset: 0;
+    margin: auto;
+    padding: 3rem;
+    border: solid 1px var(--outline);
+    background-color: var(--surface-container);
+    border-radius: 0.5rem;
+  }
+
+  dialog > div {
+    display: grid;
+    place-content: center;
     gap: 1rem;
   }
 
-  @media (width < 40em) {
-    .app-card {
-      grid-template-areas: "title" "screen" "links" "open-dialog-btn";
-      grid-template-columns: 20em;
-      max-width: 20em;
-      gap: 0.5rem;
-    }
-    .details {
-      display: none;
-    }
+  dialog button {
+    margin-block-start: 1rem;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    padding-inline: 1rem;
+    padding-block: 0.2rem;
+    border: solid 1px var(--outline-variant);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    justify-self: end;
   }
 
   .general,
@@ -172,77 +194,13 @@ const links = await getEntry("links", name);
     max-width: 20ch;
   }
 
-  .links {
-    grid-area: links;
-    display: grid;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  @media (width < 40em) {
-    .links {
-      grid-auto-flow: column;
-    }
-  }
-
-  [data-icon="fdroid_badge"] {
-    color: black;
-  }
-
-  [data-icon="github_badge"] {
-    color: black;
-  }
-
-  .open-dialog-btn {
-    display: none;
-  }
-
-  @media (width < 40em) {
-    .open-dialog-btn {
-      display: block;
-      grid-area: open-dialog-btn;
-      place-self: center;
-      width: 100%;
+  @media (width > 480px) {
+    .general > p {
+      max-width: 45ch;
     }
 
-    .open-dialog-btn > button {
-      background-color: var(--primary-container);
-      color: var(--on-primary-container);
-      border: solid 1px var(--outline-variant);
-      border-radius: 0.5rem;
-      width: 100%;
-      padding-block: 0.5rem;
-      cursor: pointer;
+    .features > ul {
+      max-width: 45ch;
     }
-  }
-
-  dialog {
-    position: fixed;
-    width: max-content;
-    inset: 0;
-    margin: auto;
-    padding: 3rem;
-    border: solid 1px var(--outline);
-    background-color: var(--surface-container);
-    border-radius: 0.5rem;
-  }
-
-  dialog > div {
-    grid-area: details;
-    display: grid;
-    place-content: center;
-    gap: 1rem;
-  }
-
-  dialog button {
-    margin-block-start: 1rem;
-    background: var(--primary-container);
-    color: var(--on-primary-container);
-    padding-inline: 1rem;
-    padding-block: 0.2rem;
-    border: solid 1px var(--outline-variant);
-    border-radius: 0.5rem;
-    cursor: pointer;
-    justify-self: end;
   }
 </style>

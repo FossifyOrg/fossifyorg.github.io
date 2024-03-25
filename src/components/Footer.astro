@@ -11,12 +11,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
 
 <footer>
   <div class="start">
-    <Image
-      src={logo}
-      alt="horizontal Fossify logo with title"
-      width={200}
-      height={72}
-    />
+    <Image src={logo} alt="horizontal Fossify logo with title" />
     <h2>Makers of the Fossify suite of apps</h2>
     <p></p>Copyright © 2023, All Rights Reserved
   </div>
@@ -63,7 +58,7 @@ const strings = await getEntry("strings", `${lang}/strings`);
   }
 
   .start > img {
-    max-width: 200px;
+    width: 200px;
     height: 72px;
 
     border: 1px solid var(--outline-variant);
