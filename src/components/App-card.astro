@@ -70,23 +70,21 @@ const links = await getEntry("links", name);
 </div>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const apps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((item) => {
-      const id = `app-${item}`;
-      return {
-        dialog: document.getElementById(`dialog-${id}`),
-        close: document.getElementById(`close-dialog-${id}`),
-        open: document.getElementById(`open-dialog-${id}`),
-      };
-    });
+  const apps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((item) => {
+    const id = `app-${item}`;
+    return {
+      dialog: document.getElementById(`dialog-${id}`),
+      close: document.getElementById(`close-dialog-${id}`),
+      open: document.getElementById(`open-dialog-${id}`),
+    };
+  });
 
-    apps.forEach((app) => {
-      app.open?.addEventListener("click", () => {
-        app.dialog?.showModal();
-      });
-      app.close?.addEventListener("click", () => {
-        app.dialog?.close();
-      });
+  apps.forEach((app) => {
+    app.open?.addEventListener("click", () => {
+      app.dialog?.showModal();
+    });
+    app.close?.addEventListener("click", () => {
+      app.dialog?.close();
     });
   });
 </script>

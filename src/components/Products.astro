@@ -34,20 +34,18 @@ const strings = await getEntry("strings", `${lang}/strings`);
 </section>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    function scrollSmoothTo(elementId) {
-      var element = document.getElementById(elementId);
-      element?.scrollIntoView({ block: "start", behavior: "smooth" });
-    }
+  function scrollSmoothTo(elementId) {
+    var element = document.getElementById(elementId);
+    element?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
 
-    const aTagsList = document.getElementById("app-icons-list");
-    const atags = Array.from(aTagsList!!.getElementsByTagName("a"));
+  const aTagsList = document.getElementById("app-icons-list");
+  const atags = Array.from(aTagsList!!.getElementsByTagName("a"));
 
-    atags.forEach((tag) => {
-      tag.addEventListener("click", () => {
-        console.log(`app-${tag.id}`);
-        scrollSmoothTo(`app-${tag.id}`);
-      });
+  atags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      console.log(`app-${tag.id}`);
+      scrollSmoothTo(`app-${tag.id}`);
     });
   });
 </script>

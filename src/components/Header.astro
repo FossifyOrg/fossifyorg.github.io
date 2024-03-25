@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ToggleDark from "./ToggleDark.astro";
 
 const { lang } = Astro.props;
 
@@ -50,6 +51,7 @@ const arURL = getRelativeLocaleUrl("ar");
     <a href="https://github.com/FossifyOrg" target="_blank"
       ><Icon name="github" size={30} /></a
     >
+    <ToggleDark />
   </div>
 </header>
 
