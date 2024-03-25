@@ -28,7 +28,9 @@
     "products": {
         "title": "Our products",
         "description": "Fossify apps are a community-backed, open-source, and ad-free suite of mobile apps. A fork of the @SimpleMobileTools, which is no longer maintained, and we're here to continue the legacy, bringing simple and private tech to everyone.",
-        "hint": "Slide for more"
+        "hint": "Slide for more",
+        "label": "Read more",
+        "close": "Close"
     },
     "contributors": {
         "title": "Top contributors",

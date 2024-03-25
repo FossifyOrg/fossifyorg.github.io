@@ -13,11 +13,13 @@ const { name, id, lang } = Astro.props;
 import { getEntry } from "astro:content";
 const app = await getEntry("apps", `${lang}/${name}`);
 const links = await getEntry("links", name);
+
+const strings = await getEntry("strings", `${lang}/strings`);
 ---
 
 <div class="app-card" id={id}>
-  <h2>{app.data.title}</h2>
-  <Image src={app.data.img} alt=`${app.data.title} screenshot` />
+  <h2>{app?.data.title}</h2>
+  <Image src={app?.data.img} alt=`${app?.data.title} screenshot` />
   <div class="links">
     <a href={links?.data.play} target="_blank"
       ><Icon name="store_badge" width={120} height={35} /></a
@@ -30,23 +32,25 @@ const links = await getEntry("links", name);
     >
   </div>
   <div class="open-dialog-btn">
-    <button id={`open-dialog-${id}`}>Read more</button>
+    <button id={`open-dialog-${id}`}>{strings?.data.products.label}</button>
   </div>
   <dialog id={`dialog-${id}`}>
     <div>
       <div class="general">
         <p>
-          {app.data.description}
+          {app?.data.description}
         </p>
       </div>
 
       <div class="features">
-        <h3>{app.data.featuresTitle}</h3>
+        <h3>{app?.data.featuresTitle}</h3>
         <ul>
-          {app.data.features.map((feature) => <li>{feature}</li>)}
+          {app?.data.features.map((feature) => <li>{feature}</li>)}
         </ul>
       </div>
-      <button id={`close-dialog-${id}`} autofocus>Close</button>
+      <button id={`close-dialog-${id}`} autofocus
+        >{strings?.data.products.close}</button
+      >
     </div>
   </dialog>
 </div>
