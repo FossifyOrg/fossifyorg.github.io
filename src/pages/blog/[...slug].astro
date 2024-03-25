@@ -24,9 +24,11 @@ const { Content } = await post.render();
 ---
 
 <Layout title="Fossify org | Blog posts" lang="en" dir="ltr">
+    <div class="title">
+        <h1>{title}</h1>
+    </div>
     <article>
         <div class="meta">
-            <h1>{title}</h1>
             <h2>{summary}</h2>
             <p><strong>Author: </strong>{author}</p>
             <p><strong>Date: </strong><DateFormat date={date} /></p>
@@ -51,6 +53,17 @@ const { Content } = await post.render();
 </Layout>
 
 <style>
+    .title {
+        font-size: var(--fs-lg);
+        font-weight: 600;
+        margin-block-start: 2rem;
+        padding-block: 3rem;
+        padding-inline: 1rem;
+        text-align: center;
+        background-color: var(--primary-container);
+        color: var(--on-primary-container);
+    }
+
     article {
         max-width: 65ch;
         margin: 0 auto;
@@ -65,13 +78,6 @@ const { Content } = await post.render();
         height: auto;
         aspect-ratio: 4/3;
         margin-bottom: 1rem;
-    }
-
-    h1 {
-        font-size: var(--fs-lg);
-        margin-block-end: 1.1rem;
-        font-weight: 600;
-        color: var(--primary);
     }
 
     h2 {
