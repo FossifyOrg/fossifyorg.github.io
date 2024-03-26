@@ -1,0 +1,192 @@
+---
+import { Icon } from "astro-icon/components";
+import ToggleDark from "./ToggleDark.astro";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const homeURL = getRelativeLocaleUrl(lang, "");
+const aboutURL = getRelativeLocaleUrl(lang, "about");
+const appsURL = getRelativeLocaleUrl(lang, "apps");
+const blogURL = getRelativeLocaleUrl(lang, "blog");
+
+const enURL = getRelativeLocaleUrl("en");
+const arURL = getRelativeLocaleUrl("ar");
+---
+
+<header>
+  <div class="logo">
+    <a href={homeURL}>
+      <img
+        src="/src/assets/logos/Logo.png"
+        alt="fossify logo"
+        width="52"
+        height="52"
+      />
+      <h1>fossify</h1>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href={appsURL}>{strings?.data.header.apps}</a></li>
+      <li><a href={blogURL}>{strings?.data.header.blog}</a></li>
+      <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
+      <details id="langs">
+        <summary>
+          {
+            lang === "en" ? "English" : lang === "ar" ? "العربية" : "lang"
+          }</summary
+        >
+        <ul>
+          <li>
+            <a href={enURL}>Engish</a>
+          </li>
+          <li>
+            <a href={arURL}>العربية</a>
+          </li>
+        </ul>
+      </details>
+    </ul>
+  </nav>
+  <div class="icons">
+    <a href="https://github.com/FossifyOrg" target="_blank"
+      ><Icon name="github" size={30} /></a
+    >
+    <ToggleDark />
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    padding-inline: clamp(1rem, 1rem + 1vw, 3rem);
+    padding-block: 1.5rem;
+    align-content: center;
+    align-items: center;
+
+    display: grid;
+    grid-template-areas: "logo nav icons";
+    grid-template-columns: 3fr 3fr 0.5fr;
+    gap: 1rem;
+    min-height: 5rem;
+  }
+
+  @media (width < 50em) {
+    header {
+      gap: 1rem;
+      grid-template-columns: 2fr 3fr 0.5fr;
+    }
+  }
+
+  @media (width < 40em) {
+    header {
+      gap: 1rem;
+      grid-template-areas: "logo icons" "nav nav";
+      grid-template-columns: 3fr 0.5fr;
+    }
+  }
+
+  .logo > a {
+    text-decoration: none;
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo > a > img {
+    border-radius: 0.5rem;
+  }
+
+  .logo > a > h1 {
+    font-size: var(--fs-md);
+    font-weight: 900;
+    color: var(--on-surface);
+
+    text-transform: uppercase;
+  }
+
+  nav {
+    grid-area: nav;
+    place-self: end;
+    background-color: var(--primary-container);
+    border-radius: 0.5rem;
+    height: 3rem;
+    max-width: max-content;
+    padding-inline: 1rem;
+  }
+
+  @media (width < 40em) {
+    nav {
+      min-width: 100%;
+    }
+  }
+
+  nav > ul {
+    list-style: none;
+    color: var(--on-primary-container);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  nav > ul a {
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--on-primary-container);
+    line-height: 1.2;
+  }
+
+  details {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+  }
+
+  details > summary {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  details > ul {
+    cursor: auto;
+    background: var(--surface-container-high);
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    width: min-content;
+    position: absolute;
+    left: 0;
+    top: 2em;
+    border-radius: 1rem;
+    right: 0;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+
+  details > ul a {
+    color: var(--on-surface);
+  }
+
+  .icons {
+    grid-area: icons;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    width: max-content;
+  }
+
+  [data-icon] {
+    color: var(--on-surface);
+  }
+</style>

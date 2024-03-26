@@ -1,0 +1,59 @@
+---
+import AppCard from "../components/App-card.astro";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<section>
+  <h1>{strings?.data.products.title}</h1>
+  <p>{strings?.data.products.description}</p>
+  <div class="apps">
+    <AppCard lang={lang} name="calendar" id="app-1" />
+    <AppCard lang={lang} name="contacts" id="app-2" />
+    <AppCard lang={lang} name="filemanager" id="app-3" />
+    <AppCard lang={lang} name="gallery" id="app-4" />
+    <AppCard lang={lang} name="messages" id="app-5" />
+  </div>
+</section>
+
+<style>
+  section {
+    display: grid;
+    padding-block: 6rem;
+    padding-inline: clamp(0.5rem, 1vw, 4rem);
+  }
+
+  section h1 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  section > p {
+    padding-top: 2rem;
+    place-self: center;
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .apps {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    row-gap: 4rem;
+    padding-top: 6rem;
+  }
+
+  @media (width > 50em) {
+    .apps {
+      grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    }
+  }
+</style>

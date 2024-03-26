@@ -1,0 +1,130 @@
+---
+const contributors = [
+  {
+    name: "Aga-C",
+    profile: "https://github.com/Aga-C",
+    avatar: "https://avatars.githubusercontent.com/u/85929121?v=4",
+  },
+  {
+    name: "AlbertoPellitteri",
+    profile: "https://github.com/AlbertoPellitteri",
+    avatar: "https://avatars.githubusercontent.com/u/66901396?v=4",
+  },
+  {
+    name: "Alfavio",
+    profile: "https://github.com/Alfavio",
+    avatar: "https://avatars.githubusercontent.com/u/5478075?v=4",
+  },
+  {
+    name: "connyduck",
+    profile: "https://github.com/connyduck",
+    avatar: "https://avatars.githubusercontent.com/u/10157047?v=4",
+  },
+  {
+    name: "correia55",
+    profile: "https://github.com/correia55",
+    avatar: "https://avatars.githubusercontent.com/u/9482824?v=4",
+  },
+  {
+    name: "dagkalis",
+    profile: "https://github.com/dogkalis",
+    avatar: "https://avatars.githubusercontent.com/u/56542304?v=4",
+  },
+  {
+    name: "DaPa",
+    profile: "https://github.com/DaPa",
+    avatar: "https://avatars.githubusercontent.com/u/4947697?v=4",
+  },
+  {
+    name: "ForgottenUmbrella",
+    profile: "https://github.com/ForgottenUmbrella",
+    avatar: "https://avatars.githubusercontent.com/u/14356244?v=4",
+  },
+  {
+    name: "KryptKode",
+    profile: "https://github.com/KryptKode",
+    avatar: "https://avatars.githubusercontent.com/u/25648077?v=4",
+  },
+  {
+    name: "naveensingh",
+    profile: "https://github.com/naveensingh",
+    avatar: "https://avatars.githubusercontent.com/u/36371707?v=4",
+  },
+  {
+    name: "qwertyfinger",
+    profile: "https://github.com/qwertyfinger",
+    avatar: "https://avatars.githubusercontent.com/u/7561414?v=4",
+  },
+];
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<section class="wrapper">
+  <h1>{strings?.data.contributors.title}</h1>
+  <p>{strings?.data.contributors.description}</p>
+  <div class="avatars">
+    {
+      contributors.map((contributor) => (
+        <a href={contributor.profile}>
+          <img
+            src={contributor.avatar}
+            alt={contributor.name + "avatar"}
+            width="64"
+            height="64"
+          />
+          <h2>{contributor.name}</h2>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  section h1 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  section > p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .avatars {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    place-content: center;
+    gap: 1rem;
+  }
+
+  @media (width < 40em) {
+    .avatars {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .avatars > a {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    color: var(--on-surface);
+
+    display: grid;
+    place-items: center;
+    gap: 0.5rem;
+  }
+
+  .avatars > a > img {
+    border-radius: 50%;
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import Carousel from "./Carousel.astro";
+import AppCard from "./App-card.astro";
+import { Icon } from "astro-icon/components";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<section class="wrapper">
+  <h1>{strings?.data.products.title}</h1>
+  <p>{strings?.data.products.description}</p>
+  <div class="apps-carousel">
+    <Carousel>
+      <AppCard lang={lang} name="calendar" id="app-1" />
+      <AppCard lang={lang} name="contacts" id="app-2" />
+      <AppCard lang={lang} name="filemanager" id="app-3" />
+      <AppCard lang={lang} name="gallery" id="app-4" />
+      <AppCard lang={lang} name="messages" id="app-5" />
+    </Carousel>
+  </div>
+  <p class="hint">{strings?.data.products.hint}</p>
+  <div class="app-icons">
+    <ul id="app-icons-list">
+      <a id="1"><Icon size={46} name="apps/calendar" /></a>
+      <a id="2"><Icon size={46} name="apps/contacts" /></a>
+      <a id="3"><Icon size={46} name="apps/filemanager" /></a>
+      <a id="4"><Icon size={46} name="apps/gallery" /></a>
+      <a id="5"><Icon size={46} name="apps/messages" /></a>
+    </ul>
+  </div>
+</section>
+
+<script>
+  function scrollSmoothTo(elementId) {
+    var element = document.getElementById(elementId);
+    element?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
+  const aTagsList = document.getElementById("app-icons-list");
+  const atags = Array.from(aTagsList!!.getElementsByTagName("a"));
+
+  atags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      scrollSmoothTo(`app-${tag.id}`);
+    });
+  });
+</script>
+
+<style>
+  section h1 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  section > p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .apps-carousel {
+    overflow: hidden;
+    max-width: 32em;
+    text-align: center;
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  @media (width < 50em) {
+    .hint {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+    }
+  }
+
+  .app-icons {
+    padding-inline: clamp(1rem, 2vw + 1rem, 6rem);
+    max-width: max-content;
+  }
+
+  @media (width < 50em) {
+    .app-icons {
+      display: none;
+    }
+  }
+
+  .app-icons > ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 0.5rem;
+  }
+
+  /* the app icons */
+  a > svg {
+    border-radius: 0.5rem;
+  }
+</style>

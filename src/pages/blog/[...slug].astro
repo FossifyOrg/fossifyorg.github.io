@@ -1,0 +1,104 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import DateFormat from "../../components/DateFormat.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+    const blog = await getCollection("blog");
+    return blog.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+
+const { title, summary, author, date, image, tags } = post.data;
+const { Content } = await post.render();
+---
+
+<Layout title="Fossify org | Blog posts" lang="en" dir="ltr">
+    <div class="title">
+        <h1>{title}</h1>
+    </div>
+    <article>
+        <div class="meta">
+            <h2>{summary}</h2>
+            <p><strong>Author: </strong>{author}</p>
+            <p><strong>Date: </strong><DateFormat date={date} /></p>
+            {
+                image ? (
+                    <Image
+                        src={image.src}
+                        height={500}
+                        width={600}
+                        alt={image.alt}
+                        class="image"
+                    />
+                ) : (
+                    ""
+                )
+            }
+        </div>
+        <div class="content">
+            <Content />
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .title {
+        font-size: var(--fs-lg);
+        font-weight: 600;
+        margin-block-start: 2rem;
+        padding-block: 3rem;
+        padding-inline: 1rem;
+        text-align: center;
+        background-color: var(--primary-container);
+        color: var(--on-primary-container);
+    }
+
+    article {
+        max-width: 65ch;
+        margin: 0 auto;
+        margin-block-start: 3rem;
+        margin-block-end: 10rem;
+        padding-inline: 2rem;
+    }
+
+    .image {
+        object-fit: cover;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        font-size: var(--fs-md);
+    }
+
+    .meta > p {
+        margin-bottom: 0.5rem;
+        text-transform: capitalize;
+    }
+
+    .content {
+        display: grid;
+        gap: 1rem;
+        line-height: 1.5;
+    }
+
+    .content :global(blockquote) {
+        padding-block: 1rem;
+        border-inline-start: 2px solid var(--primary);
+        padding-inline-start: 2rem;
+    }
+</style>

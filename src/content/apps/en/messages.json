@@ -1,0 +1,14 @@
+{
+    "isDraft": false,
+    "title": "Messages",
+    "description": "Fossify Messenger is your trusted messaging companion, designed to enhance your messaging experience in various ways.",
+    "featuresTitle": "Top features",
+    "features": [
+        "Block unwanted messages",
+        "Effortless sms backup",
+        "Lightning-fast and lightweight",
+        "Enhanced privacy",
+        "Efficient message search"
+    ],
+    "img": "/src/assets/app-screenshots/messages.png"
+}

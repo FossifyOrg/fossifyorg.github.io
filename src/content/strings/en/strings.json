@@ -1,0 +1,46 @@
+{
+    "header": {
+        "apps": "apps",
+        "blog": "blog",
+        "team": "team",
+        "about": "about"
+    },
+    "hero": {
+        "title": "We are Fossify org",
+        "subtitle": "Creators of the Fossify suite of apps",
+        "donate": "donate"
+    },
+    "profile": {
+        "title": "About us",
+        "subtitle": "What we stand for",
+        "about": {
+            "description": "A group of simple, open source apps without ads and unnecessary permissions, with customizable colors. A fork of @SimpleMobileTools."
+        },
+        "vision": {
+            "title": "Our vision",
+            "text": "Imagine a world where mobile apps enhance our lives without invading our privacy. That's what Fossify strives for. We envision a thriving community of people working together to create free, open-source apps that benefit everyone. Join us and build a more secure, user-friendly digital future, one app at a time."
+        },
+        "mission": {
+            "title": "Our mission",
+            "text": "Building privacy-first mobile apps for everyone. Fossify revives the legacy of @SimpleMobileTools, crafting open-source tools that are ad-free and easy to use. We empower individuals and communities with technology that respects their privacy and keeps things simple."
+        }
+    },
+    "products": {
+        "title": "Our products",
+        "description": "Fossify apps are a community-backed, open-source, and ad-free suite of mobile apps. A fork of the @SimpleMobileTools, which is no longer maintained, and we're here to continue the legacy, bringing simple and private tech to everyone.",
+        "hint": "Slide for more",
+        "label": "Read more",
+        "close": "Close"
+    },
+    "contributors": {
+        "title": "Top contributors",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "donors": {
+        "title": "Our donors",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "footer": {
+        "copyright": "Copyright © 2023, All Rights Reserved"
+    }
+}
