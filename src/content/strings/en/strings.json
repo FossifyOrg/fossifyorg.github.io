@@ -39,5 +39,8 @@
     "donors": {
         "title": "Our donors",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "footer": {
+        "copyright": "Copyright © 2023, All Rights Reserved"
     }
 }

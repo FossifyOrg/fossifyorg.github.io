@@ -45,6 +45,9 @@ const strings = defineCollection({
     donors: z.object({
       title: z.string(),
       description: z.string(),
+    }),
+    footer: z.object({
+      copyright: z.string()
     })
   }),
 });

@@ -39,5 +39,8 @@
     "donors": {
         "title": "متبرعونا",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "footer": {
+        "copyright": "حقوق النشر © 2023، جميع الحقوق محفوظة"
     }
 }

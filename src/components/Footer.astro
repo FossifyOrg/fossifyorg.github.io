@@ -12,8 +12,8 @@ const strings = await getEntry("strings", `${lang}/strings`);
 <footer>
   <div class="start">
     <Image src={logo} alt="horizontal Fossify logo with title" />
-    <h2>Makers of the Fossify suite of apps</h2>
-    <p></p>Copyright © 2023, All Rights Reserved
+    <h2>{strings?.data.hero.subtitle}</h2>
+    <p>{strings?.data.footer.copyright}</p>
   </div>
   <div class="end">
     <a href="">
