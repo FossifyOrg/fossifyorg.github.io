@@ -1,0 +1,39 @@
+---
+
+---
+
+<div class="carousel">
+  <slot />
+</div>
+
+<style>
+  .carousel {
+    display: flex;
+    gap: 6rem;
+
+    overflow-x: hidden;
+    scroll-snap-type: inline mandatory;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 2rem;
+    padding-inline-end: 6rem;
+  }
+
+  .carousel:first-child {
+    padding-inline-start: 6rem;
+  }
+
+  @media (width < 50em) {
+    .carousel {
+      overflow-x: auto;
+      padding-inline-end: 0;
+      padding-inline-end: 2rem;
+    }
+
+    .carousel:first-child {
+      padding-inline-start: 2rem;
+    }
+  }
+</style>

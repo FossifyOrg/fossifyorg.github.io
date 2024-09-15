@@ -1,0 +1,91 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import logo from "../assets/logos/Logo-horizontal.png";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<footer>
+  <div class="start">
+    <Image src={logo} alt="horizontal Fossify logo with title" />
+    <h2>{strings?.data.hero.subtitle}</h2>
+    <p>{strings?.data.footer.copyright}</p>
+  </div>
+  <div class="end">
+    <a href="">
+      <Icon name="github" size={32} />
+    </a>
+    <a href="">
+      <Icon name="play_store" size={32} />
+    </a>
+    <a href="">
+      <Icon name="reddit" size={32} />
+    </a>
+    <a href="">
+      <Icon name="telegram" size={32} />
+    </a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--surface-container);
+
+    margin-top: 8rem;
+
+    padding-inline: clamp(3rem, 3rem + 4vw, 14rem);
+    padding-block: clamp(2rem, 2rem + 2vw, 4rem);
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 2fr 1fr;
+  }
+
+  @media (width > 1600px) {
+    footer {
+      padding-inline: 20rem;
+    }
+  }
+
+  .start {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+
+  .start > img {
+    width: 200px;
+    height: 72px;
+
+    border: 1px solid var(--outline-variant);
+    border-radius: 0.5rem;
+  }
+
+  .start > h2 {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  .end {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
+    align-items: center;
+    align-content: start;
+    gap: 2rem;
+  }
+
+  @media (width < 50em) {
+    .end {
+      grid-auto-flow: row;
+    }
+  }
+
+  [data-icon] {
+    color: var(--on-surface);
+  }
+</style>

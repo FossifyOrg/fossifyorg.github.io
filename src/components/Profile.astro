@@ -1,0 +1,71 @@
+---
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<section class="wrapper">
+  <h1>{strings?.data.profile.title}</h1>
+  <p>
+    {strings?.data.profile.about.description}
+  </p>
+  <h2>
+    {strings?.data.profile.subtitle}
+  </h2>
+  <div class="profile">
+    <div>
+      <h3>{strings?.data.profile.vision.title}</h3>
+      <p>{strings?.data.profile.vision.text}</p>
+    </div>
+    <div>
+      <h3>{strings?.data.profile.mission.title}</h3>
+      <p>{strings?.data.profile.mission.text}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  section > h2,
+  section > h1 {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  section > h1 {
+    font-size: var(--fs-lg);
+  }
+
+  section > h2 {
+    font-size: var(--fs-md);
+  }
+
+  .profile {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2rem;
+  }
+
+  @media (width < 40em) {
+    .profile {
+      grid-auto-flow: row;
+    }
+  }
+
+  .about h3,
+  .profile h3 {
+    padding-bottom: 2rem;
+    font-size: var(--fs-sm);
+    text-align: center;
+  }
+
+  .profile p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+</style>

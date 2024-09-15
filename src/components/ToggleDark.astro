@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="toggle-switch" id="toggle-switch">
+  <Icon name="dark-mode" size={30} />
+</div>
+
+<script lang="js">
+  const toggleButton = document.getElementById("toggle-switch");
+  const storageKey = "theme-preference";
+
+  const getColorPreference = () => {
+    let preference = localStorage.getItem(storageKey);
+
+    if (!preference) {
+      preference = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    return preference;
+  };
+
+  const setPreference = (themeName) => {
+    localStorage.setItem(storageKey, themeName);
+
+    document.firstElementChild.setAttribute("color-scheme", themeName);
+  };
+
+  const togglePreference = () => {
+    setPreference(getColorPreference() === "dark" ? "light" : "dark");
+  };
+
+  toggleButton.addEventListener("click", () => togglePreference());
+
+  document.firstElementChild.setAttribute("color-scheme", getColorPreference());
+</script>
+
+<style scoped>
+  .toggle-switch {
+    cursor: pointer;
+  }
+</style>

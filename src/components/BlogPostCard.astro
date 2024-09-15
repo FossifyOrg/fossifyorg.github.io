@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import DateFormat from "./DateFormat.astro";
+
+const { post } = Astro.props;
+
+const { title, summary, author, image, date } = post.data;
+---
+
+<div class="card">
+  <figure>
+    <Image
+      src={image.src}
+      alt={image.alt}
+      width="350"
+      height="400"
+      loading="lazy"
+      format="webp"
+    />
+  </figure>
+  <div class="text">
+    <p class="title">
+      {title.length > 45 ? `${title.substring(0, 45)}...` : title}
+    </p>
+    <p class="summary">
+      {summary.length > 65 ? `${summary.substring(0, 65)}...` : summary}
+    </p>
+    <p class="author"><span>Author: </span>{author}</p>
+    <DateFormat date={date} />
+  </div>
+</div>
+
+<style>
+  .card {
+    --border-color: var(--outline-variant);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-content: start;
+    gap: 0.7rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 20rem;
+    max-height: 26rem;
+    background-color: var(--surface-container);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .title {
+    max-width: 20ch;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: var(--fs-sm);
+    height: 4ch;
+  }
+
+  .summary {
+    max-width: 32ch;
+    margin-bottom: 0.5rem;
+  }
+
+  .author {
+    margin-bottom: 1rem;
+  }
+
+  .card:hover,
+  .card:focus {
+    --border-color: var(--outline);
+  }
+
+  @media (width > 700px) {
+    .card {
+      display: flex;
+      width: 100%;
+      gap: 2rem;
+    }
+  }
+</style>

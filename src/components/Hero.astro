@@ -1,0 +1,107 @@
+---
+import { Icon } from "astro-icon/components";
+import heroImage from "../assets/hero.webp";
+
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+const strings = await getEntry("strings", `${lang}/strings`);
+---
+
+<section>
+  <div class="text">
+    <h1>{strings?.data.hero.title}</h1>
+    <p>{strings?.data.hero.subtitle}</p>
+    <button
+      ><a
+        href="https://github.com/FossifyOrg#support-fossify-heart"
+        target="_blank"><Icon name="github" /> {strings?.data.hero.donate}</a
+      ></button
+    >
+  </div>
+  <Image
+    src={heroImage}
+    alt="Hero photo showing a laptop with some code"
+    loading={"eager"}
+  />
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-areas: "text photo";
+    grid-template-columns: 1fr 1fr;
+
+    padding-block-end: clamp(2rem, 2rem + 2vw, 4rem);
+  }
+
+  .text {
+    grid-area: text;
+    padding-inline: clamp(1rem, 2rem + 3vw, 8rem);
+    padding-block-start: 6rem;
+    padding-block-end: 3rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (width < 50em) {
+    section {
+      grid-template-areas: "photo" "text";
+      grid-template-columns: 1fr;
+    }
+
+    .text {
+      justify-content: center;
+      padding-block-start: 2rem;
+      padding-block-end: 2rem;
+    }
+  }
+
+  .text > h1 {
+    font-size: var(--fs-lg);
+    font-weight: 900;
+    color: var(--primary);
+    max-width: 10ch;
+  }
+
+  .text > p {
+    font-size: var(--fs-md);
+    max-width: 20ch;
+  }
+
+  button {
+    width: max-content;
+    height: 3rem;
+    padding-inline: 1rem;
+    padding-block: 0.1rem;
+    background-color: var(--tertiary-container);
+    border: 1px solid var(--outline-variant);
+    border-radius: 0.5rem;
+  }
+
+  button > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: var(--on-tertiary-container);
+  }
+
+  img {
+    grid-area: photo;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  @media (width < 50em) {
+    img {
+      height: 200px;
+    }
+  }
+</style>
