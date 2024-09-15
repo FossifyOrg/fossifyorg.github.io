@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import ToggleDark from "./ToggleDark.astro";
+import logo from "../assets/logos/Logo.png";
 
 const { lang } = Astro.props;
 
@@ -22,7 +23,7 @@ const arURL = getRelativeLocaleUrl("ar");
   <div class="logo">
     <a href={homeURL}>
       <img
-        src="/src/assets/logos/Logo.png"
+        src={logo.src}
         alt="fossify logo"
         width="52"
         height="52"
