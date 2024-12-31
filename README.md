@@ -1,1 +1,1 @@
-# Fossify.org website files
+# Source code for www.fossify.org
