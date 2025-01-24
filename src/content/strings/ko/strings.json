@@ -1,0 +1,46 @@
+{
+    "header": {
+        "apps": "앱",
+        "blog": "블로그",
+        "team": "팀",
+        "about": "소개"
+    },
+    "hero": {
+        "title": "Fossify에 오신 것을 환영합니다!",
+        "subtitle": "⚠️ 웹사이트 정비중입니다. 나중에 다시 확인해주세요.",
+        "donate": "기부하기"
+    },
+"profile": {
+        "title": "우리에 대해서",
+        "subtitle": "우리가 추구하는 가치",
+        "about": {
+            "description": "광고와 불필요한 권한이 없는 간단한 오픈 소스 앱 그룹으로, 사용자 지정 가능한 색상을 제공합니다. @SimpleMobileTools의 포크입니다."
+        },
+        "vision": {
+            "title": "우리의 비전",
+            "text": "모바일 앱이 개인 정보를 침해하지 않으면서도 우리의 삶을 향상시키는 세상을 상상해 보세요. 이것이 바로 Fossify가 추구하는 목표입니다. 우리는 모든 사람에게 혜택을 주는 무료 오픈 소스 앱을 만들기 위해 함께 일하는 사람들로 구성된 번성하는 커뮤니티를 상상합니다. 저희와 함께 더 안전하고 사용자 친화적인 디지털 미래를 구축해 보세요."
+        },
+        "mission": {
+            "title": "우리의 임무",
+            "text": "모두를 위한 개인정보 보호 우선 모바일 앱 구축. Fossify는 광고가 없고 사용하기 쉬운 오픈 소스 도구를 제작하여 @SimpleMobileTools의 유산을 되살리고 있습니다. 개인과 커뮤니티의 프라이버시를 존중하고 일을 단순하게 만드는 기술을 통해 개인과 커뮤니티의 역량을 강화합니다."
+        }
+    },
+    "products": {
+        "title": "우리의 제품",
+        "description": "Fossify 앱은 커뮤니티가 지원하는 오픈 소스이며 광고가 없는 모바일 앱 그룹입니다. 더 이상 유지 관리되지 않는 @SimpleMobileTools의 포크이며, 모든 사용자에게 간편하고 비공개적인 기술을 제공함으로써 그 유산을 이어가고자 합니다.",
+        "hint": "슬라이드하여 자세히 보기",
+        "label": "더 읽기",
+        "close": "닫기"
+    },
+    "contributors": {
+        "title": "상위 기여자",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "donors": {
+        "title": "우리의 기부자",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita!"
+    },
+    "footer": {
+        "copyright": "Copyright © 2025, All Rights Reserved"
+    }
+}

@@ -17,6 +17,7 @@ const blogURL = getRelativeLocaleUrl(lang, "blog");
 
 const enURL = getRelativeLocaleUrl("en");
 const arURL = getRelativeLocaleUrl("ar");
+const koURL = getRelativeLocaleUrl("ko");
 ---
 
 <header>
@@ -39,7 +40,7 @@ const arURL = getRelativeLocaleUrl("ar");
       <details id="langs">
         <summary>
           {
-            lang === "en" ? "English" : lang === "ar" ? "العربية" : "lang"
+            lang === "en" ? "English" : lang === "ar" ? "العربية" : lang === "ko" ? "한국어" : "lang"
           }</summary
         >
         <ul>
@@ -48,6 +49,9 @@ const arURL = getRelativeLocaleUrl("ar");
           </li>
           <li>
             <a href={arURL}>العربية</a>
+          </li>
+          <li>
+            <a href={koURL}>한국어</a>
           </li>
         </ul>
       </details>

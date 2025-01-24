@@ -1,0 +1,14 @@
+{
+    "isDraft": false,
+    "title": "캘린더",
+    "description": "Your open-source powerhouse for managing life, designed with privacy as its core and packed with powerful features to keep you organized.",
+    "featuresTitle": "Top features",
+    "features": [
+        "Ad-free and private",
+        "Flexible and customizable",
+        "Seamless syncing",
+        "Import celebrations",
+        "Filter and map views"
+    ],
+    "img": "/src/assets/app-screenshots/calendar.png"
+}
