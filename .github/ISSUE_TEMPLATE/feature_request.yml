@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         ## Hi there 👋
-        Thanks for helping us improve Fossify Messages by suggesting a feature!
+        Thanks for helping us improve Fossify by suggesting a feature!
         Please fill in as much information as possible about your feature request to avoid unnecessary and time-consuming back-and-forth communication.
 
   - type: checkboxes
@@ -22,7 +22,7 @@ body:
           required: true
         - label: "This issue contains only one feature request."
           required: true
-        - label: "I have read and understood the [contribution guidelines](https://github.com/FossifyOrg/Messages/blob/master/CONTRIBUTING.md)."
+        - label: "I have read and understood the [contribution guidelines](https://github.com/FossifyOrg/fossifyorg.github.io/blob/main/CONTRIBUTING.md)."
           required: true
 
   - type: textarea
