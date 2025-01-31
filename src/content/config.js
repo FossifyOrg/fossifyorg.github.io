@@ -31,6 +31,10 @@ const strings = defineCollection({
         text: z.string()
       })
     }),
+    donation: z.object({
+      title: z.string(),
+      description: z.string(),
+    }),
     products: z.object({
       title: z.string(),
       description: z.string(),

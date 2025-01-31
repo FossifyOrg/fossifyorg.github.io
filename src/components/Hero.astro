@@ -7,18 +7,21 @@ const { lang } = Astro.props;
 import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
 const strings = await getEntry("strings", `${lang}/strings`);
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const donateURL = getRelativeLocaleUrl(lang, "donate");
 ---
 
 <section>
   <div class="text">
     <h1>{strings?.data.hero.title}</h1>
     <p>{strings?.data.hero.subtitle}</p>
-    <button
-      ><a
-        href="https://github.com/FossifyOrg#support-fossify-heart"
-        target="_blank"><Icon name="github" /> {strings?.data.hero.donate}</a
-      ></button
-    >
+    <button>
+      <a href={donateURL}>
+        <Icon name="donation" /> {strings?.data.hero.donate}
+      </a>
+    </button>
   </div>
   <Image
     src={heroImage}

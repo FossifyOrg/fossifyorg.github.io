@@ -25,6 +25,10 @@
             "text": "بناء تطبيقات محمولة تحترم الخصوصية للجميع. يعيد Fossify إحياء إرث @SimpleMobileTools، ويصنع أدوات مفتوحة المصدر خالية من الإعلانات وسهلة الاستخدام. نمنح الأفراد والمجتمعات التكنولوجيا التي تحترم خصوصيتهم وتبسط الأمور."
         }
     },
+    "donation": {
+        "title": "Support Fossify ❤️",
+        "description": "If you'd like to support Fossify's development, consider making a donation using any of the following options."
+    },
     "products": {
         "title": "منتجاتنا",
         "description": "تعتبر تطبيقات Fossify مجموعة من التطبيقات المحمولة مدعومة من المجتمع، مفتوحة المصدر، وخالية من الإعلانات. فرع من @SimpleMobileTools الذي لم يعد مُحتفظ به، ونحن هنا لمواصلة التراث، وجلب التكنولوجيا البسيطة والخاصة إلى الجميع.",

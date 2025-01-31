@@ -25,6 +25,10 @@
             "text": "Building privacy-first mobile apps for everyone. Fossify revives the legacy of @SimpleMobileTools, crafting open-source tools that are ad-free and easy to use. We empower individuals and communities with technology that respects their privacy and keeps things simple."
         }
     },
+    "donation": {
+        "title": "Support Fossify ❤️",
+        "description": "If you'd like to support Fossify's development, consider making a donation using any of the following options."
+    },
     "products": {
         "title": "Our products",
         "description": "Fossify apps are a community-backed, open-source, and ad-free suite of mobile apps. A fork of the @SimpleMobileTools, which is no longer maintained, and we're here to continue the legacy, bringing simple and private tech to everyone.",

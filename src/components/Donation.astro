@@ -1,0 +1,82 @@
+---
+const { lang } = Astro.props;
+
+import { getEntry } from "astro:content";
+
+const strings = await getEntry("strings", `${lang}/strings`);
+
+const github = "https://github.com/sponsors/FossifyOrg";
+const patreon = "https://www.patreon.com/naveen3singh";
+const paypal = "https://paypal.me/naveen3singh";
+const liberapay = "https://liberapay.com/naveensingh";
+const opencollective = "https://opencollective.com/fossify";
+const bitcoin = "bc1q5flmuh5f3canqza07cfekjn64p2aqvd2w7pnn3";
+const ethereum = "0x9354fC372BC3BdA58766a8a9Fabadf77A76CdE01";
+const monero =
+    "48FkVUcJ7AGeBMR4SC4J7QU5nAt6YNwKZWz6sGDT1s5haEY7reZtJr5CniXLaQzTzGAuZNoc83BQAcETHw1d3Lkn8AAf1XF";
+const tron = "TGi4VpD1D9A9ZvyP9d3aVowwzMSvev2hub";
+---
+
+<section class="wrapper">
+    <h1>{strings?.data.donation.title}</h1>
+    <p>{strings?.data.donation.description}</p>
+    <div class="support-list">
+        <p>
+            <strong>GitHub Sponsors:</strong>
+            <a href={github} target="_blank">{github}</a>
+        </p>
+        <p>
+            <strong>Patreon:</strong>
+            <a href={patreon} target="_blank">{patreon}</a>
+        </p>
+        <p>
+            <strong>PayPal:</strong>
+            <a href={paypal} target="_blank">{paypal}</a>
+        </p>
+        <p>
+            <strong>Liberapay:</strong>
+            <a href={liberapay} target="_blank">{liberapay}</a>
+        </p>
+        <p>
+            <strong>OpenCollective:</strong>
+            <a href={opencollective} target="_blank">{opencollective}</a>
+        </p>
+        <p><strong>Bitcoin:</strong> <code>{bitcoin}</code></p>
+        <p><strong>Ethereum:</strong><code>{ethereum}</code></p>
+        <p><strong>Monero:</strong> <code>{monero}</code></p>
+        <p><strong>Tron:</strong> <code>{tron}</code></p>
+    </div>
+</section>
+
+<style>
+    section > h1 {
+        text-align: center;
+        font-weight: 600;
+        color: var(--primary);
+        font-size: var(--fs-lg);
+    }
+
+    section > p {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .support-list a {
+        color: var(--primary);
+    }
+
+    .support-list p > strong {
+        font-weight: 600;
+    }
+
+    .support-list p {
+        margin: 0.75rem 0;
+    }
+
+    .support-list code {
+        background-color: var(--surface-container);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+    }
+</style>

@@ -1,16 +1,8 @@
 ---
-const redirectUrl = "https://github.com/FossifyOrg/#support-fossify-heart";
+import Layout from "../layouts/Layout.astro";
+import Donation from "../components/Donation.astro";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Redirecting to Donation Page...</title>
-        <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
-    </head>
-    <body>
-        <p>
-            If you are not redirected, please <a href={redirectUrl}>click here</a>.
-        </p>
-    </body>
-</html>
+<Layout title="Fossify | Donate" lang="en" dir="ltr">
+    <Donation lang="en" />
+</Layout>
