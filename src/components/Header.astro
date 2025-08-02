@@ -22,12 +22,7 @@ const arURL = getRelativeLocaleUrl("ar");
 <header>
   <div class="logo">
     <a href={homeURL}>
-      <img
-        src={logo.src}
-        alt="fossify logo"
-        width="52"
-        height="52"
-      />
+      <img src={logo.src} alt="fossify logo" width="52" height="52" />
       <h1>fossify</h1>
     </a>
   </div>
@@ -37,16 +32,15 @@ const arURL = getRelativeLocaleUrl("ar");
       <li><a href={blogURL}>{strings?.data.header.blog}</a></li>
       <li><a href={aboutURL}>{strings?.data.header.about}</a></li>
       <details id="langs">
-        <summary>
-          {
-            lang === "en" ? "English" : lang === "ar" ? "العربية" : "lang"
-          }</summary
-        >
-        <ul>
-          <li>
-            <a href={enURL}>Engish</a>
+        <summary aria-label="Language selector">
+          {lang === "en" ? "English" : lang === "ar" ? "العربية" : "lang"}
+          <span class="chevron">▼</span>
+        </summary>
+        <ul role="menu">
+          <li role="menuitem">
+            <a href={enURL}>English</a>
           </li>
-          <li>
+          <li role="menuitem">
             <a href={arURL}>العربية</a>
           </li>
         </ul>
@@ -54,9 +48,14 @@ const arURL = getRelativeLocaleUrl("ar");
     </ul>
   </nav>
   <div class="icons">
-    <a href="https://github.com/FossifyOrg" target="_blank"
-      ><Icon name="github" size={30} /></a
+    <a
+      href="https://github.com/FossifyOrg"
+      target="_blank"
+      aria-label="Visit Fossify on GitHub"
+      class="icon-link"
     >
+      <Icon name="github" size={30} />
+    </a>
     <ToggleDark />
   </div>
 </header>
@@ -69,12 +68,18 @@ const arURL = getRelativeLocaleUrl("ar");
     padding-block: 1.5rem;
     align-content: center;
     align-items: center;
+    border-bottom: 1px solid var(--outline-variant);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     display: grid;
     grid-template-areas: "logo nav icons";
     grid-template-columns: 3fr 3fr 0.5fr;
     gap: 1rem;
     min-height: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
   }
 
   @media (width < 50em) {
@@ -98,6 +103,21 @@ const arURL = getRelativeLocaleUrl("ar");
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .logo > a:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+
+  .logo > a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 
   .logo > a > img {
@@ -144,6 +164,21 @@ const arURL = getRelativeLocaleUrl("ar");
     text-transform: capitalize;
     color: var(--on-primary-container);
     line-height: 1.2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  nav > ul a:hover {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    transform: translateY(-1px);
+  }
+
+  nav > ul a:focus-visible {
+    outline: 2px solid var(--on-primary-container);
+    outline-offset: 2px;
   }
 
   details {
@@ -153,9 +188,41 @@ const arURL = getRelativeLocaleUrl("ar");
     user-select: none;
   }
 
+  details[open] summary {
+    background-color: var(--primary);
+    color: var(--on-primary);
+  }
+
+  details[open] summary .chevron {
+    transform: rotate(180deg);
+  }
+
   details > summary {
     text-align: center;
     font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details > summary:hover {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    transform: translateY(-1px);
+  }
+
+  details > summary .chevron {
+    transition: transform 0.2s ease;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
   }
 
   details > ul {
@@ -166,16 +233,46 @@ const arURL = getRelativeLocaleUrl("ar");
     width: min-content;
     position: absolute;
     left: 0;
-    top: 2em;
+    top: calc(100% + 0.5rem);
     border-radius: 1rem;
     right: 0;
     list-style: none;
     display: grid;
     gap: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--outline-variant);
+    animation: slideDown 0.2s ease;
+    z-index: 10;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   details > ul a {
     color: var(--on-surface);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: block;
+    text-decoration: none;
+  }
+
+  details > ul a:hover {
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+
+  details > ul a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 
   .icons {
@@ -189,5 +286,33 @@ const arURL = getRelativeLocaleUrl("ar");
 
   [data-icon] {
     color: var(--on-surface);
+  }
+
+  .icon-link {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-link:hover {
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+    transform: translateY(-1px);
+  }
+
+  .icon-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .icon-link [data-icon] {
+    transition: color 0.2s ease;
+  }
+
+  .icon-link:hover [data-icon] {
+    color: var(--on-primary-container);
   }
 </style>
