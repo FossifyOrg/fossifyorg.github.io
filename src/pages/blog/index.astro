@@ -25,7 +25,7 @@ const posts = blogPosts
     <h1>Latest blog posts</h1>
     {
       posts.map((post) => (
-        <a href={post.slug}>
+        <a href={`/blog/${post.id}`}>
           <BlogPostCard post={post} />
         </a>
       ))
