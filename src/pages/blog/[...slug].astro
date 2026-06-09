@@ -1,14 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import DateFormat from "../../components/DateFormat.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
     const blog = await getCollection("blog");
     return blog.map((post) => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: { post },
     }));
 }
@@ -20,7 +20,7 @@ interface Props {
 const { post } = Astro.props;
 
 const { title, summary, author, date, image, tags } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout title="Fossify | Blog posts" lang="en" dir="ltr">

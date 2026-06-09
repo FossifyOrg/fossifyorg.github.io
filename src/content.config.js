@@ -1,35 +1,38 @@
-// 1. Import utilities from `astro:content`
-import { z, defineCollection, reference } from 'astro:content';
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
-// 2. Define a `type` and `schema` for each collection
 const strings = defineCollection({
-  type: 'data', // v2.5.0 and later
+  loader: glob({
+    base: "./src/content/strings",
+    pattern: "**/*.json",
+  }),
   schema: z.object({
     header: z.object({
       apps: z.string(),
       blog: z.string(),
       team: z.string(),
-      about: z.string()
+      about: z.string(),
     }),
     hero: z.object({
       title: z.string(),
       subtitle: z.string(),
-      donate: z.string()
+      donate: z.string(),
     }),
     profile: z.object({
       title: z.string(),
       subtitle: z.string(),
       about: z.object({
-        description: z.string()
+        description: z.string(),
       }),
       vision: z.object({
         title: z.string(),
-        text: z.string()
+        text: z.string(),
       }),
       mission: z.object({
         title: z.string(),
-        text: z.string()
-      })
+        text: z.string(),
+      }),
     }),
     donation: z.object({
       title: z.string(),
@@ -40,7 +43,7 @@ const strings = defineCollection({
       description: z.string(),
       hint: z.string(),
       label: z.string(),
-      close: z.string()
+      close: z.string(),
     }),
     contributors: z.object({
       title: z.string(),
@@ -51,34 +54,44 @@ const strings = defineCollection({
       description: z.string(),
     }),
     footer: z.object({
-      copyright: z.string()
-    })
+      copyright: z.string(),
+    }),
   }),
 });
 
 const apps = defineCollection({
-  type: "data",
-  schema: ({ image }) => z.object({
-    isDraft: z.boolean(),
-    title: z.string(),
-    description: z.string(),
-    featuresTitle: z.string(),
-    features: z.array(z.string()),
-    img: image(),
-  })
-})
+  loader: glob({
+    base: "./src/content/apps",
+    pattern: "**/*.json",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      isDraft: z.boolean(),
+      title: z.string(),
+      description: z.string(),
+      featuresTitle: z.string(),
+      features: z.array(z.string()),
+      img: image(),
+    }),
+});
 
 const links = defineCollection({
-  type: "data",
+  loader: glob({
+    base: "./src/content/links",
+    pattern: "**/*.json",
+  }),
   schema: z.object({
-    github: z.string().url(),
-    play: z.string().url().optional(),
-    fdroid: z.string().url().optional()
-  })
-})
+    github: z.url(),
+    play: z.url().optional(),
+    fdroid: z.url().optional(),
+  }),
+});
 
 const blog = defineCollection({
-  type: "content",
+  loader: glob({
+    base: "./src/content/blog",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: ({ image }) =>
     z.object({
       isDraft: z.boolean(),
@@ -86,13 +99,20 @@ const blog = defineCollection({
       summary: z.string(),
       tags: z.array(z.string()).optional(),
       author: z.string().default("Anonymous"),
-      date: z.date(),
-      updatedAt: z.date().optional(),
-      image: z.object({ src: image(), alt: z.string() }).optional(),
+      date: z.coerce.date(),
+      updatedAt: z.coerce.date().optional(),
+      image: z
+        .object({
+          src: image(),
+          alt: z.string(),
+        })
+        .optional(),
     }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  strings, apps, links, blog
+  strings,
+  apps,
+  links,
+  blog,
 };
