@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Help and project information - Fossify"
+  description="Direct links to Fossify apps, installation, help, policies, releases, and contribution information."
+  noindex={true}
+>
+  <section class="page-hero compact-redirect-page">
+    <div class="container">
+      <p class="eyebrow">Fossify</p>
+      <h1 class="page-title">Help and project information</h1>
+      <p class="lead">
+        Apps, installation, releases, policies, help, and contribution links.
+      </p>
+      <nav class="destination-grid" aria-label="Fossify help destinations">
+        <a href="/apps/"
+          ><strong>Apps</strong><span
+            >Features, screenshots, stores, and privacy.</span
+          ></a
+        >
+        <a href="/install/"
+          ><strong>Install</strong><span
+            >Google Play, F-Droid, and source guidance.</span
+          ></a
+        >
+        <a href="/updates/"
+          ><strong>Releases</strong><span
+            >Versions, dates, packages, and release notes.</span
+          ></a
+        >
+        <a href="/support/"
+          ><strong>Help</strong><span
+            >Questions, bug reports, and private contact.</span
+          ></a
+        >
+        <a href="/policy/"
+          ><strong>Policies</strong><span
+            >App-specific data and permission details.</span
+          ></a
+        >
+        <a href="/contribute/"
+          ><strong>Contribute</strong><span
+            >Translations, testing, and project work.</span
+          ></a
+        >
+      </nav>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { faqItems } from "../data/faq";
+
+const groups = [
+  { id: "install", title: "Install and releases" },
+  { id: "privacy", title: "Privacy and permissions" },
+  { id: "support", title: "Help" },
+  { id: "contribute", title: "Contributing" },
+] as const;
+---
+
+<BaseLayout
+  title="FAQ - Fossify"
+  description="Answers about Fossify installs, releases, privacy, permissions, help, translations, and contributions."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">FAQ</p>
+      <h1 class="page-title">Common questions</h1>
+      <p class="lead">
+        Short answers about installing, privacy, help, and project work.
+      </p>
+      <nav class="topic-nav" aria-label="FAQ topics">
+        {
+          groups.map((group) => (
+            <a class="chip-link" href={`#${group.id}`}>
+              {group.title}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container faq-page-layout">
+      {
+        groups.map((group) => (
+          <section class="faq-section" id={group.id}>
+            <h2 class="section-title">{group.title}</h2>
+            <div class="faq-list">
+              {faqItems
+                .filter((item) => item.category === group.id)
+                .map((item) => (
+                  <details class="faq-disclosure">
+                    <summary>{item.question}</summary>
+                    <div class="faq-answer">
+                      <p>{item.answer}</p>
+                      {item.links && (
+                        <div class="text-link-list">
+                          {item.links.map((link) => (
+                            <a href={link.href}>{link.label}</a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

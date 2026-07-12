@@ -1,0 +1,85 @@
+---
+import type { FossifyApp } from "../data/apps";
+
+type Props = {
+  app: FossifyApp;
+  media?: boolean;
+};
+
+const { app, media = false } = Astro.props;
+const appHref = `/apps/${app.slug}/`;
+const screenshotSize = app.screenshotSize ?? { width: 540, height: 1200 };
+const previewScreenshots = app.screenshots.slice(0, 3);
+const previewArtwork =
+  app.screenshotLayout === "wide" || previewScreenshots.length === 0
+    ? (app.featureImage ?? previewScreenshots[0])
+    : undefined;
+const hasScreenshotPreview =
+  !previewArtwork &&
+  previewScreenshots.length > 0 &&
+  app.screenshotLayout !== "wide";
+const usesIconPreview = !previewArtwork && !hasScreenshotPreview;
+---
+
+<article class={`card app-card${media ? " app-card-with-media" : ""}`}>
+  {
+    media && (
+      <div
+        class={`app-card-preview${usesIconPreview ? " app-card-icon-preview" : ""}`}
+      >
+        {previewArtwork ? (
+          <span class="app-card-wide-preview" aria-hidden="true">
+            <img
+              src={previewArtwork}
+              alt=""
+              width="512"
+              height="250"
+              loading="lazy"
+            />
+          </span>
+        ) : hasScreenshotPreview ? (
+          <span class="app-card-screens" aria-hidden="true">
+            {previewScreenshots.map((screenshot) => (
+              <img
+                class="app-card-screen"
+                src={screenshot}
+                alt=""
+                width={screenshotSize.width}
+                height={screenshotSize.height}
+                loading="lazy"
+              />
+            ))}
+          </span>
+        ) : (
+          <span class="app-card-icon-preview-inner">
+            <img src={app.icon} alt="" width="72" height="72" loading="lazy" />
+            <strong>{app.shortTitle}</strong>
+          </span>
+        )}
+      </div>
+    )
+  }
+  <div class="app-card-header">
+    <img
+      class="app-icon"
+      src={app.icon}
+      alt=""
+      width="54"
+      height="54"
+      loading="lazy"
+    />
+    <div class="app-card-title-block">
+      <h3>{app.shortTitle}</h3>
+      <div class="badge-row">
+        <span class="badge">{app.category}</span>
+        <span class={`status-badge ${app.status.toLowerCase()}`}>
+          {app.status}
+        </span>
+      </div>
+    </div>
+  </div>
+  <p>{app.summary}</p>
+  <div class="app-card-actions">
+    <a class="button primary" href={appHref}>View app</a>
+  </div>
+</article>

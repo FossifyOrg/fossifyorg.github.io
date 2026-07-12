@@ -1,8 +1,109 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Profile from "../components/Profile.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
 ---
 
-<Layout title="Fossify | About us" lang="en" dir="ltr">
-  <Profile lang="en" />
-</Layout>
+<BaseLayout
+  title="About - Fossify"
+  description="About the Fossify open-source Android app project, its repositories, releases, translations, and policies."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">About</p>
+        <h1 class="page-title">The Fossify project</h1>
+        <p class="lead">
+          Fossify develops open-source Android apps for common phone tasks,
+          including photos, calendars, files, messages, calls, music, notes,
+          camera, keyboard, and utilities.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/apps/">Browse apps</a>
+          <a class="button subtle" href={site.github}>Source code</a>
+        </div>
+      </div>
+      <aside class="panel project-facts" aria-label="Fossify project facts">
+        <h2>Project facts</h2>
+        <dl class="definition-list">
+          <div><dt>Platform</dt><dd>Android</dd></div>
+          <div><dt>Source</dt><dd>Public repositories on GitHub</dd></div>
+          <div><dt>Translations</dt><dd>Hosted Weblate</dd></div>
+          <div><dt>Accounts</dt><dd>No Fossify account required</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Scope</p>
+        <h2 class="section-title">Apps for local Android tasks</h2>
+      </div>
+      <div class="prose prose-no-top">
+        <p>
+          The apps use Android's local data and system services for the task at
+          hand. They request only the permissions needed for their features,
+          contain no advertising, and do not track users.
+        </p>
+        <p>
+          Some features use services selected on the device, such as a mobile
+          carrier, calendar account, share target, or storage provider. Each app
+          policy describes those boundaries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Public record</p>
+          <h2 class="section-title">Source and releases</h2>
+        </div>
+        <p class="lead">
+          Repositories carry their own license and contribution guidance. Issue
+          history, tags, and releases are available with the code.
+        </p>
+      </div>
+      <div class="grid three">
+        <article class="panel compact-panel">
+          <h3>Source and licenses</h3>
+          <p>
+            Each app repository includes its source, license, and build files.
+          </p>
+          <a class="button subtle" href={site.github}>Browse repositories</a>
+        </article>
+        <article class="panel compact-panel">
+          <h3>Releases</h3>
+          <p>GitHub releases and tags provide current versions and dates.</p>
+          <a class="button subtle" href="/updates/">View releases</a>
+        </article>
+        <article class="panel compact-panel">
+          <h3>Translations</h3>
+          <p>App strings and translation review are organized in Weblate.</p>
+          <a class="button subtle" href="/translations/"
+            >Translation information</a
+          >
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container support-cta">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Project questions</h2>
+        <p>
+          Use discussions for public questions and email for private contact.
+        </p>
+      </div>
+      <div class="actions compact-actions">
+        <a class="button primary" href={site.discussions}>Open discussions</a>
+        <a class="button subtle" href={`mailto:${site.email}`}>Email Fossify</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

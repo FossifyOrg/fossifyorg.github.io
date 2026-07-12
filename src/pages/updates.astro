@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { apps } from "../data/apps";
+import {
+  releaseActionLabelFor,
+  releaseDateLabelFor,
+  releaseLinkFor,
+  releaseSourceLabel,
+  releaseVersionFor,
+} from "../data/release-info";
+import { site } from "../data/site";
+
+const playCount = apps.filter((app) => app.links.play).length;
+const fdroidCount = apps.filter((app) => app.links.fdroid).length;
+---
+
+<BaseLayout
+  title="Releases - Fossify"
+  description="Current Fossify source releases, package names, dates, and release notes."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Releases</p>
+        <h1 class="page-title">Current app releases</h1>
+        <p class="lead">
+          Versions and dates come from each app's GitHub release or tag. Store
+          availability can follow a different schedule.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#release-table">View releases</a>
+          <a class="button subtle" href="/install/">Install options</a>
+        </div>
+      </div>
+      <aside
+        class="panel release-source-summary"
+        aria-label="Release data source"
+      >
+        <h2>Release data</h2>
+        <dl class="definition-list">
+          <div>
+            <dt>Version source</dt>
+            <dd>{releaseSourceLabel}</dd>
+          </div>
+          <div>
+            <dt>Google Play listings</dt>
+            <dd>{playCount} apps</dd>
+          </div>
+          <div>
+            <dt>F-Droid listings</dt>
+            <dd>{fdroidCount} apps</dd>
+          </div>
+        </dl>
+        <p>
+          The package name identifies the Android app when comparing stores or
+          filing a report.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="release-table">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Release index</p>
+          <h2 class="section-title">Versions by app</h2>
+        </div>
+        <p class="lead">
+          See what changed in the release notes, or open the app page for
+          screenshots and install links.
+        </p>
+      </div>
+      <div class="release-index-grid">
+        {
+          apps.map((app) => (
+            <article class="card release-index-card">
+              <header>
+                <a class="release-app-title" href={`/apps/${app.slug}/`}>
+                  <img
+                    class="app-icon small"
+                    src={app.icon}
+                    alt=""
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                  />
+                  <span>
+                    <strong>{app.shortTitle}</strong>
+                    <small>{app.status}</small>
+                  </span>
+                </a>
+                <span class="release-version">
+                  {releaseVersionFor(app.slug).startsWith("No ")
+                    ? releaseVersionFor(app.slug)
+                    : `v${releaseVersionFor(app.slug)}`}
+                </span>
+              </header>
+              <dl class="release-details">
+                <div>
+                  <dt>Release</dt>
+                  <dd>{releaseDateLabelFor(app.slug)}</dd>
+                </div>
+                <div>
+                  <dt>Package</dt>
+                  <dd>
+                    <code>{app.packageName}</code>
+                  </dd>
+                </div>
+              </dl>
+              <div class="text-link-list">
+                <a href={releaseLinkFor(app.slug, app.links.github)}>
+                  {releaseActionLabelFor(app.slug)}
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="table-note">
+        This page tracks source releases, not Play or F-Droid review status. See
+        the <a href="/install/">install guide</a> for channel details or the{
+          " "
+        }
+        <a href={site.github}>GitHub organization</a> for repository history.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

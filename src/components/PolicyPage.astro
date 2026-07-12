@@ -1,0 +1,176 @@
+---
+import { apps } from "../data/apps";
+import { policyRoutes, site, type PolicyDetails } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+type Policy = (typeof policyRoutes)[number];
+
+type Props = {
+  policy: Policy;
+  canonicalPath: string;
+};
+
+const { policy, canonicalPath } = Astro.props;
+const relatedApp = apps.find((app) => app.links.policy === canonicalPath);
+const isUnlisted = "unlisted" in policy && policy.unlisted;
+const policyDetails: PolicyDetails = relatedApp
+  ? {
+      privacy: relatedApp.privacy,
+      dataAccess: relatedApp.dataAccess,
+      permissionSummary: relatedApp.permissionSummary,
+      dataLeavingDevice: relatedApp.dataLeavingDevice,
+    }
+  : policy.details!;
+---
+
+<BaseLayout
+  title={`Privacy policy for ${policy.appName}`}
+  description={`How ${policy.appName} handles app data, Android permissions, logs, and support information.`}
+  canonicalPath={canonicalPath}
+  noindex={isUnlisted}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">App privacy policy</p>
+      <h1 class="page-title">Privacy policy for {policy.appName}</h1>
+      <p class="lead">Effective {policy.updated}.</p>
+      <div class="actions">
+        <a class="button subtle" href="/policy/">All app policies</a>
+        {
+          relatedApp && (
+            <>
+              <a class="button primary" href={`/apps/${relatedApp.slug}/`}>
+                App details
+              </a>
+              <a class="button subtle" href={relatedApp.links.github}>
+                Source code
+              </a>
+            </>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <>
+    <section class="section section-band">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Summary</p>
+            <h2 class="section-title">Local data and Android access</h2>
+          </div>
+          <p class="lead">
+            {policyDetails.privacy} The app does not request Android's Internet permission
+            or send usage data to Fossify.
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="panel compact-panel">
+            <h3>On-device data</h3>
+            <p>{policyDetails.dataAccess[0]}</p>
+          </article>
+          <article class="panel compact-panel">
+            <h3>Android access</h3>
+            <p>{policyDetails.permissionSummary[0]}</p>
+          </article>
+          <article class="panel compact-panel">
+            <h3>Outside the device</h3>
+            <p>{policyDetails.dataLeavingDevice}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container prose policy-prose">
+        <h2>Scope</h2>
+        <p>
+          This policy describes how {policy.appName} handles information used by its
+          features. Fossify does not provide an account or cloud service for this
+          app.
+        </p>
+
+        <h2>Data processed on the device</h2>
+        <p>
+          The app reads or creates the following information only as needed for
+          its features:
+        </p>
+        <ul>
+          {policyDetails.dataAccess.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h2>Permissions and system services</h2>
+        <p>
+          {
+            policyDetails.permissionsIntro ??
+              "Android access depends on the feature, Android version, and choices made in system settings. Relevant access includes:"
+          }
+        </p>
+        <ul>
+          {policyDetails.permissionSummary.map((item) => <li>{item}</li>)}
+        </ul>
+        <p>
+          {
+            policyDetails.permissionsFooter ??
+              "Permissions can be reviewed or revoked in Android settings. Some features will stop working when their permission is unavailable."
+          }
+        </p>
+
+        <h2>Advertising, tracking, and data collection</h2>
+        <p>
+          {policy.appName} does not request Android's Internet permission. It contains
+          no advertising and does not track users. The app does not send app data,
+          usage records, or identifiers to Fossify. It does not send data to third
+          parties for advertising, analytics, or tracking.
+        </p>
+
+        <h2>Other apps and services</h2>
+        <p>{policyDetails.dataLeavingDevice}</p>
+        <p>
+          {
+            policyDetails.otherServices ??
+              "Android, app stores, backup and device-transfer services, and any external app or provider you choose to use operate under their own terms and privacy policies."
+          }
+        </p>
+
+        <h2>Storage and deletion</h2>
+        {
+          policyDetails.storageAndDeletion ? (
+            policyDetails.storageAndDeletion.map((item) => <p>{item}</p>)
+          ) : (
+            <p>
+              App settings and local records remain on the device until they are
+              changed or deleted in the app, cleared through Android settings,
+              or removed by uninstalling the app. Files or records managed
+              through Android system providers follow those providers' storage,
+              deletion, and backup settings.
+            </p>
+          )
+        }
+
+        <h2>Logs and support</h2>
+        <p>
+          The app does not send diagnostic or usage logs to Fossify. If you
+          report a problem, you decide what text, screenshots, recordings, or
+          log files to share. Public issue reports are visible to anyone;
+          contact Fossify by email before sharing private information.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          The app runs within Android's application and permission model.
+          {relatedApp && " Its source code is public for review."} Keep Android and
+          the app up to date.
+        </p>
+
+        <h2>Changes and contact</h2>
+        <p>
+          Material changes will be published on this page with a new effective
+          date. Questions about this policy can be sent to{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </section>
+  </>
+</BaseLayout>

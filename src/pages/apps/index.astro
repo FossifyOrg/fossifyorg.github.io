@@ -1,0 +1,100 @@
+---
+import AppCard from "../../components/AppCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { appCategories, apps } from "../../data/apps";
+
+const categoryCopy: Record<string, string> = {
+  Media: "Photos, video, recording, and local music playback.",
+  Everyday: "Calendar, notes, typing, time, and home-screen tools.",
+  Utilities: "File management, calculations, and drawing.",
+  Communication:
+    "Phone, messages, and contacts for basic communication on the device.",
+  Funding: "Project funding, customization, and shared app settings.",
+};
+
+const categoryHeading: Record<string, string> = {
+  Media: "Media apps",
+  Everyday: "Everyday apps",
+  Utilities: "Utility apps",
+  Communication: "Communication apps",
+  Funding: "Project funding",
+};
+
+const grouped = appCategories.map((category) => ({
+  category,
+  apps: apps.filter((app) => app.category === category),
+}));
+---
+
+<BaseLayout
+  title="Apps - Fossify"
+  description="Find Fossify Android apps by task, with install options, source, versions, and privacy policies."
+>
+  <section class="page-hero app-directory-hero">
+    <div class="container app-directory-hero-grid">
+      <div>
+        <p class="eyebrow">Apps</p>
+        <h1 class="page-title">Fossify apps</h1>
+        <p class="lead">
+          Android tools for photos, calendars, files, messages, calls, music,
+          notes, camera, keyboard, and other everyday tasks.
+        </p>
+        <div class="actions">
+          {
+            grouped.map(({ category }) => (
+              <a class="chip-link" href={`#${category.toLowerCase()}`}>
+                {category}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <aside class="panel status-key" aria-labelledby="release-status-title">
+        <h2 id="release-status-title">Release status</h2>
+        <dl>
+          <div>
+            <dt><span class="status-badge stable">Stable</span></dt>
+            <dd>Published for general use.</dd>
+          </div>
+          <div>
+            <dt><span class="status-badge beta">Beta</span></dt>
+            <dd>
+              Published, with active testing and development still under way.
+            </dd>
+          </div>
+        </dl>
+        <a href="/updates/">Latest releases</a>
+      </aside>
+    </div>
+  </section>
+
+  {
+    grouped.map(({ category, apps: categoryApps }) => (
+      <section class="section app-category-section" id={category.toLowerCase()}>
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">{category}</p>
+              <h2 class="section-title">{categoryHeading[category]}</h2>
+            </div>
+            <div>
+              <p class="lead">{categoryCopy[category]}</p>
+              {category === "Funding" && (
+                <a class="section-link" href="/donate/">
+                  Funding options
+                </a>
+              )}
+            </div>
+          </div>
+          <div
+            class={`grid three app-directory-grid app-count-${categoryApps.length}`}
+          >
+            {categoryApps.map((app) => (
+              <AppCard app={app} media />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

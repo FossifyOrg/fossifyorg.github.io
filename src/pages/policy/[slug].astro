@@ -1,0 +1,18 @@
+---
+import PolicyPage from "../../components/PolicyPage.astro";
+import { policyRoutes } from "../../data/site";
+
+export const getStaticPaths = () =>
+  policyRoutes.map((policy) => ({
+    params: { slug: policy.slug },
+    props: { policy },
+  }));
+
+type Props = {
+  policy: (typeof policyRoutes)[number];
+};
+
+const { policy } = Astro.props;
+---
+
+<PolicyPage policy={policy} canonicalPath={`/policy/${policy.slug}.html`} />

@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const recoveryRoutes = [
+  {
+    title: "Apps",
+    body: "Browse Fossify tools for gallery, calendar, files, messages, phone, music, notes, and more.",
+    href: "/apps/",
+    action: "Browse apps",
+  },
+  {
+    title: "Install and versions",
+    body: "Store links, package names, versions, and source releases.",
+    href: "/install/",
+    action: "Install guide",
+  },
+  {
+    title: "Help",
+    body: "App bugs, project questions, and private contact.",
+    href: "/support/",
+    action: "Help guide",
+  },
+  {
+    title: "Policies",
+    body: "Privacy details for each current app.",
+    href: "/policy/",
+    action: "App policies",
+  },
+];
+---
+
+<BaseLayout
+  title="Page not found - Fossify"
+  description="The requested Fossify page could not be found."
+  noindex
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1 class="page-title">Page not found</h1>
+      <p class="lead">The address may be old, moved, or mistyped.</p>
+      <div class="actions">
+        <a class="button primary" href="/apps/">Browse apps</a>
+        <a class="button" href="/install/">Install guide</a>
+        <a class="button subtle" href="/">Home</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Fossify</p>
+          <h2 class="section-title">Useful links</h2>
+        </div>
+      </div>
+      <div class="grid four">
+        {
+          recoveryRoutes.map((route) => (
+            <article class="panel compact-panel">
+              <h3>{route.title}</h3>
+              <p>{route.body}</p>
+              <a class="button subtle" href={route.href}>
+                {route.action}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StatementCard from "../components/StatementCard.astro";
+import { apps } from "../data/apps";
+
+const installSummaryItems = [
+  { label: "Open an app page for current store links", href: "#choose-app" },
+  {
+    label: "Check the destination store's version",
+    href: "#switching",
+  },
+  { label: "Back up important app data", href: "#switching" },
+  { label: "View source releases and release notes", href: "/updates/" },
+];
+
+const channels = [
+  {
+    title: "Google Play",
+    body: "Use the Play listing linked from the app page. Play handles installation and updates for that copy.",
+  },
+  {
+    title: "F-Droid",
+    body: "Use the F-Droid listing linked from the app page. F-Droid verifies and publishes releases on its own schedule.",
+  },
+  {
+    title: "GitHub",
+    body: "GitHub provides source, tags, release notes, and issue history rather than managed app updates.",
+  },
+];
+---
+
+<BaseLayout
+  title="Install - Fossify"
+  description="Install released Fossify apps from their Google Play or F-Droid listings."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Install</p>
+        <h1 class="page-title">Install Fossify apps</h1>
+        <p class="lead">
+          Open an app page, then use its Google Play or F-Droid link. Store
+          listings handle installation and updates for their copies.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/apps/">Browse apps</a>
+          <a class="button subtle" href="/updates/">View releases</a>
+        </div>
+      </div>
+      <StatementCard
+        title="Switching stores"
+        body="Fossify uses the same package name and signing key for its Google Play and F-Droid releases."
+        items={installSummaryItems}
+        ariaLabel="Store-switching checklist"
+      />
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Install sources</p>
+          <h2 class="section-title">Choose a store</h2>
+        </div>
+        <p class="lead">
+          Play and F-Droid publish independently, so release timing can differ.
+        </p>
+      </div>
+      <div class="grid three">
+        {
+          channels.map((channel) => (
+            <article class="panel compact-panel">
+              <h3>{channel.title}</h3>
+              <p>{channel.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="choose-app">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Released apps</p>
+          <h2 class="section-title">Choose an app</h2>
+        </div>
+        <p class="lead">
+          Each app includes store availability, package name, release, source,
+          and privacy details.
+        </p>
+      </div>
+      <div class="quick-app-grid install-app-grid">
+        {
+          apps.map((app) => {
+            const channels = [
+              app.links.play && "Play",
+              app.links.fdroid && "F-Droid",
+            ].filter(Boolean);
+
+            return (
+              <a class="quick-app-link" href={`/apps/${app.slug}/`}>
+                <img
+                  src={app.icon}
+                  alt=""
+                  width="36"
+                  height="36"
+                  loading="lazy"
+                />
+                <span>{app.shortTitle}</span>
+                <small>{channels.join(" + ")}</small>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" id="switching">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Changing stores</p>
+        <h2 class="section-title">Switch between Play and F-Droid</h2>
+        <p class="lead">
+          Fossify uses the same package name and signing key on Google Play and
+          F-Droid. You can change stores without uninstalling when the
+          destination offers the same or a newer version.
+        </p>
+      </div>
+      <ul class="feature-list">
+        <li>Check that the destination release is the same or newer.</li>
+        <li>Use the destination store link from the app page.</li>
+        <li>Install that store's release over the existing app.</li>
+        <li>Back up or export app data when the app provides that option.</li>
+        <li>Include the install source when reporting an update problem.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

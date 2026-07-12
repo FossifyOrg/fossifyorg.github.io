@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Translations - Fossify"
+  description="Translate and review Fossify Android app strings in Hosted Weblate."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Translations</p>
+        <h1 class="page-title">Translate Fossify apps</h1>
+        <p class="lead">
+          Hosted Weblate contains the current app strings, language progress,
+          comments, and review tools.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={site.translations}
+            >Open Fossify on Weblate</a
+          >
+          <a class="button subtle" href="/contribute/"
+            >Contribution information</a
+          >
+        </div>
+      </div>
+      <aside class="panel translation-checklist">
+        <h2>When changing a string</h2>
+        <ul class="plain-list">
+          <li>Keep placeholders and formatting markers unchanged.</li>
+          <li>
+            Check whether the text must fit a button, setting, or notification.
+          </li>
+          <li>Use comments in Weblate when the source text is ambiguous.</li>
+          <li>Review the string in the app when possible.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid three">
+      <article class="panel compact-panel">
+        <h2>App strings</h2>
+        <p>
+          Buttons, settings, messages, notifications, and accessibility text are
+          managed by app and language.
+        </p>
+      </article>
+      <article class="panel compact-panel">
+        <h2>Store metadata</h2>
+        <p>
+          Store descriptions and release notes are translated in separate
+          Weblate metadata components.
+        </p>
+      </article>
+      <article class="panel compact-panel">
+        <h2>English source text</h2>
+        <p>
+          Report mistakes in the original English text through the relevant
+          app's issue tracker, including the affected screen or string.
+        </p>
+        <a class="button subtle" href="/support/">Find the issue tracker</a>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { apps } from "../data/apps";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Help - Fossify"
+  description="Ask Fossify questions, report app bugs, and contact Fossify privately when needed."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Help</p>
+      <h1 class="page-title">Help with Fossify apps</h1>
+      <p class="lead">
+        Use discussions for questions and the affected app's issue tracker for
+        reproducible bugs. Contact Fossify by email about private matters.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#app-issue-trackers"
+          >Report an app bug</a
+        >
+        <a class="button subtle" href={site.discussions}>Ask in discussions</a>
+        <a class="button subtle" href="#private-contact">Private contact</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid two support-route-grid">
+      <article class="panel support-route-card">
+        <h2>Questions and setup</h2>
+        <p>
+          Use GitHub Discussions for setup questions or topics that affect
+          several apps.
+        </p>
+        <a class="button subtle" href={site.discussions}>Open discussions</a>
+      </article>
+      <article class="panel support-route-card">
+        <h2>App bugs</h2>
+        <p>
+          Use the app's issue tracker when a problem affects one app and you can
+          reproduce it.
+        </p>
+        <a class="button subtle" href="#app-issue-trackers">Choose an app</a>
+      </article>
+      <article class="panel support-route-card">
+        <h2>Cross-app and website issues</h2>
+        <p>
+          Use the general tracker for problems that affect more than one app.
+          Use the website tracker for this site.
+        </p>
+        <div class="actions compact-actions">
+          <a class="button subtle" href={site.issues}>Cross-app issues</a>
+          <a class="button subtle" href={site.websiteIssues}>Website issues</a>
+        </div>
+      </article>
+      <article class="panel support-route-card" id="private-contact">
+        <h2>Private reports</h2>
+        <p>
+          Do not post personal information or details of an unpublished security
+          issue in a public issue. Contact Fossify by email instead.
+        </p>
+        <a
+          class="button subtle"
+          href={`mailto:${site.email}?subject=Private%20Fossify%20report`}
+        >
+          Email {site.email}
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band" id="app-issue-trackers">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">App issue trackers</p>
+          <h2 class="section-title">Choose the affected app</h2>
+        </div>
+        <p class="lead">
+          Search existing reports before opening a new issue. GitHub accounts
+          are required to file or comment on an issue.
+        </p>
+      </div>
+      <div class="quick-app-panel support-app-panel">
+        <div class="quick-app-grid">
+          {
+            apps.map((app) => (
+              <a
+                class="quick-app-link"
+                href={`${app.links.github}/issues`}
+                aria-label={`Open ${app.title} issue tracker on GitHub`}
+              >
+                <img
+                  src={app.icon}
+                  alt=""
+                  width="36"
+                  height="36"
+                  loading="lazy"
+                />
+                <span>{app.shortTitle}</span>
+                <small>Issue tracker</small>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Bug report details</p>
+        <h2 class="section-title">What to include in a bug report</h2>
+        <p class="lead">
+          A useful report includes the environment, the steps that trigger the
+          problem, and the result you expected.
+        </p>
+      </div>
+      <div>
+        <ul class="feature-list">
+          <li>Search the issue tracker for the same behavior.</li>
+          <li>
+            Include app version, Android version, device model, and install
+            source.
+          </li>
+          <li>
+            List the shortest sequence of steps that reproduces the problem.
+          </li>
+          <li>State what happened and what you expected.</li>
+          <li>Attach a screenshot or recording when useful.</li>
+        </ul>
+        <pre
+          class="code-block support-template"><code>App and version:
+Installed from:
+Android version and device:
+Steps to reproduce:
+What happened:
+What you expected:</code></pre>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

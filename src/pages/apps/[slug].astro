@@ -1,0 +1,250 @@
+---
+import ScreenshotRail from "../../components/ScreenshotRail.astro";
+import StoreLinks from "../../components/StoreLinks.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { apps, type FossifyApp } from "../../data/apps";
+import {
+  releaseDateLabelFor,
+  releaseLinkFor,
+  releaseVersionFor,
+} from "../../data/release-info";
+
+export const getStaticPaths = () =>
+  apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+
+type Props = {
+  app: FossifyApp;
+};
+
+const { app } = Astro.props;
+const screenshotCaptions = app.screenshots.map(
+  (_, index) => app.screenshotCaptions?.[index] ?? `Screenshot ${index + 1}`,
+);
+const galleryScreenshots =
+  app.screenshotLayout === "wide" ? app.screenshots : app.screenshots.slice(1);
+const galleryCaptions =
+  app.screenshotLayout === "wide"
+    ? screenshotCaptions
+    : screenshotCaptions.slice(1);
+const screenshotSize = app.screenshotSize ?? { width: 540, height: 1200 };
+const heroArtwork =
+  app.screenshotLayout === "wide"
+    ? (app.featureImage ?? app.screenshots[0])
+    : app.screenshots[0]
+      ? undefined
+      : app.featureImage;
+const releaseHref = releaseLinkFor(app.slug, app.links.github);
+const releaseVersion = releaseVersionFor(app.slug);
+const statusDescription =
+  app.status === "Stable"
+    ? "Published for general use."
+    : "Published, with active testing and development still under way.";
+const appFacts = [
+  {
+    label: "Latest GitHub release",
+    value: releaseVersion.startsWith("No ")
+      ? releaseVersion
+      : `v${releaseVersion}`,
+    note: releaseDateLabelFor(app.slug),
+    href: releaseHref,
+  },
+  {
+    label: "Package name",
+    value: app.packageName ?? "No package name listed",
+    note: "Android app identity.",
+  },
+  {
+    label: "Release status",
+    value: app.status,
+    note: statusDescription,
+  },
+];
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: app.title,
+  description: app.summary,
+  applicationCategory: `${app.category}Application`,
+  operatingSystem: "Android",
+  isAccessibleForFree: app.isFree ?? true,
+  softwareVersion: releaseVersion.startsWith("No ")
+    ? undefined
+    : releaseVersion,
+  codeRepository: app.links.github,
+  downloadUrl: app.links.play ?? app.links.fdroid,
+};
+---
+
+<BaseLayout
+  title={`${app.title} - Fossify`}
+  description={app.summary}
+  image={app.featureImage ?? app.icon}
+  imageAlt={`${app.title} preview`}
+  canonicalPath={`/apps/${app.slug}/`}
+  structuredData={structuredData}
+>
+  <section class="page-hero app-detail-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <div class="app-detail-heading">
+          <img
+            class="app-icon app-detail-icon"
+            src={app.icon}
+            alt=""
+            width="66"
+            height="66"
+            loading="eager"
+          />
+          <div>
+            <h1 class="page-title app-title-heading">{app.title}</h1>
+            <div class="badge-row app-detail-badges">
+              <span class="badge">{app.category}</span>
+              <span class={`status-badge ${app.status.toLowerCase()}`}>
+                {app.status}
+              </span>
+            </div>
+          </div>
+        </div>
+        <p class="lead">{app.tagline}</p>
+        <p class="lead">{app.description}</p>
+        <div class="actions">
+          <StoreLinks links={app.links} />
+        </div>
+      </div>
+      <div class="app-hero-media">
+        {
+          app.screenshots[0] && app.screenshotLayout !== "wide" ? (
+            <img
+              class="app-hero-screenshot"
+              src={app.screenshots[0]}
+              alt={`${app.title}: ${screenshotCaptions[0]}`}
+              width={screenshotSize.width}
+              height={screenshotSize.height}
+              loading="eager"
+              fetchpriority="high"
+            />
+          ) : heroArtwork ? (
+            <img
+              class="app-hero-artwork"
+              src={heroArtwork}
+              alt={`${app.title} artwork`}
+              width="820"
+              height="400"
+              loading="eager"
+              fetchpriority="high"
+            />
+          ) : null
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="app-facts" aria-label={`${app.shortTitle} app facts`}>
+    <div class="container app-fact-grid">
+      {
+        appFacts.map((fact) =>
+          fact.href ? (
+            <a class="app-fact-card" href={fact.href}>
+              <span>{fact.label}</span>
+              <strong>{fact.value}</strong>
+              <small>{fact.note}</small>
+            </a>
+          ) : (
+            <article class="app-fact-card">
+              <span>{fact.label}</span>
+              <strong>{fact.value}</strong>
+              <small>{fact.note}</small>
+            </article>
+          ),
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Features</p>
+        <h2 class="section-title">{app.featureHeading}</h2>
+        <p class="lead">{app.summary}</p>
+      </div>
+      <ul class="feature-list">
+        {app.features.map((feature) => <li>{feature}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Data and permissions</p>
+          <h2 class="section-title">What the app accesses</h2>
+        </div>
+        <p class="lead">
+          {
+            `This app does not request Android's Internet permission. ${app.dataLeavingDevice}`
+          }
+        </p>
+      </div>
+      <div class="grid two">
+        <article class="panel compact-panel">
+          <h3>Data used on the device</h3>
+          <ul class="plain-list">
+            {app.dataAccess.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="panel compact-panel">
+          <h3>Android access</h3>
+          <ul class="plain-list">
+            {app.permissionSummary.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="button subtle" href={app.links.policy}>Privacy policy</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {
+    galleryScreenshots.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="screenshot-section-inner">
+            <p class="eyebrow">Screenshots</p>
+            <h2 class="section-title">{app.shortTitle} in use</h2>
+            <ScreenshotRail
+              screenshots={galleryScreenshots}
+              title={app.title}
+              captions={galleryCaptions}
+              layout={app.screenshotLayout}
+              screenshotWidth={screenshotSize.width}
+              screenshotHeight={screenshotSize.height}
+            />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section compact section-band">
+    <div class="container support-cta">
+      <div>
+        <p class="eyebrow">Help</p>
+        <h2>Report a problem with {app.shortTitle}</h2>
+        <p>
+          Include the app version, Android version, device model, install
+          source, and steps that reproduce the problem.
+        </p>
+      </div>
+      <div class="actions compact-actions">
+        <a class="button primary" href={`${app.links.github}/issues`}>
+          Open issue tracker
+        </a>
+        <a class="button subtle" href="/support/">Help guide</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

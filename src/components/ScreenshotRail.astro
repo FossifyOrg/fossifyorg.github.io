@@ -1,0 +1,42 @@
+---
+type Props = {
+  screenshots: string[];
+  title: string;
+  captions?: string[];
+  layout?: "phone" | "wide";
+  screenshotWidth?: number;
+  screenshotHeight?: number;
+};
+
+const {
+  screenshots,
+  title,
+  captions = [],
+  layout = "phone",
+  screenshotWidth = 540,
+  screenshotHeight = 1200,
+} = Astro.props;
+const wideLayout = layout === "wide";
+---
+
+{
+  screenshots.length > 0 && (
+    <div
+      class={`screenshot-rail${wideLayout ? " screenshot-rail-wide" : ""}`}
+      aria-label={`${title} screenshots`}
+    >
+      {screenshots.map((screenshot, index) => (
+        <figure class="screenshot-frame">
+          <img
+            src={screenshot}
+            alt={`${title}: ${captions[index] ?? `screenshot ${index + 1}`}`}
+            width={wideLayout ? 820 : screenshotWidth}
+            height={wideLayout ? 400 : screenshotHeight}
+            loading="lazy"
+          />
+          {captions[index] && <figcaption>{captions[index]}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  )
+}

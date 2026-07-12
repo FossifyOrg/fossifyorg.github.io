@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { apps } from "../../data/apps";
+import { policyRoutes } from "../../data/site";
+
+const currentPolicies = apps.map((app) => {
+  const route = policyRoutes.find((policy) =>
+    app.links.policy.endsWith(`${policy.slug}.html`),
+  );
+  return { app, route };
+});
+---
+
+<BaseLayout
+  title="App privacy policies - Fossify"
+  description="App-specific Fossify privacy policies covering local data, Android permissions, external services, and support information."
+  canonicalPath="/policy/"
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">App privacy</p>
+        <h1 class="page-title">Privacy policies by app</h1>
+        <p class="lead">
+          Each policy describes the app's on-device data, Android permissions,
+          and when another app or service handles data.
+        </p>
+      </div>
+      <aside class="panel policy-baseline" aria-label="Policy baseline">
+        <h2>Common baseline</h2>
+        <ul class="plain-list">
+          <li>No Fossify account or cloud service.</li>
+          <li>No advertising or tracking.</li>
+          <li>No unnecessary permissions.</li>
+          <li>No diagnostic or usage logs sent to Fossify.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="policy-list">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Current apps</p>
+          <h2 class="section-title">Choose an app</h2>
+        </div>
+        <p class="lead">
+          Each policy lists the app's data access, permissions, and sharing
+          behavior.
+        </p>
+      </div>
+      <div class="policy-card-grid">
+        {
+          currentPolicies.map(({ app, route }) => (
+            <a class="card policy-card" href={app.links.policy}>
+              <img
+                src={app.icon}
+                alt=""
+                width="44"
+                height="44"
+                loading="lazy"
+              />
+              <span>
+                <strong>{app.shortTitle}</strong>
+                <small>{route?.updated ?? "Policy"}</small>
+              </span>
+              <span class={`status-badge ${app.status.toLowerCase()}`}>
+                {app.status}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
