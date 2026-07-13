@@ -1,0 +1,149 @@
+{
+  "source": "GitHub Releases and Tags API",
+  "apps": {
+    "calculator": {
+      "title": "Fossify Calculator",
+      "repo": "Calculator",
+      "sourceVersion": "1.4.0",
+      "sourceTag": "1.4.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Calculator/releases/tag/1.4.0",
+      "publishedAt": "2026-01-30T20:48:02Z"
+    },
+    "calendar": {
+      "title": "Fossify Calendar",
+      "repo": "Calendar",
+      "sourceVersion": "1.10.3",
+      "sourceTag": "1.10.3",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Calendar/releases/tag/1.10.3",
+      "publishedAt": "2026-02-17T02:37:11Z"
+    },
+    "camera": {
+      "title": "Fossify Camera",
+      "repo": "Camera",
+      "sourceVersion": "1.5.0",
+      "sourceTag": "1.5.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Camera/releases/tag/1.5.0",
+      "publishedAt": "2026-01-30T20:47:48Z"
+    },
+    "clock": {
+      "title": "Fossify Clock",
+      "repo": "Clock",
+      "sourceVersion": "1.6.0",
+      "sourceTag": "1.6.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Clock/releases/tag/1.6.0",
+      "publishedAt": "2026-01-30T20:47:19Z"
+    },
+    "contacts": {
+      "title": "Fossify Contacts",
+      "repo": "Contacts",
+      "sourceVersion": "1.6.0",
+      "sourceTag": "1.6.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Contacts/releases/tag/1.6.0",
+      "publishedAt": "2026-01-30T20:46:35Z"
+    },
+    "file-manager": {
+      "title": "Fossify File Manager",
+      "repo": "File-Manager",
+      "sourceVersion": "1.6.1",
+      "sourceTag": "1.6.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/File-Manager/releases/tag/1.6.1",
+      "publishedAt": "2026-02-17T02:35:26Z"
+    },
+    "gallery": {
+      "title": "Fossify Gallery",
+      "repo": "Gallery",
+      "sourceVersion": "1.13.1",
+      "sourceTag": "1.13.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Gallery/releases/tag/1.13.1",
+      "publishedAt": "2026-02-17T02:37:20Z"
+    },
+    "keyboard": {
+      "title": "Fossify Keyboard",
+      "repo": "Keyboard",
+      "sourceVersion": "1.9.1",
+      "sourceTag": "1.9.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Keyboard/releases/tag/1.9.1",
+      "publishedAt": "2026-02-02T06:05:10Z"
+    },
+    "launcher": {
+      "title": "Fossify Launcher",
+      "repo": "Launcher",
+      "sourceVersion": "1.10.0",
+      "sourceTag": "1.10.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Launcher/releases/tag/1.10.0",
+      "publishedAt": "2026-02-17T02:37:58Z"
+    },
+    "messages": {
+      "title": "Fossify Messages",
+      "repo": "Messages",
+      "sourceVersion": "1.8.1",
+      "sourceTag": "1.8.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Messages/releases/tag/1.8.1",
+      "publishedAt": "2026-07-09T21:30:00Z"
+    },
+    "music-player": {
+      "title": "Fossify Music Player",
+      "repo": "Music-Player",
+      "sourceVersion": "1.8.1",
+      "sourceTag": "1.8.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Music-Player/releases/tag/1.8.1",
+      "publishedAt": "2026-02-17T02:37:34Z"
+    },
+    "notes": {
+      "title": "Fossify Notes",
+      "repo": "Notes",
+      "sourceVersion": "1.7.0",
+      "sourceTag": "1.7.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Notes/releases/tag/1.7.0",
+      "publishedAt": "2026-01-30T20:53:50Z"
+    },
+    "paint": {
+      "title": "Fossify Paint",
+      "repo": "Paint",
+      "sourceVersion": "1.4.0",
+      "sourceTag": "1.4.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Paint/releases/tag/1.4.0",
+      "publishedAt": "2026-01-30T20:53:48Z"
+    },
+    "phone": {
+      "title": "Fossify Phone",
+      "repo": "Phone",
+      "sourceVersion": "1.11.1",
+      "sourceTag": "1.11.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Phone/releases/tag/1.11.1",
+      "publishedAt": "2026-02-03T02:36:25Z"
+    },
+    "thank-you": {
+      "title": "Fossify Thank You",
+      "repo": "Thank-You",
+      "sourceVersion": "1.3.0",
+      "sourceTag": "1.3.0",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Thank-You/releases/tag/1.3.0",
+      "publishedAt": "2026-01-30T18:53:17Z"
+    },
+    "voice-recorder": {
+      "title": "Fossify Voice Recorder",
+      "repo": "Voice-Recorder",
+      "sourceVersion": "1.7.1",
+      "sourceTag": "1.7.1",
+      "sourceKind": "release",
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Voice-Recorder/releases/tag/1.7.1",
+      "publishedAt": "2026-02-17T02:35:50Z"
+    }
+  }
+}

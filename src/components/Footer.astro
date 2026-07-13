@@ -1,91 +1,74 @@
 ---
-import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
-import logo from "../assets/logos/Logo-horizontal.png";
+import { site } from "../data/site";
 
-const { lang } = Astro.props;
-
-import { getEntry } from "astro:content";
-const strings = await getEntry("strings", `${lang}/strings`);
+const footerGroups = [
+  {
+    title: "Apps",
+    className: "footer-group-apps",
+    links: [
+      { label: "Apps", href: "/apps/" },
+      { label: "Install", href: "/install/" },
+      { label: "Releases", href: "/updates/" },
+    ],
+  },
+  {
+    title: "Help and privacy",
+    className: "footer-group-help",
+    links: [
+      { label: "Help", href: "/support/" },
+      { label: "FAQ", href: "/faq/" },
+      { label: "App policies", href: "/policy/" },
+      { label: "Website privacy", href: "/privacy/" },
+    ],
+  },
+  {
+    title: "Project",
+    className: "footer-group-project",
+    links: [
+      { label: "Contribute", href: "/contribute/" },
+      { label: "About", href: "/about/" },
+      { label: "Fund", href: "/donate/" },
+      { label: "Source", href: site.github },
+      { label: "Translations", href: "/translations/" },
+      { label: "Press kit", href: "/press/" },
+    ],
+  },
+];
 ---
 
-<footer>
-  <div class="start">
-    <Image src={logo} alt="horizontal Fossify logo with title" />
-    <h2>{strings?.data.hero.subtitle}</h2>
-    <p>{strings?.data.footer.copyright}</p>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <section class="footer-intro">
+      <img
+        class="footer-logo"
+        src="/assets/brand/logo-horizontal.webp"
+        alt="Fossify"
+        width="150"
+        height="63"
+        loading="lazy"
+      />
+      <h2>Fossify for Android</h2>
+      <p>
+        Open-source Android apps for everyday phone tasks, without advertising
+        or tracking.
+      </p>
+    </section>
+    {
+      footerGroups.map((group) => (
+        <section class={`footer-group ${group.className}`}>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
   </div>
-  <div class="end">
-    <a href="">
-      <Icon name="github" size={32} />
-    </a>
-    <a href="">
-      <Icon name="play_store" size={32} />
-    </a>
-    <a href="">
-      <Icon name="reddit" size={32} />
-    </a>
-    <a href="">
-      <Icon name="telegram" size={32} />
-    </a>
+  <div class="footer-bottom">
+    <div class="container">Copyright 2026 Fossify.</div>
   </div>
 </footer>
-
-<style>
-  footer {
-    background-color: var(--surface-container);
-
-    margin-top: 8rem;
-
-    padding-inline: clamp(3rem, 3rem + 4vw, 14rem);
-    padding-block: clamp(2rem, 2rem + 2vw, 4rem);
-
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 2fr 1fr;
-  }
-
-  @media (width > 1600px) {
-    footer {
-      padding-inline: 20rem;
-    }
-  }
-
-  .start {
-    display: grid;
-    align-content: start;
-    gap: 1rem;
-  }
-
-  .start > img {
-    width: 180px;
-    height: 75px;
-
-    border: 1px solid var(--outline-variant);
-    border-radius: 0.5rem;
-  }
-
-  .start > h2 {
-    font-size: var(--fs-sm);
-    font-weight: 600;
-  }
-
-  .end {
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: end;
-    align-items: center;
-    align-content: start;
-    gap: 2rem;
-  }
-
-  @media (width < 50em) {
-    .end {
-      grid-auto-flow: row;
-    }
-  }
-
-  [data-icon] {
-    color: var(--on-surface);
-  }
-</style>

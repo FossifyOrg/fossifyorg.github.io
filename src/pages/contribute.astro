@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Contribute - Fossify"
+  description="Fossify contribution paths for translations, testing, bug reports, documentation, design feedback, and code contributions."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Contribute</p>
+        <h1 class="page-title">Contribute to Fossify</h1>
+        <p class="lead">
+          Contributions include translations, testing, bug reports,
+          documentation, and design feedback.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={site.translations}
+            >Translate on Weblate</a
+          >
+          <a class="button subtle" href="/support/#app-issue-trackers"
+            >Report an app bug</a
+          >
+        </div>
+      </div>
+      <aside class="panel contribution-note">
+        <h2>Before opening a pull request</h2>
+        <p>
+          Read the contribution guidance in the affected repository and check
+          its open issues before starting work.
+        </p>
+        <a class="section-link" href={site.github}>Browse repositories</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Contribution paths</p>
+          <h2 class="section-title">Ways to contribute</h2>
+        </div>
+        <p class="lead">
+          Translations are managed in Weblate; app reports and code
+          contributions are managed on GitHub.
+        </p>
+      </div>
+      <div class="grid two">
+        <article class="panel support-route-card">
+          <h2>Translations</h2>
+          <p>Translate and review app strings in Hosted Weblate.</p>
+          <a class="button subtle" href="/translations/"
+            >Translation information</a
+          >
+        </article>
+        <article class="panel support-route-card">
+          <h2>Testing and bug reports</h2>
+          <p>
+            Test a released build and report regressions with version, device,
+            and exact steps.
+          </p>
+          <a class="button subtle" href="/support/">Help guide</a>
+        </article>
+        <article class="panel support-route-card">
+          <h2>Documentation and design</h2>
+          <p>
+            Describe the affected screen or text, current behavior, and a
+            concrete change.
+          </p>
+          <a class="button subtle" href={site.issues}>General issue tracker</a>
+        </article>
+        <article class="panel support-route-card">
+          <h2>Code contributions</h2>
+          <p>
+            Choose the relevant app repository, then read its contribution guide
+            and check existing issues.
+          </p>
+          <a class="button subtle" href={site.github}>Browse repositories</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Before you start</p>
+        <h2 class="section-title">A few useful details</h2>
+      </div>
+      <ul class="feature-list">
+        <li>
+          <strong>App reports:</strong> version, Android version, device, install
+          source, and steps to reproduce.
+        </li>
+        <li>
+          <strong>Design and text:</strong> the affected screen, current behavior,
+          and proposed change.
+        </li>
+        <li>
+          <strong>Source changes:</strong> the repository contribution guide and relevant
+          open issues.
+        </li>
+        <li><strong>Translations:</strong> the relevant Weblate component.</li>
+        <li>
+          <strong>Private reports:</strong> contact Fossify through the Help page.
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

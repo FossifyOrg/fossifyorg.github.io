@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { apps } from "../data/apps";
+import { site } from "../data/site";
+
+const shortDescription =
+  "Fossify develops open-source Android apps for common phone tasks. The apps contain no advertising, do not track users, work without a Fossify account, and have public source code and release history on GitHub.";
+
+const mediumDescription =
+  "Fossify is an open-source Android app project covering photos, calendars, files, messages, calls, contacts, music, notes, camera, keyboard, and utilities. The apps request only the permissions needed for their features, contain no advertising, and do not track users. Source code, issues, releases, translations, install links, and app-specific privacy policies are publicly available.";
+---
+
+<BaseLayout
+  title="Press kit - Fossify"
+  description="Fossify logos, project descriptions, facts, app artwork, and contact information for coverage and directories."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Press kit</p>
+        <h1 class="page-title">Fossify press resources</h1>
+        <p class="lead">
+          Logos, project descriptions, current facts, app artwork, and source
+          links for articles, directories, and videos.
+        </p>
+        <div class="actions">
+          <a
+            class="button primary"
+            href="/press/fossify-press-kit.zip"
+            download
+          >
+            Download press kit
+          </a>
+          <a
+            class="button subtle"
+            href={`mailto:${site.email}?subject=Fossify%20press%20question`}
+          >
+            Press contact
+          </a>
+        </div>
+      </div>
+      <aside class="panel press-hero-panel" aria-label="Fossify facts">
+        <img
+          class="press-hero-logo"
+          src="/assets/brand/logo-horizontal.webp"
+          alt="Fossify"
+          width="220"
+          height="92"
+        />
+        <dl class="definition-list">
+          <div><dt>Released apps</dt><dd>{apps.length}</dd></div>
+          <div><dt>Platform</dt><dd>Android</dd></div>
+          <div><dt>Source</dt><dd>GitHub</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container copy-blocks">
+      <article class="panel press-copy-card">
+        <p class="eyebrow">Short description</p>
+        <p>{shortDescription}</p>
+      </article>
+      <article class="panel press-copy-card">
+        <p class="eyebrow">Medium description</p>
+        <p>{mediumDescription}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Assets</p>
+          <h2 class="section-title">Logos and app artwork</h2>
+        </div>
+        <p class="lead">
+          The archive contains square and horizontal logos in SVG,
+          high-resolution PNG, and lossless WebP formats, plus usage notes.
+        </p>
+      </div>
+      <div class="grid three">
+        <article class="card asset-card">
+          <div class="asset-preview icon">
+            <img
+              src="/assets/brand/logo.webp"
+              alt="Fossify square logo"
+              width="96"
+              height="96"
+            />
+          </div>
+          <h3>Square logo</h3>
+          <div class="text-link-list">
+            <a href="/press/fossify-mark.svg">SVG</a>
+            <a href="/press/fossify-mark.png">PNG</a>
+            <a href="/press/fossify-mark.webp">WebP</a>
+          </div>
+        </article>
+        <article class="card asset-card">
+          <div class="asset-preview wide">
+            <img
+              src="/assets/brand/logo-horizontal.webp"
+              alt="Fossify horizontal logo"
+              width="260"
+              height="110"
+            />
+          </div>
+          <h3>Horizontal logo</h3>
+          <div class="text-link-list">
+            <a href="/press/fossify-horizontal.svg">SVG</a>
+            <a href="/press/fossify-horizontal.png">PNG</a>
+            <a href="/press/fossify-horizontal.webp">WebP</a>
+          </div>
+        </article>
+        <article class="card asset-card">
+          <div class="asset-preview press-app-preview">
+            {
+              apps
+                .slice(0, 6)
+                .map((app) => (
+                  <img src={app.icon} alt="" width="56" height="56" />
+                ))
+            }
+          </div>
+          <h3>App icons and screenshots</h3>
+          <p class="muted">Use the files shown on each current app page.</p>
+          <a class="section-link" href="/apps/">Browse apps</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Usage</p>
+        <h2 class="section-title">Asset notes</h2>
+      </div>
+      <ul class="feature-list">
+        <li>
+          Do not change the logo's proportions, colors, or internal spacing.
+        </li>
+        <li>
+          Leave clear space around the mark and use a background with sufficient
+          contrast.
+        </li>
+        <li>
+          Do not use the logo in a way that implies endorsement or an official
+          partnership.
+        </li>
+        <li>
+          Identify modified screenshots or app artwork when the change could be
+          mistaken for the current product.
+        </li>
+        <li>
+          Verify current versions and availability on the Releases and Apps
+          pages before publication.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section compact section-band">
+    <div class="container support-cta">
+      <div>
+        <p class="eyebrow">Sources</p>
+        <h2>Current project information</h2>
+        <p>
+          Use the app pages for screenshots and stores, Releases for versions,
+          and GitHub for source history.
+        </p>
+      </div>
+      <div class="text-link-list">
+        <a href="/apps/">Apps</a>
+        <a href="/updates/">Releases</a>
+        <a href={site.github}>GitHub</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,6 +1,6 @@
 name: Bug report
 description: Create a bug report to help us improve
-labels: [ "bug", "needs triage" ]
+labels: ["bug", "needs triage"]
 body:
   - type: markdown
     attributes:
@@ -18,7 +18,7 @@ body:
           required: true
         - label: "I made sure that there are **no existing issues** - [open](https://github.com/FossifyOrg/fossifyorg.github.io/issues) or [closed](https://github.com/FossifyOrg/fossifyorg.github.io/issues?q=is%3Aissue+is%3Aclosed) - to which I could contribute my information."
           required: true
-        - label: "I made sure that there are **no existing discussions** - [open](https://github.com/FossifyOrg/fossifyorg.github.io/discussions) or [closed](https://github.com/FossifyOrg/fossifyorg.github.io/discussions?discussions_q=is%3Aclosed) - to which I could contribute my information."
+        - label: "I made sure that there are **no existing discussions** - [open](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:open) or [closed](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:closed) - to which I could contribute my information."
           required: true
         - label: "**I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise.**"
           required: true
@@ -91,4 +91,3 @@ body:
         * you have disabled all animations on your device
         * your rabbit chewed your network cable
         * ...
-

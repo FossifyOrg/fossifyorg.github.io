@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StatementCard from "../components/StatementCard.astro";
+import { site } from "../data/site";
+
+const privacyBasics = [
+  {
+    title: "No analytics",
+    body: "Fossify does not add analytics pixels or embedded social widgets.",
+  },
+  {
+    title: "No tracking cookies",
+    body: "Fossify does not set tracking cookies on fossify.org.",
+  },
+  {
+    title: "No third-party scripts",
+    body: "No advertising scripts, social embeds, or third-party font calls are loaded.",
+  },
+];
+
+const privacyRoutes = [
+  {
+    title: "App policies",
+    body: "Each app has its own policy for permissions, local data, and external services.",
+    href: "/policy/",
+    action: "App policies",
+  },
+  {
+    title: "Source code",
+    body: "Source code, issues, and releases provide a public record for each app.",
+    href: site.github,
+    action: "Browse source",
+  },
+  {
+    title: "Contact",
+    body: "Use email for private questions about the site or Fossify apps.",
+    href: `mailto:${site.email}`,
+    action: site.email,
+  },
+];
+
+const websitePrivacyItems = [
+  { label: "Plain HTML and CSS" },
+  { label: "No executable JavaScript" },
+  { label: "Images served locally" },
+  { label: "System fonts" },
+];
+---
+
+<BaseLayout
+  title="Website privacy - Fossify"
+  description="How Fossify handles privacy on fossify.org, with app policy links and contact details."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Website privacy</p>
+        <h1 class="page-title">Privacy on fossify.org</h1>
+        <p class="lead">
+          Fossify.org provides app information, policies, and project links
+          without analytics, advertising, or tracking.
+        </p>
+      </div>
+      <StatementCard
+        title="A static website"
+        body="Pages load without third-party resources."
+        items={websitePrivacyItems}
+        ariaLabel="Website privacy summary"
+      />
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Privacy basics</p>
+          <h2 class="section-title">What stays off the page</h2>
+        </div>
+        <p class="lead">
+          App details, policies, and support options are published without
+          adding analytics, advertising, or social embeds to the page.
+        </p>
+      </div>
+      <div class="grid three">
+        {
+          privacyBasics.map((item) => (
+            <article class="panel compact-panel">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Details</p>
+        <h2 class="section-title">Hosting and external links</h2>
+        <p class="lead">
+          App-specific privacy details are published separately for each app.
+        </p>
+      </div>
+      <div class="prose">
+        <h2>Hosting</h2>
+        <p>
+          Fossify does not collect personal data through forms, analytics, or
+          trackers on fossify.org. GitHub Pages may keep ordinary server logs
+          needed to host the site.
+        </p>
+
+        <h2>External links</h2>
+        <p>
+          Links to GitHub, Google Play, F-Droid, Reddit, Telegram, funding
+          platforms, and other services are external. Their privacy policies
+          apply once you leave this site.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Related privacy resources</p>
+          <h2 class="section-title">Policies, source, and contact</h2>
+        </div>
+        <p class="lead">
+          Use app policies for permissions and local data, source code for
+          implementation details, and email for questions that should not be
+          posted publicly.
+        </p>
+      </div>
+      <div class="grid three">
+        {
+          privacyRoutes.map((route) => (
+            <article class="panel compact-panel">
+              <h3>{route.title}</h3>
+              <p>{route.body}</p>
+              <a class="button subtle" href={route.href}>
+                {route.action}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

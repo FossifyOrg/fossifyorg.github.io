@@ -20,3 +20,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 .vscode/settings.json
+
+# local
+qa/
+

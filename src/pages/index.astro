@@ -1,16 +1,177 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import Profile from "../components/Profile.astro";
-import Products from "../components/Products.astro";
-import Contributors from "../components/Contributors.astro";
-import Donors from "../components/Donors.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AppCard from "../components/AppCard.astro";
+import TrustIcon from "../components/TrustIcon.astro";
+import { featuredApps } from "../data/apps";
+
+const heroScreens = {
+  primary: {
+    src: "/assets/apps/gallery/screenshot-1.webp",
+    alt: "Fossify Gallery album view",
+    width: 540,
+    height: 1170,
+  },
+  secondary: {
+    src: "/assets/apps/calendar/screenshot-1.webp",
+    alt: "Fossify Calendar month view",
+    width: 540,
+    height: 1200,
+  },
+  tertiary: {
+    src: "/assets/apps/messages/screenshot-1.webp",
+    alt: "Fossify Messages conversation list",
+    width: 540,
+    height: 1200,
+  },
+};
+const homeApps = featuredApps.slice(0, 3);
+const heroTrustItems = [
+  {
+    icon: "shield-check" as const,
+    title: "No ads",
+    body: "No advertising libraries or tracking in any app.",
+  },
+  {
+    icon: "wifi-off" as const,
+    title: "No unnecessary permissions",
+    body: "Apps request only the permissions needed for their features.",
+  },
+  {
+    icon: "code" as const,
+    title: "Open source",
+    body: "Code, licenses, issues, and releases are public.",
+  },
+];
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Fossify",
+    url: "https://www.fossify.org",
+    logo: "https://www.fossify.org/assets/brand/logo.webp",
+    sameAs: ["https://github.com/FossifyOrg"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Fossify",
+    url: "https://www.fossify.org",
+  },
+];
 ---
 
-<Layout title="Fossify" lang="en" dir="ltr">
-  <Hero id="hero" lang="en" />
-  <Profile id="profile" lang="en" />
-  <Products id="products" lang="en" />
-  <Contributors id="contributors" lang="en" />
-  <Donors id="donors" lang="en" />
-</Layout>
+<BaseLayout structuredData={structuredData}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Open-source Android apps</p>
+        <h1 class="hero-title">Fossify</h1>
+        <p class="lead lede-narrow">
+          Open-source tools for everyday Android tasks: photos, calendars,
+          files, messages, calls, music, notes, camera, and more.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/apps/">Explore apps</a>
+          <a class="button" href="/install/">Install options</a>
+        </div>
+      </div>
+      <div class="device-wall" aria-label="Fossify app screenshots">
+        <div class="phone-shot tertiary">
+          <img
+            src={heroScreens.tertiary.src}
+            alt={heroScreens.tertiary.alt}
+            width={heroScreens.tertiary.width}
+            height={heroScreens.tertiary.height}
+            loading="eager"
+          />
+        </div>
+        <div class="phone-shot secondary">
+          <img
+            src={heroScreens.secondary.src}
+            alt={heroScreens.secondary.alt}
+            width={heroScreens.secondary.width}
+            height={heroScreens.secondary.height}
+            loading="eager"
+          />
+        </div>
+        <div class="phone-shot primary">
+          <img
+            src={heroScreens.primary.src}
+            alt={heroScreens.primary.alt}
+            width={heroScreens.primary.width}
+            height={heroScreens.primary.height}
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+      <div class="hero-metrics" aria-label="Fossify app summary">
+        {
+          heroTrustItems.map((item) => (
+            <div class="metric">
+              <TrustIcon name={item.icon} />
+              <strong>{item.title}</strong>
+              <span>{item.body}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Featured apps</p>
+          <h2 class="section-title">Common starting points</h2>
+        </div>
+        <div>
+          <p class="lead">
+            Gallery, Calendar, and File Manager cover common local tasks.
+          </p>
+          <a class="section-link" href="/apps/">View all apps</a>
+        </div>
+      </div>
+      <div class="grid three home-featured-grid">
+        {homeApps.map((app) => <AppCard app={app} media />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid three home-resource-grid">
+      <article class="panel">
+        <p class="eyebrow">Install</p>
+        <h2>Google Play and F-Droid</h2>
+        <p>
+          Available from Google Play and F-Droid, with matching package names
+          across stores.
+        </p>
+        <a class="button subtle" href="/install/">Install guide</a>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Privacy</p>
+        <h2>Local data and permissions</h2>
+        <p>
+          App-specific policies cover local data, permissions, and external
+          services.
+        </p>
+        <a class="button subtle" href="/policy/">App policies</a>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Project</p>
+        <h2>Releases, help, and source</h2>
+        <p>
+          Check current releases, report an app problem, or inspect the source
+          and issue history.
+        </p>
+        <div class="text-link-list">
+          <a href="/updates/">Releases</a>
+          <a href="/support/">Help</a>
+          <a href="https://github.com/FossifyOrg">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

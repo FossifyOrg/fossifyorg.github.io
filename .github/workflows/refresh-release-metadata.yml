@@ -1,0 +1,66 @@
+name: Refresh release metadata
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-metadata-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh release metadata
+        run: npm run refresh:releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check site output
+        run: npm test
+
+      - name: Check for metadata changes
+        id: diff
+        run: |
+          if git diff --quiet -- src/data/release-metadata.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Get app token
+        if: steps.diff.outputs.changed == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Create or update refresh pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          sign-commits: true
+          branch: fossifybot/release-metadata
+          commit-message: "chore: refresh release metadata"
+          title: "chore: refresh release metadata"
+          body: ""
+          add-paths: src/data/release-metadata.json

@@ -1,0 +1,27 @@
+---
+export type StatementCardItem = {
+  label: string;
+  href?: string;
+};
+
+type Props = {
+  title: string;
+  body: string;
+  items: StatementCardItem[];
+  ariaLabel: string;
+};
+
+const { title, body, items, ariaLabel } = Astro.props;
+---
+
+<div class="panel statement-card" aria-label={ariaLabel}>
+  <h2>{title}</h2>
+  <p>{body}</p>
+  <ul class="statement-list">
+    {
+      items.map((item) => (
+        <li>{item.href ? <a href={item.href}>{item.label}</a> : item.label}</li>
+      ))
+    }
+  </ul>
+</div>

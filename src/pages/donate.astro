@@ -1,8 +1,122 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Donation from "../components/Donation.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  cryptoDonations,
+  donateLinks as fundingLinks,
+  site,
+} from "../data/site";
+
+const fundingNotes: Record<string, string> = {
+  "GitHub Sponsors": "One-time or recurring support through GitHub.",
+  Patreon: "Monthly support through Patreon.",
+  PayPal: "Direct support through PayPal.",
+  Liberapay: "Recurring support through Liberapay.",
+  "Open Collective": "Contributions and transactions through Open Collective.",
+};
 ---
 
-<Layout title="Fossify | Donate" lang="en" dir="ltr">
-    <Donation lang="en" />
-</Layout>
+<BaseLayout
+  title="Fund Fossify - Fossify"
+  description="Ways to fund Fossify through GitHub Sponsors, Patreon, PayPal, Liberapay, Open Collective, and direct crypto transfers."
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">Funding</p>
+        <h1 class="page-title">Fund Fossify</h1>
+        <p class="lead">
+          Funding supports continued app development, maintenance, testing, and
+          publishing.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={site.sponsor}>GitHub Sponsors</a>
+          <a class="button subtle" href="#platforms">All options</a>
+        </div>
+      </div>
+      <aside class="panel donation-disclosure">
+        <h2>Before paying</h2>
+        <p>
+          Some platforms use an account operated for Fossify and may display the
+          account holder's name instead of the project name. Check the
+          recipient, amount, currency, and recurrence before confirming.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="platforms">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Platforms</p>
+          <h2 class="section-title">Funding options</h2>
+        </div>
+        <p class="lead">
+          Fees, supported currencies, and recurring-payment controls vary by
+          platform.
+        </p>
+      </div>
+      <div class="grid three donation-link-grid">
+        {
+          fundingLinks.map((link) => (
+            <a class="panel donation-link-card" href={link.href}>
+              <h3>{link.label}</h3>
+              <p class="muted">{fundingNotes[link.label]}</p>
+              <span>Visit {link.label}</span>
+            </a>
+          ))
+        }
+        <a class="panel donation-link-card" href="#crypto">
+          <h3>Crypto addresses</h3>
+          <p class="muted">
+            Direct transfers to the addresses published below.
+          </p>
+          <span>View addresses</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container feature-layout">
+      <div>
+        <p class="eyebrow">Use of funds</p>
+        <h2 class="section-title">What funding supports</h2>
+      </div>
+      <ul class="feature-list">
+        <li>App development, maintenance, and shared-library work.</li>
+        <li>Testing, release preparation, and store publishing.</li>
+        <li>
+          Screenshots, privacy policies, website updates, and documentation.
+        </li>
+        <li>Issue triage, compatibility work, and regression follow-up.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="crypto">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Direct transfer</p>
+          <h2 class="section-title">Crypto addresses</h2>
+        </div>
+        <p class="lead">
+          Send only the asset named for the address and use the stated network.
+          Verify every character before confirming.
+        </p>
+      </div>
+      <div class="grid two">
+        {
+          cryptoDonations.map((item) => (
+            <article class="card crypto-card">
+              <h3>{item.label}</h3>
+              <p class="muted">{item.network}</p>
+              <p class="donation-address">{item.value}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

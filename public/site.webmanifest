@@ -1,0 +1,21 @@
+{
+  "name": "Fossify",
+  "short_name": "Fossify",
+  "description": "Open-source Android apps for everyday phone tasks.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbfcf8",
+  "theme_color": "#216e39",
+  "icons": [
+    {
+      "src": "/assets/brand/logo.webp",
+      "sizes": "256x256",
+      "type": "image/webp"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
