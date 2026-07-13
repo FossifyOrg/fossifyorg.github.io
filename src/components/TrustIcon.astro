@@ -1,6 +1,6 @@
 ---
 type Props = {
-  name: "shield-check" | "wifi-off" | "code";
+  name: "shield-check" | "list-checks" | "code";
 };
 
 const { name } = Astro.props;
@@ -22,15 +22,13 @@ const { name } = Astro.props;
         <path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z" />
         <path d="m9 12 2 2 4-4" />
       </>
-    ) : name === "wifi-off" ? (
+    ) : name === "list-checks" ? (
       <>
-        <path d="M12 20h.01" />
-        <path d="M8.5 16.4a5 5 0 0 1 7 0" />
-        <path d="M5 12.9a10 10 0 0 1 5.2-2.7" />
-        <path d="M19 12.9a10 10 0 0 0-2-1.5" />
-        <path d="M2 8.8a15 15 0 0 1 4.2-2.6" />
-        <path d="M22 8.8a15 15 0 0 0-11.3-3.7" />
-        <path d="m2 2 20 20" />
+        <path d="M13 5h8" />
+        <path d="M13 12h8" />
+        <path d="M13 19h8" />
+        <path d="m3 17 2 2 4-4" />
+        <path d="m3 7 2 2 4-4" />
       </>
     ) : (
       <>
