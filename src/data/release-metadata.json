@@ -85,11 +85,11 @@
     "messages": {
       "title": "Fossify Messages",
       "repo": "Messages",
-      "sourceVersion": "1.9.0",
-      "sourceTag": "1.9.0",
+      "sourceVersion": "1.9.1",
+      "sourceTag": "1.9.1",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Messages/releases/tag/1.9.0",
-      "publishedAt": "2026-07-12T11:52:41Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Messages/releases/tag/1.9.1",
+      "publishedAt": "2026-07-19T15:25:44Z"
     },
     "music-player": {
       "title": "Fossify Music Player",
