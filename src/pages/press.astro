@@ -1,13 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { apps } from "../data/apps";
+import { releaseEntries } from "../data/release-info";
 import { site } from "../data/site";
 
 const shortDescription =
   "Fossify develops open-source Android apps for common phone tasks. The apps contain no advertising, do not track users, work without a Fossify account, and have public source code and release history on GitHub.";
 
 const mediumDescription =
-  "Fossify is an open-source Android app project covering photos, calendars, files, messages, calls, contacts, music, notes, camera, keyboard, and utilities. The apps request only the permissions needed for their features, contain no advertising, and do not track users. Source code, issues, releases, translations, install links, and app-specific privacy policies are publicly available.";
+  "Fossify is an open-source Android app project covering photos, calendars, files, documents, messages, calls, contacts, music, notes, camera, keyboard, and utilities. The apps request only the permissions needed for their features, contain no advertising, and do not track users. Source code, issues, releases, translations, install links, and app-specific privacy policies are publicly available.";
+const releasedAppCount = apps.filter(
+  (app) => releaseEntries[app.slug]?.sourceVersion,
+).length;
 ---
 
 <BaseLayout
@@ -48,7 +52,7 @@ const mediumDescription =
           height="92"
         />
         <dl class="definition-list">
-          <div><dt>Released apps</dt><dd>{apps.length}</dd></div>
+          <div><dt>Released apps</dt><dd>{releasedAppCount}</dd></div>
           <div><dt>Platform</dt><dd>Android</dd></div>
           <div><dt>Source</dt><dd>GitHub</dd></div>
         </dl>

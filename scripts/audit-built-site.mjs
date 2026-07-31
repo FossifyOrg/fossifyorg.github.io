@@ -209,8 +209,11 @@ if (JSON.stringify(appDirectories) !== JSON.stringify(releaseSlugs)) {
   );
 }
 for (const [slug, release] of Object.entries(releaseMetadata.apps)) {
-  if (!release.sourceVersion || !release.sourceReleaseUrl) {
+  if (!release.sourceReleaseUrl) {
     errors.push(`release metadata is incomplete for ${slug}`);
+  }
+  if (release.sourceKind !== "repository" && !release.sourceVersion) {
+    errors.push(`release metadata has no version for ${slug}`);
   }
   if (release.sourceKind === "release" && !release.publishedAt) {
     errors.push(`release metadata has no publication date for ${slug}`);
