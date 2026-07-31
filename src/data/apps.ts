@@ -196,6 +196,60 @@ export const apps: FossifyApp[] = [
     },
   },
   {
+    slug: "documents",
+    repo: "Documents",
+    title: "Fossify Documents",
+    shortTitle: "Documents",
+    status: "Beta",
+    category: "Utilities",
+    packageName: "org.fossify.documents",
+    isFree: false,
+    tagline: "Offline document reading and organization.",
+    summary:
+      "Read and organize PDF, DOCX, text, Markdown, CSV, TSV, and HTML files.",
+    description:
+      "Read and organize documents, edit text and Markdown, and browse recent files, favorites, and selected folders.",
+    featureHeading: "Documents, folders, and offline reading",
+    features: [
+      "PDF, DOCX, text, Markdown, CSV, TSV, and HTML viewing",
+      "Text and Markdown editing, with plain-text editing for CSV and TSV",
+      "Recent documents, favorites, selected folders, search, filtering, and sorting",
+      "Password-protected PDFs, page navigation, zoom, and printing",
+      "Offline use without an account or Internet permission",
+    ],
+    privacy:
+      "Documents works with files chosen through Android's file picker and keeps its library records locally.",
+    dataAccess: [
+      "Documents and folders selected through Android's file picker",
+      "Document names, locations, recent activity, favorites, and selected folder references",
+      "Appearance, sorting, and viewing preferences",
+    ],
+    permissionSummary: [
+      "Read access to documents and folders selected through Android's file picker",
+      "Write access when a supported document is edited or a new document is created",
+      "Persisted access to selected folders so they remain available after the app restarts",
+    ],
+    dataLeavingDevice:
+      "A document is passed to another app or system service only when you choose Share, Open with, or Print. The selected app, storage provider, or print service then handles it.",
+    icon: appAsset("documents", "icon.webp"),
+    screenshotSize: { width: 540, height: 1212 },
+    screenshots: [
+      appAsset("documents", "screenshot-1.webp"),
+      appAsset("documents", "screenshot-2.webp"),
+      appAsset("documents", "screenshot-3.webp"),
+    ],
+    screenshotCaptions: [
+      "Document library",
+      "Selected folder",
+      "Markdown preview",
+    ],
+    links: {
+      github: github("Documents"),
+      play: play("org.fossify.documents"),
+      policy: "/policy/documents.html",
+    },
+  },
+  {
     slug: "messages",
     repo: "Messages",
     title: "Fossify Messages",

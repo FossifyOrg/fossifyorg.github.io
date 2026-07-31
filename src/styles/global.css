@@ -1155,6 +1155,7 @@ textarea {
 }
 
 .app-title-heading {
+  max-width: none;
   margin: 0;
 }
 

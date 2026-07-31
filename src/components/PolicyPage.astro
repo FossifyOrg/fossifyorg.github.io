@@ -13,14 +13,12 @@ type Props = {
 const { policy, canonicalPath } = Astro.props;
 const relatedApp = apps.find((app) => app.links.policy === canonicalPath);
 const isUnlisted = "unlisted" in policy && policy.unlisted;
-const policyDetails: PolicyDetails = relatedApp
-  ? {
-      privacy: relatedApp.privacy,
-      dataAccess: relatedApp.dataAccess,
-      permissionSummary: relatedApp.permissionSummary,
-      dataLeavingDevice: relatedApp.dataLeavingDevice,
-    }
-  : policy.details!;
+const policyDetails: PolicyDetails = policy.details ?? {
+  privacy: relatedApp!.privacy,
+  dataAccess: relatedApp!.dataAccess,
+  permissionSummary: relatedApp!.permissionSummary,
+  dataLeavingDevice: relatedApp!.dataLeavingDevice,
+};
 ---
 
 <BaseLayout

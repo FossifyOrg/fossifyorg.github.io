@@ -2,7 +2,7 @@ export const site = {
   name: "Fossify",
   title: "Fossify - open-source Android apps",
   description:
-    "Open-source Android apps for gallery, calendar, files, messages, phone, notes, camera, music, and more.",
+    "Open-source Android apps for gallery, calendar, files, documents, messages, phone, notes, camera, music, and more.",
   url: "https://www.fossify.org",
   brandColor: "#216e39",
   email: "hello@fossify.org",
@@ -91,18 +91,17 @@ export const policyRoutes: PolicyRoute[] = [
   {
     slug: "documents",
     appName: "Fossify Documents",
-    updated: "July 12, 2026",
-    unlisted: true,
+    updated: "July 31, 2026",
     details: {
       privacy:
         "The app works with documents chosen through Android's file picker and keeps its own history, favorites, folder list, and settings locally.",
       dataAccess: [
-        "PDF, text, Markdown, and other supported documents opened through Android or chosen with the system file picker.",
+        "PDF, DOCX, text, Markdown, CSV, TSV, and HTML documents opened through Android or chosen with the system file picker.",
         "Document names, locations, recent activity, favorites, and selected folders used to organize those documents.",
         "App preferences such as appearance, sorting, and viewing options.",
       ],
       permissionsIntro:
-        "The app does not request broad access to device storage. Android gives it access only to documents and folders selected through the system file picker:",
+        "The app does not request broad access to device storage. File access is limited to documents and folders selected through the system file picker:",
       permissionSummary: [
         "Read access to documents and folders selected through Android's file picker.",
         "Write access when a supported document is edited or a new document is created.",
@@ -116,7 +115,7 @@ export const policyRoutes: PolicyRoute[] = [
         "Android's file picker, storage providers, backup and device-transfer services, print services, and apps selected through Share or Open with operate under their own terms and privacy policies.",
       storageAndDeletion: [
         "Recent activity, favorites, selected folder references, and app settings remain in app storage until they are changed, cleared through the app or Android settings, or removed by uninstalling the app.",
-        "Clearing the app's records does not delete the original documents. Documents remain with their storage provider unless the user edits or deletes them.",
+        "Clearing the app's records does not delete the original documents. The files remain with their storage provider and can still be edited or deleted through that provider or another app.",
         "Android backup or device transfer may include app settings and local app records according to the device's backup settings.",
       ],
     },
