@@ -49,11 +49,11 @@
     "documents": {
       "title": "Fossify Documents",
       "repo": "Documents",
-      "sourceVersion": "1.0.0",
-      "sourceTag": "1.0.0",
+      "sourceVersion": "1.0.1",
+      "sourceTag": "1.0.1",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Documents/releases/tag/1.0.0",
-      "publishedAt": "2026-07-31T21:36:37Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Documents/releases/tag/1.0.1",
+      "publishedAt": "2026-08-01T14:05:30Z"
     },
     "file-manager": {
       "title": "Fossify File Manager",
