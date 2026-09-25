@@ -246,6 +246,7 @@ export const apps: FossifyApp[] = [
     links: {
       github: github("Documents"),
       play: play("org.fossify.documents"),
+      fdroid: fdroid("org.fossify.documents"),
       policy: "/policy/documents.html",
     },
   },
