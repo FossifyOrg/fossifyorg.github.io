@@ -13,11 +13,11 @@
     "calendar": {
       "title": "Fossify Calendar",
       "repo": "Calendar",
-      "sourceVersion": "1.10.3",
-      "sourceTag": "1.10.3",
+      "sourceVersion": "1.11.0",
+      "sourceTag": "1.11.0",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Calendar/releases/tag/1.10.3",
-      "publishedAt": "2026-02-17T02:37:11Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Calendar/releases/tag/1.11.0",
+      "publishedAt": "2026-09-23T13:37:28Z"
     },
     "camera": {
       "title": "Fossify Camera",
