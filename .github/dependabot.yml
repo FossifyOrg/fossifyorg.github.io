@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Keep version-update PRs disabled; security updates still use this configuration.
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: "chore"
+      include: "scope"
