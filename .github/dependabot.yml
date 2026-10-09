@@ -4,8 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    # Keep version-update PRs disabled; security updates still use this configuration.
-    open-pull-requests-limit: 0
     commit-message:
       prefix: "chore"
+      prefix-development: "chore"
       include: "scope"
