@@ -2,7 +2,7 @@ name: Refresh release metadata
 
 on:
   schedule:
-    - cron: "17 4 * * 1"
+    - cron: "30 11 * * *"
   workflow_dispatch:
 
 permissions:
