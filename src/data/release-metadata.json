@@ -49,29 +49,29 @@
     "documents": {
       "title": "Fossify Documents",
       "repo": "Documents",
-      "sourceVersion": "1.2.1",
-      "sourceTag": "1.2.1",
+      "sourceVersion": "1.2.2",
+      "sourceTag": "1.2.2",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Documents/releases/tag/1.2.1",
-      "publishedAt": "2026-11-07T16:08:54Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Documents/releases/tag/1.2.2",
+      "publishedAt": "2026-11-21T17:09:23Z"
     },
     "file-manager": {
       "title": "Fossify File Manager",
       "repo": "File-Manager",
-      "sourceVersion": "1.6.4",
-      "sourceTag": "1.6.4",
+      "sourceVersion": "1.6.5",
+      "sourceTag": "1.6.5",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/File-Manager/releases/tag/1.6.4",
-      "publishedAt": "2026-11-07T16:07:28Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/File-Manager/releases/tag/1.6.5",
+      "publishedAt": "2026-11-21T17:08:59Z"
     },
     "gallery": {
       "title": "Fossify Gallery",
       "repo": "Gallery",
-      "sourceVersion": "1.14.2",
-      "sourceTag": "1.14.2",
+      "sourceVersion": "1.14.3",
+      "sourceTag": "1.14.3",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Gallery/releases/tag/1.14.2",
-      "publishedAt": "2026-11-07T16:09:55Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Gallery/releases/tag/1.14.3",
+      "publishedAt": "2026-11-21T17:10:55Z"
     },
     "keyboard": {
       "title": "Fossify Keyboard",
@@ -94,20 +94,20 @@
     "messages": {
       "title": "Fossify Messages",
       "repo": "Messages",
-      "sourceVersion": "1.10.2",
-      "sourceTag": "1.10.2",
+      "sourceVersion": "1.10.3",
+      "sourceTag": "1.10.3",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Messages/releases/tag/1.10.2",
-      "publishedAt": "2026-10-24T13:52:52Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Messages/releases/tag/1.10.3",
+      "publishedAt": "2026-11-21T17:08:36Z"
     },
     "music-player": {
       "title": "Fossify Music Player",
       "repo": "Music-Player",
-      "sourceVersion": "1.8.5",
-      "sourceTag": "1.8.5",
+      "sourceVersion": "1.8.6",
+      "sourceTag": "1.8.6",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Music-Player/releases/tag/1.8.5",
-      "publishedAt": "2026-10-24T13:54:35Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Music-Player/releases/tag/1.8.6",
+      "publishedAt": "2026-11-21T17:09:06Z"
     },
     "notes": {
       "title": "Fossify Notes",
@@ -148,11 +148,11 @@
     "voice-recorder": {
       "title": "Fossify Voice Recorder",
       "repo": "Voice-Recorder",
-      "sourceVersion": "1.7.4",
-      "sourceTag": "1.7.4",
+      "sourceVersion": "1.7.5",
+      "sourceTag": "1.7.5",
       "sourceKind": "release",
-      "sourceReleaseUrl": "https://github.com/FossifyOrg/Voice-Recorder/releases/tag/1.7.4",
-      "publishedAt": "2026-10-24T13:53:48Z"
+      "sourceReleaseUrl": "https://github.com/FossifyOrg/Voice-Recorder/releases/tag/1.7.5",
+      "publishedAt": "2026-11-21T17:09:26Z"
     }
   }
 }
